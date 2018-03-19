@@ -1,0 +1,9 @@
+{
+  "organizationName": "MuleSoft Inc",
+  "email": "christopher.mordue@mulesoft.com",
+  "userAccounts": [
+    { "username": "Hell0-W0rld_Yo1", "attachedOrg": true },
+    { "username": "Hell0-W0rld_Yo2", "attachedOrg": false }
+  ]
+}
+

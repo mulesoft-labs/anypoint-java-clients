@@ -1,0 +1,37 @@
+[
+  {
+    "name": "sort",
+    "field": "name",
+    "order": "DESC"
+  },
+  {
+    "name": "pagination",
+    "offset": "0",
+    "limit": "10"
+  },
+  {
+    "name": "entitlement.mqMessages.base",
+    "lte": 40000,
+    "gte": 10000
+  },
+  {
+    "name": "entitlement.vCoresProduction.assigned",
+    "lte": 4.5
+  },
+  {
+    "name": "entitlement.mqMessages.addOn",
+    "eql": 40000
+  },
+  {
+    "name": "entitlement.createSubOrgs",
+    "bool": true
+  },
+  {
+    "name": "subscription_type",
+    "eqlIS": "free"
+  },
+  {
+    "name": "expiration",
+    "lt": "Wed May 25 2016 18:07:57 GMT-7"
+  }
+]

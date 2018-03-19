@@ -1,0 +1,42 @@
+[
+  {
+    "namespace": "cs_auth",
+    "actions": [
+      "GET",
+      "POST",
+      "DELETE"
+    ],
+    "resource": "/organizations/{{org}}/clients/*"
+  },
+  {
+    "namespace": "apiportal",
+    "actions": [
+      "VIEW"
+    ],
+    "resource": "/orgs/{{org}}/apis/versions/tiers"
+  },
+  {
+    "namespace": "apiportal",
+    "actions": [
+      "VIEW",
+      "CREATE"
+    ],
+    "resource": "/orgs/{{org}}/apis"
+  },
+  {
+    "namespace": "cs_auth",
+    "actions": [
+      "GET",
+      "POST",
+      "DELETE"
+    ],
+    "resource": "/organizations/{{org}}/clients"
+  },
+  {
+    "namespace": "apiportal",
+    "actions": [
+      "VIEW"
+    ],
+    "resource": "/orgs/{{org}}/apis/versions/contracts/applications"
+  }
+]

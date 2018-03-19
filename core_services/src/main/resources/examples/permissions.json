@@ -1,0 +1,50 @@
+{
+  "data": [
+    {
+      "permission_id": "f85158b6-6c8c-4bda-a779-e5ad4784f466",
+      "namespace": "cs_auth",
+      "actions": [
+        "GET",
+        "POST",
+        "DELETE"
+      ],
+      "resource": "/organizations/{{org}}/clients/*"
+    },
+    {
+      "permission_id": "071de9fc-8e43-4fe1-81e6-638c1628e067",
+      "namespace": "apiportal",
+      "actions": [
+        "VIEW"
+      ],
+      "resource": "/orgs/{{org}}/apis/versions/tiers"
+    },
+    {
+      "permission_id": "2ae396fd-67a2-46b9-8752-42e5e4e20106",
+      "namespace": "apiportal",
+      "actions": [
+        "VIEW",
+        "CREATE"
+      ],
+      "resource": "/orgs/{{org}}/apis"
+    },
+    {
+      "permission_id": "037cbae8-2226-471b-be86-c6b784e7af60",
+      "namespace": "cs_auth",
+      "actions": [
+        "GET",
+        "POST",
+        "DELETE"
+      ],
+      "resource": "/organizations/{{org}}/clients"
+    },
+    {
+      "permission_id": "c7107c6d-6ea8-4758-97d6-dd9dade1b545",
+      "namespace": "apiportal",
+      "actions": [
+        "VIEW"
+      ],
+      "resource": "/orgs/{{org}}/apis/versions/contracts/applications"
+    }
+  ],
+  "data": 5
+}

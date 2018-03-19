@@ -1,0 +1,80 @@
+{
+  "data": [
+    {
+      "id": "4b353f44-6486-42ae-ae77-18b4032f9643",
+      "username": "uzer1.test",
+      "firstName": "Uzer",
+      "lastName": "1",
+      "email": "api.platform.qa+uzer@gmail.com",
+      "enabled": true,
+      "idprovider_id": "mulesoft",
+      "type": "host",
+      "createdAt": "Mon Feb 09 2015 17:47:26 GMT-0300 (ART)",
+      "updatedAt": "Mon Feb 09 2015 17:47:26 GMT-0300 (ART)",
+      "lastLogin": "Mon Feb 09 2015 17:47:26 GMT-0300 (ART)",
+      "organizationId": "f0c9b011-980e-4928-9430-e60e3a97c043",
+      "organization": {
+        "name": "MuleSoft Inc",
+        "id": "f0c9b011-980e-4928-9430-e60e3a97c043",
+        "createdAt": "2015-02-03T00:20:06.125Z",
+        "ownerId": "57e281b5-ec5b-4701-80a0-92a936a68da3",
+        "updatedAt": "2015-02-03T00:20:06.205Z",
+        "clientId": "1e4ea687b8794c679fe325b2e3550a17",
+        "domain": "mulesoft-inc",
+        "idprovider_id": "mulesoft",
+        "properties": {},
+        "entitlements": {
+          "createSubOrgs": false,
+          "createEnvironments": false,
+          "hybrid": { "enabled": false },
+          "hybridInsight": false,
+          "hybridAutoDiscoverProperties": true,
+          "globalDeployment": false,
+          "vCoresProduction": { "assigned": 1, "reassigned": 0 },
+          "vCoresSandbox": { "assigned": 1, "reassigned": 0 },
+          "vCoresDesign": { "assigned": 1, "reassigned": 0 },
+          "staticIps": { "assigned": 1, "reassigned": 0 },
+          "vpcs": { "assigned": 0, "reassigned": 0 },
+          "workerLoggingOverride": { "enabled": false },
+          "messaging": { "assigned": 0 },
+          "mqMessages": { "base": 0, "addOn": 0 },
+          "mqRequests": { "base": 0, "addOn": 0 },
+          "mqAdvancedFeatures": { "enabled": false },
+          "objectStoreRequestUnits": { "base": 0, "addOn": 0 },
+          "objectStoreKeys": { "base": 0, "addOn": 0 },
+          "gateways": { "assigned": 0 },
+          "designCenter": { "mozart": true, "api": true, "apiVisual": false },
+          "partnersProduction": { "assigned": 0 },
+          "partnersSandbox": { "assigned": 0 },
+          "loadBalancer": { "assigned": 0, "reassigned": 0 },
+          "externalIdentity": true,
+          "autoscaling": false,
+          "armAlerts": false,
+          "apis": { "enabled": true },
+          "apiMonitoring": { "schedules": 0},
+          "crowd": {
+            "hideApiManagerDesigner": false,
+            "hideFormerApiPlatform": false,
+            "environments": false
+          },
+          "cam": { "enabled": false },
+          "exchange2": { "enabled": false },
+          "kpiDashboard": { "enabled": false },
+          "pcf" : false,
+          "appViz": false
+        },
+        "isFederated": false,
+        "isMaster": true,
+        "parentOrganizationIds": [],
+        "subOrganizationIds": [],
+        "tenantOrganizationIds": [],
+        "subscription": {
+          "type": "Free",
+          "expiration": "2014-07-27T20:56:02.125Z"
+        }
+      },
+      "isApiConsumer": false
+    }
+  ],
+  "total": 1
+}

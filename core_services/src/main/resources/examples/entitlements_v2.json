@@ -1,0 +1,52 @@
+{
+  "hybrid": {
+    "enabled": true
+  },
+  "createEnvironments": true,
+  "globalDeployment": true,
+  "createSubOrgs": true,
+  "vCoresProduction": { "assigned": 1, "reassigned": 0 },
+  "vCoresSandbox": { "assigned": 1, "reassigned": 0 },
+  "vCoresDesign": { "assigned": 1, "reassigned": 0 },
+  "staticIps": { "assigned": 1, "reassigned": 0 },
+  "vpcs": { "assigned": 0, "reassigned": 0 },
+  "workerLoggingOverride": { "enabled": false },
+  "messaging": { "assigned": 0 },
+  "mqMessages": { "base": 0, "addOn": 0 },
+  "mqRequests": { "base": 0, "addOn": 0 },
+  "mqAdvancedFeatures": { "enabled": false },
+  "objectStoreRequestUnits": { "base": 0, "addOn": 0 },
+  "objectStoreKeys": { "base": 0, "addOn": 0 },
+  "gateways": { "assigned": 0 },
+  "designCenter": { "mozart": true, "api": true, "apiVisual": false },
+  "partnersProduction": { "assigned": 0 },
+  "partnersSandbox": { "assigned": 0 },
+  "loadBalancer": { "assigned": 0, "reassigned": 0 },
+  "externalIdentity": true,
+  "autoscaling": false,
+  "armAlerts": false,
+  "hybridInsight": true,
+  "hybridAutoDiscoverProperties": true,
+  "apis": {
+    "enabled": true
+  },
+  "apiMonitoring": {
+    "schedules": 0
+  },
+  "crowd": {
+    "hideApiManagerDesigner": false,
+    "hideFormerApiPlatform": false,
+    "environments": false
+  },
+  "cam": {
+    "enabled": false
+  },
+  "exchange2": {
+    "enabled": false
+  },
+  "kpiDashboard": {
+    "enabled": false
+  },
+  "pcf": false,
+  "appViz": false
+}

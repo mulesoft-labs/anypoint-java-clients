@@ -1,0 +1,35 @@
+{
+  "identity_management": {
+    "oauth2_authorization_provider": {
+      "name": "OAuth 2.0 Authorization Provider",
+      "url": "https://example.com/authorization"
+    },
+    "oauth2_client_provider": {
+      "name": "OAuth 2.0 Client Provider",
+      "url": "https://example.com/clients",
+      "username": "admin",
+      "password": "password"
+    },
+    "oauth2_token_provider": {
+      "name": "OAuth 2.0 Token Provider",
+      "url": "https://example.com/token"
+    },
+    "oauth2_token_validation_provider": {
+      "name": "OAuth 2.0 Token Validation Provider",
+      "url": "https://example.com/validate",
+      "client_id": "1234567890ABCDEF1234567890ABCDEF",
+      "client_secret": "SHHH"
+    },
+    "saml": {
+      "name": "SAML 2.0",
+      "issuer": "example.com",
+      "public_key": "KEY=",
+      "audience": "anypoint.example.com",
+      "bypass_expiration": true
+    },
+    "service_provider": {
+      "name": "Identity Federation Service Provider",
+      "url": "https://example.com/idp"
+    }
+  }
+}

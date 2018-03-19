@@ -1,0 +1,23 @@
+{
+  "sinceStartup": {
+    "from": "2010-01-01T00:00:00.000Z",
+    "to": "2015-01-01T01:00:00.000Z",
+    "calls": 1440,
+    "throughput": 0,
+    "latency": 10
+  },
+  "lastHour": {
+    "from": "2015-01-01T00:00:00.000Z",
+    "to": "2015-01-01T01:00:00.000Z",
+    "calls": 120,
+    "throughput": 2,
+    "latency": 10
+  },
+  "last24Hours": {
+    "from": "2014-12-31T01:00:00.000Z",
+    "to": "2015-01-01T01:00:00.000Z",
+    "calls": 1440,
+    "throughput": 1,
+    "latency": 10
+  }
+}

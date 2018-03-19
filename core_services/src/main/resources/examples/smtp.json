@@ -1,0 +1,10 @@
+{
+  "host": "smtp.gmail.com",
+  "port": 465,
+  "secure": true,
+  "ignoreTLS": false,
+  "username": "admin",
+  "password": "admin",
+  "fromName": "John Galt",
+  "fromAddress": "john.galt@gmail.com"
+}

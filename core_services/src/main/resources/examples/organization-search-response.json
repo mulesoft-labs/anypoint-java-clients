@@ -1,0 +1,39 @@
+{
+  "data": [
+    {
+      "id": "6e448d4f-5251-41cd-9496-9d0ecb29338b",
+      "created_at": "2016-05-17T18:28:25.218Z",
+      "updated_at": "2016-05-17T18:28:25.255Z",
+      "name": "API Platform QA",
+      "client_id": "dd3b99b5172343b4971e77d63082154b",
+      "domain": "api-platform-qa",
+      "owner_id": "30e4ea27-34d2-45ef-ba6a-3d5a838dcfc5",
+      "idprovider_id": "mulesoft",
+      "flag": false,
+      "is_federated": false,
+      "parent_organization_ids": [],
+      "sub_organization_ids": [],
+      "tenant_organization_ids": [],
+      "subscription_type": "Free",
+      "subscription_expiration": "2016-06-16T18:28:25.215Z"
+    },
+    {
+      "id": "68ef9520-24e9-4cf2-b2f5-620025690913",
+      "created_at": "2016-05-17T18:28:25.218Z",
+      "updated_at": "2016-05-17T18:28:25.257Z",
+      "name": "Anypoint Mulesoft",
+      "client_id": "95711df075194107b12698d17b9b2932",
+      "domain": "anypoint-mulesoft",
+      "owner_id": "462ddd98-edd2-423b-9218-9f8e0f4c42ba",
+      "idprovider_id": "mulesoft",
+      "flag": false,
+      "is_federated": false,
+      "parent_organization_ids": [],
+      "sub_organization_ids": [],
+      "tenant_organization_ids": [],
+      "subscription_type": "Free",
+      "subscription_expiration": "2016-06-16T18:28:25.216Z"
+    }
+  ],
+  "total": 4
+}
