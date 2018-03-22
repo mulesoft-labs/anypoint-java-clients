@@ -1,0 +1,12 @@
+[
+  {
+    "oldPath": "/dev/null",
+    "newPath": "new-file.txt",
+    "oldMode": "0",
+    "newMode": "100644",
+    "changeType": "add",
+    "diff": "diff --git a/new-file.txt b/new-file.txt\nnew file mode 100644\nindex 0000000..e69de29\n--- /dev/null\n+++ b/new-file.txt\n"
+  }
+]
+
+

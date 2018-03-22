@@ -1,0 +1,46 @@
+{
+  "title": "Working Directory",
+  "type": "object",
+  "properties": {
+    "id": {
+      "title": "Id",
+      "type": "string",
+      "maxLength": 36,
+      "minLength": 36,
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+    },
+    "branch": {
+      "title": "Branch",
+      "maxLength": 128,
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9_\\-\\.]*$"
+    },
+    "projectId": {
+      "title": "Project Id",
+      "type": "string",
+      "maxLength": 36,
+      "minLength": 36,
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+    },
+    "owner": {
+      "title": "Owner user id",
+      "type": "string"
+    },
+    "ownerUsername": {
+      "title": "Owner username",
+      "type": "string"
+    },
+    "ownerEmail": {
+      "title": "Owner email",
+      "type": "string"
+    },
+    "dateCreated": {
+      "title": "Creation date",
+      "type": "integer"
+    },
+    "lastUpdatedDate": {
+      "title": "Last updated date",
+      "type": "integer"
+    }
+  }
+}

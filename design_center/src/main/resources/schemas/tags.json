@@ -1,0 +1,17 @@
+{
+  "title": "List of tags of the project",
+  "type": "array",
+  "items":{
+    "title": "Tag",
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string"
+      },
+      "commitId": {
+        "description": "Commit SHA where the tag points",
+        "type": "string"
+      }
+    }
+  }
+}

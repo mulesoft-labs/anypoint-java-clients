@@ -1,0 +1,21 @@
+{
+  "title": "List of branches of the project",
+  "type": "array",
+  "items":{
+    "title": "Branch",
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string",
+        "maxLength": 128,
+        "pattern": "^[a-zA-Z0-9_]*$"
+      },
+      "commitId": {
+        "description": "Commit SHA where the branch points",
+        "type": "string",
+        "maxLength": 128,
+        "pattern": "^[a-zA-Z0-9_]*$"
+      }
+    }
+  }
+}

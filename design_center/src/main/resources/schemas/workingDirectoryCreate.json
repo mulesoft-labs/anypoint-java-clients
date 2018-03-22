@@ -1,0 +1,13 @@
+{
+  "title": "Working Directory",
+  "type": "object",
+  "properties": {
+    "branch": {
+      "title": "Branch",
+      "maxLength": 128,
+      "type": "string",
+      "pattern": "[a-zA-Z0-9_\\-]*",
+      "example": "master"
+    }
+  }
+}

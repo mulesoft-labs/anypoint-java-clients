@@ -1,0 +1,11 @@
+{
+    "id": "4f470cd8-593d-4eeb-86fb-0cfa96744fde",
+    "name": "CustomerAPI",
+    "description": "CustomerAPI",
+    "type": "ApiSpec",
+    "product": "designcenter",
+    "vcsType": "git",
+    "externalUri": "ssh://git@vcs.mulesoft.com/674c01a8-aed8-481e-a482-13c0bbc2f0ec/ApiSpec-CustomerAPI.git",
+    "createdBy": "1234",
+    "createdDate": 1474651082885
+}

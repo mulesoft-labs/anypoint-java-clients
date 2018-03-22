@@ -1,0 +1,28 @@
+{
+  "title": "List of tags of the project",
+  "type": "array",
+  "items":{
+    "title": "Diff Entry",
+    "type": "object",
+    "properties": {
+      "oldPath": {
+        "type": "string"
+      },
+      "newPath": {
+        "type": "string"
+      },
+      "oldMode": {
+        "type": "string"
+      },
+      "newMode": {
+        "type": "string"
+      },
+      "changeType": {
+        "type": "string"
+      },
+      "diff": {
+        "type": "string"
+      }
+    }
+  }
+}

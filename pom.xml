@@ -9,6 +9,7 @@
 
     <modules>
         <module>core_services</module>        
+        <module>design_center</module>
     </modules>
      <properties>
         <jersey.version>2.24</jersey.version>

@@ -1,0 +1,16 @@
+{
+  "title": "List of files",
+  "description": "List of files including directories",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "path": {
+        "type": "string"
+      },
+      "type": {
+        "enum": ["FOLDER", "FILE"]
+      }
+    }
+  }
+}

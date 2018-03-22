@@ -1,0 +1,14 @@
+{
+  "title": "File or folder",
+  "type": "object",
+  "properties": {
+    "path": {
+      "type": "string"
+    },
+    "type": {
+      "enum": ["FOLDER", "FILE"],
+      "default": "FILE"
+    }
+  },
+ "required": ["path"]
+}

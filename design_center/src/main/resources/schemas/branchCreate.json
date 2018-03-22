@@ -1,0 +1,18 @@
+{
+  "title": "Branch creation",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "maxLength": 64,
+      "pattern": "^[a-zA-Z0-9_\\-\\.]*$"
+    },
+    "ref": {
+      "description": "The branch name or commit SHA to create branch from",
+      "type": "string",
+      "maxLength": 64,
+      "pattern": "^[a-zA-Z0-9_\\-\\.]*$"
+    }
+  },
+  "required": ["name"]
+}

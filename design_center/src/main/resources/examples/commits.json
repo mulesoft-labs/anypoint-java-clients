@@ -1,0 +1,18 @@
+[
+    {
+        "id": "d03f1a5f6027104076eaad1ae502d2c2cab81c6c",
+        "message": "Second commit",
+        "author": {
+            "user": "Nicolas Mas",
+            "email": "nicolas.mas@mulesoft.com"
+        }
+    },
+    {
+        "id": "a0cc675d7ab248f3b773ee35257cfae46e7167fa",
+        "message": "Initial commit",
+        "author": {
+            "user": "Nicolas Mas",
+            "email": "nicolas.mas@mulesoft.com"
+        }
+    }
+]

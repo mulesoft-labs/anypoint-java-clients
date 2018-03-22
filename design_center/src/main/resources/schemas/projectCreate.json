@@ -1,0 +1,36 @@
+{
+  "title": "Project",
+  "type": "object",
+  "properties": {
+    "name": {
+      "title": "Project name",
+      "minLength": 1,
+      "maxLength": 128,
+      "type": "string",
+      "pattern": "[a-zA-Z0-9_\\-\\s]*"
+    },
+    "description": {
+      "title": "Project description",
+      "maxLength": 1024,
+      "type": "string"
+    },
+    "type": {
+      "title": "Project type",
+      "maxLength": 16,
+      "type": "string",
+      "pattern": "[a-zA-Z0-9_\\-]*"
+    },
+    "product": {
+      "title": "Project product",
+      "maxLength": 16,
+      "type": "string",
+      "pattern": "[a-zA-Z0-9_\\-]*"
+    },
+    "vcsType": {
+      "title": "Vcs type",
+      "enum": ["git"],
+      "default": "git"
+    }
+  },
+ "required": ["name", "description", "type"]
+}

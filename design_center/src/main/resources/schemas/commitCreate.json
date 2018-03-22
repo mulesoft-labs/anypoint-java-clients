@@ -1,0 +1,13 @@
+{
+  "title": "Commit creation",
+  "type": "object",
+  "properties": {
+    "message": {
+      "title": "Message",
+      "maxLength": 2048,
+      "type": "string",
+      "example": "Initial commit"
+    }
+  },
+  "required": ["message"]
+}
