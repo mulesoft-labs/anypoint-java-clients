@@ -9,11 +9,11 @@
 
     <modules>
         <module>core_services</module>        
-        <module>design_center</module>
+        <module>api_designer</module>
     </modules>
      <properties>
         <jersey.version>2.24</jersey.version>
-        <raml.generator.version>0.2-SNAPSHOT</raml.generator.version>
+        <raml.generator.version>0.2</raml.generator.version>
     </properties>
 
     <build>
