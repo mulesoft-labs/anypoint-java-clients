@@ -5,6 +5,13 @@ baseUri: https://anypoint.mulesoft.com/accounts
 
 uses:
   providers: types/external-provider.raml
+  search: types/search.raml
+
+
+traits:
+  offset-paginated: !include traits/offset-paginated.raml
+  sortable: !include traits/sortable.raml
+  searchable: !include traits/searchable.raml
 
 securitySchemes:
   oauth_2_0: !include oauth_2_0_raml_1_0.raml
@@ -42,7 +49,6 @@ securedBy: [ oauth_2_0 ]
       responses:
         200:
         400:
-        401:
 
     post:
       description: Authorize for many resources
@@ -55,7 +61,6 @@ securedBy: [ oauth_2_0 ]
             application/json:
               example: !include examples/authorize_many_response.json
         400:
-        401:
 
     /client:
 
@@ -77,7 +82,6 @@ securedBy: [ oauth_2_0 ]
         responses:
           200:
           400:
-          401:
 
   /clients:
     description: |
@@ -104,7 +108,7 @@ securedBy: [ oauth_2_0 ]
             application/json:
               example: !include examples/client_response.json
 
-    /{client_id}:
+    /{clientId}:
       description: |
         Access to a client
 
@@ -153,7 +157,6 @@ securedBy: [ oauth_2_0 ]
                 application/json:
                   example: !include examples/client_roles_response.json
             400:
-            401:
 
         post:
           description: |
@@ -164,7 +167,6 @@ securedBy: [ oauth_2_0 ]
           responses:
             200:
             400:
-            401:
 
         delete:
           description: |
@@ -175,9 +177,8 @@ securedBy: [ oauth_2_0 ]
           responses:
             200:
             400:
-            401:
 
-        /{role_id}:
+        /{roleId}:
 
           get:
             description: |
@@ -188,7 +189,6 @@ securedBy: [ oauth_2_0 ]
                   application/json:
                     example: !include examples/client_roles_response.json
               400:
-              401:
 
           post:
             description: |
@@ -199,7 +199,6 @@ securedBy: [ oauth_2_0 ]
             responses:
               200:
               400:
-              401:
 
           delete:
             description: |
@@ -207,14 +206,14 @@ securedBy: [ oauth_2_0 ]
             responses:
               200:
               400:
-              401:
 
     /search:
       post:
         description: Search clients
         body:
           application/json:
-            example: !include examples/client_search.json
+            schema: !include schemas/client_search.json
+#            example: !include examples/client_search.json
         responses:
           200:
             description: Success
@@ -237,8 +236,6 @@ securedBy: [ oauth_2_0 ]
           body:
             application/json:
               example: !include examples/cs.json
-        401:
-          description: Unauthorized
         403:
           description: Forbidden to use this api call (is your access token for an application rather than an end user?).
         500:
@@ -253,213 +250,18 @@ securedBy: [ oauth_2_0 ]
         description: |
           Retrieves API information.
           This API may change/disappear at any time without prior notification; there are no backwards compatibility guarantees for format, function or existence across multiple releases.
-        queryParameters:
-          search:
-            description: a search string to use for partial matches of APIs
-            type: string
-          limit:
-            description: pagination parameter for how many results to return
-            type: integer
-            default: 10
+        is: [
+          offset-paginated,
+          searchable: {targetDesc: 'APIs'},
+        ]
         responses:
           200:
             description: Success
             body:
               application/json:
                 example: !include examples/cs-apis.json
-          401:
-            description: Unauthorized
           403:
             description: Forbidden to use this api call (is your access token for an application rather than an end user?).
-          500:
-            description: An unknown error occurred
-
-    /permissions:
-      description: |
-        Permissions for API resources.
-        This API may change/disappear at any time without prior notification; there are no backwards compatibility guarantees for format, function or existence across multiple releases.
-
-      /users/{userId}/apis:
-        description: |
-          Permissions for API resources for this user.
-          This API may change/disappear at any time without prior notification; there are no backwards compatibility guarantees for format, function or existence across multiple releases.
-        uriParameters:
-          userId:
-            description: The ID of the user in GUID format
-            type: string
-
-        get:
-          description: |
-            Retrieves the permission data for APIs that this user has access to.
-            This API may change/disappear at any time without prior notification; there are no backwards compatibility guarantees for format, function or existence across multiple releases.
-          queryParameters:
-            search:
-              description: a search string to use for partial matches of APIs
-              type: string
-            limit:
-              description: pagination parameter for how many results to return
-              type: integer
-              default: 10
-            offset:
-              description: pagination parameter to start returning results from this position of matches
-              type: integer
-              default: 25
-          responses:
-            200:
-              description: Success
-              body:
-                application/json:
-                  example: !include examples/cs-user-apis.json
-            401:
-              description: Unauthorized
-            403:
-              description: Forbidden to use this api call (is your access token for an application rather than an end user?).
-            500:
-              description: An unknown error occurred
-
-        post:
-          description: |
-            Assigns a set of API permissions to the user.
-            This API may change/disappear at any time without prior notification; there are no backwards compatibility guarantees for format, function or existence across multiple releases.
-          body:
-            application/json:
-              example: !include examples/cs-user-apis-row.json
-          responses:
-            200:
-              description: Success
-            401:
-              description: Unauthorized
-            403:
-              description: Forbidden to use this api call (is your access token for an application rather than an end user?).
-            500:
-              description: An unknown error occurred
-
-        put:
-          description: |
-            Assigns/unassigns a set of API permission to the user.
-            This API may change/disappear at any time without prior notification; there are no backwards compatibility guarantees for format, function or existence across multiple releases.
-          body:
-            application/json:
-              example: !include examples/cs-user-apis-update.json
-          responses:
-            200:
-              description: Success
-            401:
-              description: Unauthorized
-            403:
-              description: Forbidden to use this api call (is your access token for an application rather than an end user?).
-            500:
-              description: An unknown error occurred
-
-        delete:
-          description: |
-            Assigns a set of API permissions to the user.
-            This API may change/disappear at any time without prior notification; there are no backwards compatibility guarantees for format, function or existence across multiple releases.
-          body:
-            application/json:
-              example: !include examples/cs-user-apis-row.json
-          responses:
-            204:
-              description: Success
-            401:
-              description: Unauthorized
-            403:
-              description: Forbidden to use this api call (is your access token for an application rather than an end user?).
-            500:
-              description: An unknown error occurred
-
-      /rolegroups/{roleGroupId}/apis:
-        description: |
-          Permissions for API resources for this user
-          This API may change/disappear at any time without prior notification; there are no backwards compatibility guarantees for format, function or existence across multiple releases.
-        uriParameters:
-          roleGroupId:
-            description: The ID of the role group in GUID format
-            type: string
-
-        get:
-          description: Retrieves the permission data for APIs that this rolegroup provides access to
-          queryParameters:
-            search:
-              description: a search string to use for partial matches of APIs
-              type: string
-            limit:
-              description: pagination parameter for how many results to return
-              type: integer
-              default: 10
-            offset:
-              description: pagination parameter to start returning results from this position of matches
-              type: integer
-              default: 25
-          responses:
-            200:
-              description: Success
-              body:
-                application/json:
-                  example: !include examples/cs-rolegroup-apis.json
-            401:
-              description: Unauthorized
-            403:
-              description: Forbidden to use this api call (is your access token for an application rather than an end user?).
-            500:
-              description: An unknown error occurred
-
-        post:
-          description: |
-            Assigns a set of API permissions to the rolegroup.
-            This API may change/disappear at any time without prior notification; there are no backwards compatibility guarantees for format, function or existence across multiple releases.
-          body:
-            application/json:
-              example: !include examples/cs-rolegroup-apis-row.json
-          responses:
-            200:
-              description: Success
-              body:
-                text/plain:
-                  example: OK
-            401:
-              description: Unauthorized
-            403:
-              description: Forbidden to use this api call (is your access token for an application rather than an end user?).
-            500:
-              description: An unknown error occurred
-
-        put:
-          description: |
-            Assigns/unassigns a set of API permissions to the rolegroup.
-            This API may change/disappear at any time without prior notification; there are no backwards compatibility guarantees for format, function or existence across multiple releases.
-          body:
-            application/json:
-              example: !include examples/cs-rolegroup-apis-update.json
-          responses:
-            200:
-              description: Success
-              body:
-                text/plain:
-                  example: OK
-            401:
-              description: Unauthorized
-            403:
-              description: Forbidden to use this api call (is your access token for an application rather than an end user?).
-            500:
-              description: An unknown error occurred
-
-        delete:
-          description: |
-            Assigns a set of API permissions to the rolegroup.
-            This API may change/disappear at any time without prior notification; there are no backwards compatibility guarantees for format, function or existence across multiple releases.
-          body:
-            application/json:
-              example: !include examples/cs-rolegroup-apis-row.json
-          responses:
-            204:
-              description: Success
-            401:
-              description: Unauthorized
-            403:
-              description: Forbidden to use this api call (is your access token for an application rather than an end user?).
-            500:
-              description: An unknown error occurred
 
     /organizations/{orgId}:
       description: experience API over a specific business group
@@ -468,23 +270,42 @@ securedBy: [ oauth_2_0 ]
           description: The ID of the organization in GUID format
           type: string
 
-      /usage:
-        description: usage information about the organization
+      /apis:
+        description: |
+          API information.
+          This API may change/disappear at any time without prior notification; there are no backwards compatibility guarantees for format, function or existence across multiple releases.
 
         get:
-          description: get select organization usage information
+          description: |
+            Retrieves API information.
+            This API may change/disappear at any time without prior notification; there are no backwards compatibility guarantees for format, function or existence across multiple releases.
+          is: [
+            offset-paginated,
+            searchable: {targetDesc: 'APIs'},
+          ]
           responses:
             200:
               description: Success
               body:
                 application/json:
-                  example: !include examples/organization-usage.json
-            400:
-              description: bad request to a sub-system
-            401:
-              description: Unauthorized
-            500:
-              description: An unknown error occurred
+                  example: !include examples/cs-apis.json
+            403:
+              description: Forbidden to use this api call (is your access token for an application rather than an end user?).
+
+    /saml-certificate:
+      description: Anypoint Platform's SSO/SLO signing certificate
+
+      get:
+        description: Download Anypoint Platform's SSO/SLO signing certificate
+        responses:
+          200:
+            body:
+              application/octet-stream:
+                description: Successfully downloaded
+          501:
+            description: This Access Management instance is misconfigured for certificate download.
+          503:
+            description: Certificate unavailable.
 
     /setup:
       description: System setup
@@ -596,8 +417,6 @@ securedBy: [ oauth_2_0 ]
             body:
               application/json:
                 example: !include examples/health-application.json
-          401:
-            description: Unauthorized
           500:
             description: An unknown error occurred
 
@@ -612,8 +431,6 @@ securedBy: [ oauth_2_0 ]
               body:
                 application/json:
                   example: !include examples/health-application-list.json
-            401:
-              description: Unauthorized
             500:
               description: An unknown error occurred
 
@@ -628,8 +445,6 @@ securedBy: [ oauth_2_0 ]
             body:
               application/json:
                 example: !include examples/health-server.json
-          401:
-            description: Unauthorized
           500:
             description: An unknown error occurred
 
@@ -638,21 +453,14 @@ securedBy: [ oauth_2_0 ]
 
     get:
       description: get outstanding or expired invites that match the criteria
+      is: [
+        offset-paginated,
+        searchable: {targetDesc: 'invited emails'},
+      ]
       queryParameters:
-        search:
-          description: a search string to use for partial matches of invited emails
-          type: string
         orgId:
           description: the id of the organization that the invites are for joining.
           type: string
-        limit:
-          description: pagination parameter for how many results to return
-          type: integer
-          default: 0
-        offset:
-          description: pagination parameter to start returning results from this position of matches
-          type: integer
-          default: 25
 
       responses:
         200:
@@ -662,8 +470,6 @@ securedBy: [ oauth_2_0 ]
               example: !include examples/invites.json
         400:
           description: Bad request; unknown organization, bad parameter or other failure
-        401:
-          description: Unauthorized
         500:
           description: An unknown error occurred
 
@@ -680,8 +486,6 @@ securedBy: [ oauth_2_0 ]
               example: !include examples/invites.json
         400:
           description: Bad request; unknown organization, bad parameter or other failure
-        401:
-          description: Unauthorized
         500:
           description: An unknown error occurred
 
@@ -695,8 +499,6 @@ securedBy: [ oauth_2_0 ]
           description: Success
         400:
           description: Bad request; unknown organization, bad parameter or no invite was deleted
-        401:
-          description: Unauthorized
         500:
           description: An unknown error occurred
 
@@ -717,8 +519,6 @@ securedBy: [ oauth_2_0 ]
                 example: !include examples/invite.json
           400:
             description: Bad request; bad parameter or other failure
-          401:
-            description: Unauthorized
           404:
             description: No invite exists for the given inviteId
           500:
@@ -740,8 +540,6 @@ securedBy: [ oauth_2_0 ]
                 example: !include examples/invites-resend-response.json
           400:
             description: No invites were sent
-          401:
-            description: Unauthorized
           500:
             description: An unknown error occurred
 
@@ -767,10 +565,9 @@ securedBy: [ oauth_2_0 ]
           body:
             application/json:
               example: !include examples/me.json
+              schema: !include schemas/me.json
         400:
           description: An unknown error occurred
-        401:
-          description: Unauthorized
 
   /notifications:
     description: Make Anypoint Platform activity known to subscribers; think webhooks.
@@ -788,8 +585,6 @@ securedBy: [ oauth_2_0 ]
               example: OK
         400:
           description: Bad request; invalid notification format
-        401:
-          description: Unauthorized
         500:
           description: An unknown error occurred
 
@@ -828,8 +623,6 @@ securedBy: [ oauth_2_0 ]
           body:
             application/json:
               example: !include examples/organizations.json
-        401:
-          description: Unauthorized
         500:
           description: An unknown error occurred
 
@@ -846,8 +639,6 @@ securedBy: [ oauth_2_0 ]
               example: !include examples/organization.json
         400:
           description: Invalid or incomplete body
-        401:
-          description: Unauthorized
         500:
           description: An unknown error occurred
 
@@ -866,8 +657,6 @@ securedBy: [ oauth_2_0 ]
             body:
               application/json:
                 example: !include examples/organization-get.json
-          401:
-            description: Unauthorized
 
           500:
             description: An unknown error occurred
@@ -885,8 +674,6 @@ securedBy: [ oauth_2_0 ]
                 example: !include examples/organization.json
           400:
             description: Invalid or incomplete body
-          401:
-            description: Unauthorized
           500:
             description: An unknown error occurred
 
@@ -897,8 +684,6 @@ securedBy: [ oauth_2_0 ]
             description: Success
           400:
             description: Invalid or incomplete body
-          401:
-            description: Unauthorized
           500:
             description: An unknown error occurred
 
@@ -910,15 +695,13 @@ securedBy: [ oauth_2_0 ]
           responses:
             200:
               description: Success
-            401:
-              description: Unauthorized
             500:
               description: An unknown error occurred
 
-        /{name}:
+        /{entitlementName}:
           description: Entitlement by name
           uriParameters:
-            name:
+            entitlementName:
               description: The name of an entitlement
               type: string
 
@@ -927,8 +710,6 @@ securedBy: [ oauth_2_0 ]
             responses:
               200:
                 description: Success
-              401:
-                description: Unauthorized
               404:
                 description: Entitlement with that name does not exists
               500:
@@ -943,8 +724,6 @@ securedBy: [ oauth_2_0 ]
             responses:
               200:
                 description: Success
-              401:
-                description: Unauthorized
               404:
                 description: Entitlement with that name does not exists
               500:
@@ -955,6 +734,10 @@ securedBy: [ oauth_2_0 ]
 
         get:
           description: Returns all matching environments
+          is: [
+            offset-paginated,
+            searchable: {targetDesc: 'environment names'},
+          ]
           queryParameters:
             type:
               description: The type of environment - production, sandbox, or/or design
@@ -964,22 +747,10 @@ securedBy: [ oauth_2_0 ]
               description: Whether returns only production or non-production environments
               type: boolean
               required: false
-            search:
-              description: Case insensitive search on the environment name
-              type: string
-              required: false
             name:
               description: Case sensitive match on the environment name
               type: string
               required: false
-            limit:
-              description: pagination parameter for how many results to return
-              type: integer
-              default: 0
-            offset:
-              description: pagination parameter to start returning results from this position of matches
-              type: integer
-              default: 0
 
           responses:
             200:
@@ -1058,8 +829,6 @@ securedBy: [ oauth_2_0 ]
                   example: !include examples/hierarchy.json
             400:
               description: Bad request; unknown organization.
-            401:
-              description: Unauthorized
             500:
               description: An unknown error occurred
 
@@ -1068,19 +837,10 @@ securedBy: [ oauth_2_0 ]
 
         get:
           description: get outstanding or expired invites that match the criteria
-          queryParameters:
-            search:
-              description: a search string to use for partial matches of invited emails
-              type: string
-            limit:
-              description: pagination parameter for how many results to return
-              type: integer
-              default: 25
-            offset:
-              description: pagination parameter to start returning results from this position of matches
-              type: integer
-              default: 0
-
+          is: [
+            offset-paginated,
+            searchable: {targetDesc: 'invited emails'},
+          ]
           responses:
             200:
               description: Success
@@ -1089,8 +849,6 @@ securedBy: [ oauth_2_0 ]
                   example: !include examples/invites.json
             400:
               description: Bad request; unknown organization, bad parameter or other failure
-            401:
-              description: Unauthorized
             500:
               description: An unknown error occurred
 
@@ -1107,8 +865,6 @@ securedBy: [ oauth_2_0 ]
                   example: !include examples/invites.json
             400:
               description: Bad request; unknown organization, bad parameter or other failure
-            401:
-              description: Unauthorized
             500:
               description: An unknown error occurred
 
@@ -1122,8 +878,6 @@ securedBy: [ oauth_2_0 ]
               description: Success
             400:
               description: Bad request; unknown organization, bad parameter or no invite was deleted
-            401:
-              description: Unauthorized
             500:
               description: An unknown error occurred
 
@@ -1140,8 +894,6 @@ securedBy: [ oauth_2_0 ]
                     example: !include examples/invite.json
               400:
                 description: Bad request; bad parameter or other failure
-              401:
-                description: Unauthorized
               404:
                 description: No invite exists in this organization for the given inviteId
               500:
@@ -1163,8 +915,6 @@ securedBy: [ oauth_2_0 ]
                     example: !include examples/invites-resend-response.json
               400:
                 description: One or more of the invites are not in the organization or no invites were sent
-              401:
-                description: Unauthorized
               500:
                 description: An unknown error occurred
 
@@ -1179,8 +929,6 @@ securedBy: [ oauth_2_0 ]
               body:
                 application/json:
                   example: !include examples/smtp.json
-            401:
-              description: Unauthorized
             500:
               description: An unknown error occurred
 
@@ -1192,8 +940,6 @@ securedBy: [ oauth_2_0 ]
           responses:
             200:
               description: Success
-            401:
-              description: Unauthorized
             500:
               description: An unknown error occurred
 
@@ -1210,8 +956,6 @@ securedBy: [ oauth_2_0 ]
                   example: !include examples/organization-owner.json
             400:
               description: Bad request; bad parameter or other failure
-            401:
-              description: Unauthorized
             403:
               description: Forbidden; caller doesn't have the right permissions for specified action
             500:
@@ -1230,54 +974,12 @@ securedBy: [ oauth_2_0 ]
                     example: !include examples/organization-owner.json
               400:
                 description: Bad request; bad parameter or other failure
-              401:
-                description: Unauthorized
               403:
                 description: Forbidden; caller doesn't have the right permissions for specified action
               500:
                 description: An unknown error occurred
 
       /provider:
-        description: External auth* provider information for the organization
-
-        get:
-          description: Returns combined provider details
-          responses:
-            200:
-              description: Success
-              body:
-                application/json:
-                  example: !include examples/provider.json
-                  type: providers.ExternalAuthProviderUnion
-            401:
-              description: Unauthorized
-            500:
-              description: An unknown error occurred
-
-        put:
-          description: Updates combined provider details
-          body:
-            application/json:
-              type: providers.ExternalAuthProvider
-              example: !include examples/update-provider.json
-          responses:
-            200:
-              description: Success
-            401:
-              description: Unauthorized
-            500:
-              description: An unknown error occurred
-
-        delete:
-          description: Revert to using the default providers
-          responses:
-            200:
-              description: Success
-            401:
-              description: Unauthorized
-            500:
-              description: An unknown error occurred
-
         /users:
           description: Identity provider information for the organization
 
@@ -1288,62 +990,22 @@ securedBy: [ oauth_2_0 ]
                 description: Success
                 body:
                   application/json:
-                    type: providers.ExternalIdentityProvider
-              401:
-                description: Unauthorized
+                    type: providers.ExternalIdentityProviderGet
 
           put:
             description: Updates the identity provider for the organization
             body:
               application/json:
-                type: providers.ExternalAuthProvider
+                type: providers.ExternalIdentityProvider
             responses:
               200:
                 description: Success
-              401:
-                description: Unauthorized
 
           delete:
             description: Revert to using the default identity provider
             responses:
               200:
                 description: Success
-              401:
-                description: Unauthorized
-              500:
-                description: An unknown error occurred
-
-        /clients:
-          description: Client provider information for the organization
-
-          get:
-            description: |
-              Retrieve resource(s)
-            responses:
-              200:
-                description: Success
-                body:
-                  application/json:
-                    type: providers.ExternalClientProvider
-
-          put:
-            description: Updates the client provider for the organization
-            body:
-              application/json:
-                type: providers.ExternalAuthProvider
-            responses:
-              200:
-                description: Success
-              401:
-                description: Unauthorized
-
-          delete:
-            description: Revert to using the default client provider
-            responses:
-              200:
-                description: Success
-              401:
-                description: Unauthorized
               500:
                 description: An unknown error occurred
 
@@ -1360,8 +1022,6 @@ securedBy: [ oauth_2_0 ]
                   example: !include examples/members.json
             404:
               description: The organization does not exist
-            401:
-              description: Unauthorized
             500:
               description: An unknown error occurred
 
@@ -1377,8 +1037,6 @@ securedBy: [ oauth_2_0 ]
               description: Invalid IDs or some users could not be added to the org
             404:
               description: The organization does not exist
-            401:
-              description: Unauthorized
             500:
               description: An unknown error occurred
 
@@ -1394,8 +1052,6 @@ securedBy: [ oauth_2_0 ]
               description: Invalid IDs or some users could not be removed from the org
             404:
               description: The organization does not exist
-            401:
-              description: Unauthorized
             500:
               description: An unknown error occurred
 
@@ -1415,8 +1071,6 @@ securedBy: [ oauth_2_0 ]
                 description: Success
               400:
                 description: Invalid ID or this user could not be added to the org
-              401:
-                description: Unauthorized
               404:
                 description: The organization does not exist
               500:
@@ -1432,8 +1086,6 @@ securedBy: [ oauth_2_0 ]
                 description: Success
               400:
                 description: Invalid ID or this user could not be removed from the org
-              401:
-                description: Unauthorized
               404:
                 description: The organization does not exist
               500:
@@ -1455,8 +1107,6 @@ securedBy: [ oauth_2_0 ]
           responses:
             204:
               description: Success
-            401:
-              description: Unauthorized
             500:
               description: An unknown error occurred
 
@@ -1471,8 +1121,6 @@ securedBy: [ oauth_2_0 ]
               body:
                 application/json:
                   example: !include examples/rolegroups.json
-            401:
-              description: Unauthorized
             404:
               description: The organization does not exist
             500:
@@ -1489,8 +1137,6 @@ securedBy: [ oauth_2_0 ]
               body:
                 application/json:
                   example: !include examples/rolegroup.json
-            401:
-              description: Unauthorized
             500:
               description: An unknown error occurred
 
@@ -1502,8 +1148,6 @@ securedBy: [ oauth_2_0 ]
           responses:
             200:
               description: Success
-            401:
-              description: Unauthorized
             500:
               description: An unknown error occurred
 
@@ -1520,8 +1164,6 @@ securedBy: [ oauth_2_0 ]
                 body:
                   application/json:
                     example: !include examples/rolegroup.json
-              401:
-                description: Unauthorized
               500:
                 description: An unknown error occurred
 
@@ -1536,8 +1178,6 @@ securedBy: [ oauth_2_0 ]
                 body:
                   application/json:
                     example: !include examples/rolegroup.json
-              401:
-                description: Unauthorized
               500:
                 description: An unknown error occurred
 
@@ -1546,8 +1186,6 @@ securedBy: [ oauth_2_0 ]
             responses:
               200:
                 description: Success
-              401:
-                description: Unauthorized
               500:
                 description: An unknown error occurred
 
@@ -1556,14 +1194,25 @@ securedBy: [ oauth_2_0 ]
 
             get:
               description: Returns all roles assigned to this role group
+              queryParameters:
+                role_id:
+                  type: string | string[]
+                  description: return only role assignments containing one of the supplied role_ids
+                  required: false
+                namepace:
+                  type: string
+                  description: return only role assignments where a role contains a permission that is part of the given namespace
+                  required: false
+                namespaces:
+                  type: string | string[]
+                  description: return only role assignments where a role belongs to the given namespace
+                  required: false
               responses:
                 200:
                   description: Success
                   body:
                     application/json:
                       example: !include examples/rolegroup-role-assignments.json
-                401:
-                  description: Unauthorized
                 500:
                   description: An unknown error occurred
 
@@ -1575,8 +1224,6 @@ securedBy: [ oauth_2_0 ]
               responses:
                 200:
                   description: Success
-                401:
-                  description: Unauthorized
                 500:
                   description: An unknown error occurred
 
@@ -1588,8 +1235,6 @@ securedBy: [ oauth_2_0 ]
               responses:
                 200:
                   description: Success
-                401:
-                  description: Unauthorized
                 500:
                   description: An unknown error occurred
 
@@ -1604,8 +1249,6 @@ securedBy: [ oauth_2_0 ]
                   body:
                     application/json:
                       example: !include examples/rolegroup-users.json
-                401:
-                  description: Unauthorized
                 500:
                   description: An unknown error occurred
 
@@ -1617,8 +1260,6 @@ securedBy: [ oauth_2_0 ]
               responses:
                 200:
                   description: Success
-                401:
-                  description: Unauthorized
                 500:
                   description: An unknown error occurred
 
@@ -1630,8 +1271,6 @@ securedBy: [ oauth_2_0 ]
               responses:
                 200:
                   description: Success
-                401:
-                  description: Unauthorized
                 409:
                   description: Could not unassign role group
                 500:
@@ -1648,8 +1287,6 @@ securedBy: [ oauth_2_0 ]
                 responses:
                   200:
                     description: Success
-                  401:
-                    description: Unauthorized
                   500:
                     description: An unknown error occurred
 
@@ -1658,8 +1295,6 @@ securedBy: [ oauth_2_0 ]
                 responses:
                   200:
                     description: Success
-                  401:
-                    description: Unauthorized
                   500:
                     description: An unknown error occurred
 
@@ -1680,8 +1315,6 @@ securedBy: [ oauth_2_0 ]
               body:
                 application/json:
                   example: !include examples/users.json
-            401:
-              description: Unauthorized
             404:
               description: Organization does not exist
             500:
@@ -1695,8 +1328,6 @@ securedBy: [ oauth_2_0 ]
           responses:
             201:
               description: Success
-            401:
-              description: Unauthorized
             404:
               description: Organization does not exist
             500:
@@ -1712,8 +1343,6 @@ securedBy: [ oauth_2_0 ]
               description: Success
             400:
               description: Invalid data in body or not all users are part of the specified org
-            401:
-              description: Unauthorized
             404:
               description: Organization does not exist
             500:
@@ -1727,8 +1356,6 @@ securedBy: [ oauth_2_0 ]
           responses:
             204:
               description: Success
-            401:
-              description: Unauthorized
             404:
               description: Organization does not exist
             500:
@@ -1749,8 +1376,6 @@ securedBy: [ oauth_2_0 ]
                 body:
                   application/json:
                     example: !include examples/user.json
-              401:
-                description: Unauthorized
               404:
                 description: User does not exist
 
@@ -1767,8 +1392,6 @@ securedBy: [ oauth_2_0 ]
                     example: !include examples/user.json
               400:
                 description: Invalid data in body
-              401:
-                description: Unauthorized
               404:
                 description: User does not exist
               500:
@@ -1779,8 +1402,6 @@ securedBy: [ oauth_2_0 ]
             responses:
               200:
                 description: Success
-              401:
-                description: Unauthorized
               404:
                 description: User does not exist
               500:
@@ -1796,10 +1417,9 @@ securedBy: [ oauth_2_0 ]
               responses:
                 200:
                   description: Success
-                401:
-                  description: Unauthorized
-                500:
-                  description: An unknown error occurred
+                  body:
+                    application/json:
+                      example: !include examples/user-properties.json
 
           /rolegroups:
             description: Role groups assigned to the user
@@ -1812,8 +1432,6 @@ securedBy: [ oauth_2_0 ]
                   body:
                     application/json:
                       example: !include examples/rolegroups.json
-                401:
-                  description: Unauthorized
                 500:
                   description: An unknown error occurred
 
@@ -1828,30 +1446,37 @@ securedBy: [ oauth_2_0 ]
                 responses:
                   200:
                     description: Success
-                  401:
-                    description: Unauthorized
 
               delete:
                 description: Unassigns the role group from the user
                 responses:
                   200:
                     description: Success
-                  401:
-                    description: Unauthorized
 
           /roles:
             description: Roles assigned to the user
 
             get:
               description: Returns a list of roles assigned to the user
+              queryParameters:
+                role_id:
+                  type: string | string[]
+                  description: return only role assignments containing one of the supplied role_ids
+                  required: false
+                namepace:
+                  type: string
+                  description: return only role assignments where a role contains a permission that is part of the given namespace
+                  required: false
+                namespaces:
+                  type: string | string[]
+                  description: return only role assignments where a role belongs to the given namespace
+                  required: false
               responses:
                 200:
                   description: Success
                   body:
                     application/json:
                       example: !include examples/user-roles.json
-                401:
-                  description: Unauthorized
                 500:
                   description: An unknown error occurred
 
@@ -1865,8 +1490,6 @@ securedBy: [ oauth_2_0 ]
                 responses:
                   200:
                     description: Success
-                  401:
-                    description: Unauthorized
                   500:
                     description: An unknown error occurred
 
@@ -1875,8 +1498,6 @@ securedBy: [ oauth_2_0 ]
                 responses:
                   200:
                     description: Success
-                  401:
-                    description: Unauthorized
                   500:
                     description: An unknown error occurred
 
@@ -1905,7 +1526,7 @@ securedBy: [ oauth_2_0 ]
                 application/json:
                   example: !include examples/client_response.json
 
-        /{client_id}:
+        /{clientId}:
           description: |
             Access to a client
 
@@ -1954,7 +1575,6 @@ securedBy: [ oauth_2_0 ]
               responses:
                 200:
                 400:
-                401:
 
             delete:
               description: |
@@ -1965,9 +1585,8 @@ securedBy: [ oauth_2_0 ]
               responses:
                 200:
                 400:
-                401:
 
-            /{role_id}:
+            /{roleId}:
 
               post:
                 description: |
@@ -1978,7 +1597,6 @@ securedBy: [ oauth_2_0 ]
                 responses:
                   200:
                   400:
-                  401:
 
               delete:
                 description: |
@@ -1986,15 +1604,111 @@ securedBy: [ oauth_2_0 ]
                 responses:
                   200:
                   400:
-                  401:
+
+      /connectedApplications:
+        description: |
+          An organization's connected application authorizations and settings.
+          Authorizations and settings are shared between all business groups.
+          Modifications are only allowed on the master organization.
+
+        /authorizations:
+          description: Permissions granted to connected applications by users within the organization
+          get:
+            description: |
+              Returns all the authorizations that grant rights to accessing resources in the business group
+            queryParameters:
+              user_id:
+                description: If provided, only return authorizations granted by that user
+                required: false
+                type: string
+                example: "3f7eb03b-1e53-4dd7-8304-c7f52cef183d"
+            is: offset-paginated
+            responses:
+              200:
+                description: Success
+                body:
+                  application/json:
+#                    example: !include examples/connected-applications/authorizations.json
+                    schema:  !include schemas/connected-applications/authorizations.json
+
+          delete:
+            description: Revoke all authorizations that grant rights to accessing resources in the business group. Only available on the master organization.
+            queryParameters:
+              user_id:
+                description: If provided, only delete authorizations granted by that user
+                required: false
+                type: string
+                example: "3f7eb03b-1e53-4dd7-8304-c7f52cef183d"
+            responses:
+              204:
+                description: Success
+              405:
+                description: The organization is a business group. Revoking must be done from a master organization
+
+          /{authorizationId}:
+
+            uriParameters:
+              authorizationId:
+                description: The ID of the authorization in GUID format
+                type: string
+
+            get:
+              description: Returns a single authorization
+              responses:
+                200:
+                  description: Success
+                  body:
+                    application/json:
+                      example: !include examples/connected-applications/authorization.json
+                      schema:  !include schemas/connected-applications/authorization.json
+            delete:
+              description: Revokes an authorization. Only available on the master organization.
+              responses:
+                204:
+                  description: Success
+                405:
+                  description: The organization is a business group. Revoking must be done from a master organization
+
+        /settings:
+          get:
+            description: Returns the organization's connected application settings. For business groups, this will return the master organization's settings.
+            responses:
+              200:
+                description: Success
+                body:
+                  application/json:
+                    example: !include examples/connected-applications/settings.json
+                    schema: !include schemas/connected-applications/settings.json
+              404:
+                description: The organization does not exist
+
+          patch:
+            description: Updates the organization's connected application settings
+            body:
+              application/json:
+#                example: !include examples/connected-applications/settings-patch.json
+#                schema: !include schemas/connected-applications/settings-patch.json
+            responses:
+              200:
+                description: Success
+                body:
+                  application/json:
+                    example: !include examples/connected-applications/settings.json
+                    schema: !include schemas/connected-applications/settings.json
+              404:
+                description: The organization does not exist
+              405:
+                description: The organization is a business group. Settings are only editable on a master organization
+
 
     /search:
-      description: Query to search over master organizations
+      description: Query to search over organizations
       post:
         description: Returns a list of organizations the meet search criteria
         body:
           application/json:
-            example: !include examples/organization-search-request.json
+#            example: !include examples/organization-search-request.json
+            type: search.OrganizationSearch
         responses:
           200:
             description: Success
@@ -2003,8 +1717,6 @@ securedBy: [ oauth_2_0 ]
                 example: !include examples/organization-search-response.json
           400:
             description: Bad Request. Invalid POST body
-          401:
-            description: Unauthorized
 
   /profile:
     get:
@@ -2039,10 +1751,10 @@ securedBy: [ oauth_2_0 ]
           500:
             description: An unknown error occurred
 
-      /{code}:
+      /{recoverCode}:
         description: reset password
         uriParameters:
-          code:
+          recoverCode:
             description: A code sent in a password reset email used to prove the bearer has the right to change a user's password
             type: string
 
@@ -2102,44 +1814,33 @@ securedBy: [ oauth_2_0 ]
 
     get:
       description: Retrieves a list of roles
+      is: [
+        offset-paginated,
+        searchable: {targetDesc: 'role names'},
+        sortable: { fields: ['name', 'role_id', 'description', 'internal'], default: 'name' }
+      ]
       queryParameters:
         name:
           description: The name of a role
+          required: false
+          type: string
+          example: "Delete Server Groups"
         description:
           description: The description of a role
+          required: false
+          type: string
+          example: "Being able to delete server group resources"
         include_internal:
           description: Include internal roles
+          required: false
+          type: boolean
+          default: false
       responses:
         200:
           description: Success
-        401:
-          description: Unauthorized
-        500:
-          description: An unknown error occurred
-
-    post:
-      description: Insert a new role
-      body:
-        application/json:
-          example: !include examples/role-update.json
-      responses:
-        200:
-          description: Success
-        401:
-          description: Unauthorized
-        500:
-          description: An unknown error occurred
-
-    delete:
-      description: Delete existing roles
-      body:
-        application/json:
-          example: !include examples/guid-array.json
-      responses:
-        200:
-          description: Success
-        401:
-          description: Unauthorized
+          body:
+            application/json:
+              example: !include examples/roles-get.json
         500:
           description: An unknown error occurred
 
@@ -2148,13 +1849,32 @@ securedBy: [ oauth_2_0 ]
 
       get:
         description: Retrieve users by roles
+        queryParameters:
+          role_groups:
+            description: Flag that indicates if we should include role groups assignments when looking for the role
+            type: boolean
+            default: false
         responses:
           200:
             description: Success
-          401:
-            description: Unauthorized
           500:
             description: An unknown error occurred
+
+      /search:
+        description: Search users by role assignments
+
+        post:
+          description: Search users by role assignments
+          body:
+            application/json:
+              schema: !include schemas/user_role_search.json
+#              example: !include examples/user_role_search.json
+          responses:
+            200:
+              description: Success
+              body:
+                application/json:
+                  example: !include examples/user_role_search_response.json
 
     /{roleId}:
       description: A single role
@@ -2167,31 +1887,6 @@ securedBy: [ oauth_2_0 ]
         responses:
           200:
             description: Success
-          401:
-            description: Unauthorized
-          500:
-            description: An unknown error occurred
-
-      put:
-        description: Create or update the role
-        body:
-          application/json:
-            example: !include examples/role-update.json
-        responses:
-          200:
-            description: Success
-          401:
-            description: Unauthorized
-          500:
-            description: An unknown error occurred
-
-      delete:
-        description: Deletes a role
-        responses:
-          200:
-            description: Success
-          401:
-            description: Unauthorized
           500:
             description: An unknown error occurred
 
@@ -2199,12 +1894,32 @@ securedBy: [ oauth_2_0 ]
         description: Users by role
 
         get:
-          description: Returns users for a single role
+          description: Returns users for a single role. This endpoint is rate lmited.
           responses:
             200:
               description: Success
-            401:
-              description: Unauthorized
+              headers:
+                X-RateLimit-Limit:
+                  type: number
+                  description: The maximum number of requests you're permitted to make per hour.
+                X-RateLimit-Remaining:
+                  type: number
+                  description: The number of requests remaining in the current rate limit window.
+                X-RateLimit-Reset:
+                  type: number
+                  description: The time at which the current rate limit window resets in UTC epoch seconds.
+            429:
+              description: Too many requests
+              headers:
+                X-RateLimit-Limit:
+                  type: number
+                  description: The maximum number of requests you're permitted to make per hour.
+                X-RateLimit-Remaining:
+                  type: number
+                  description: The number of requests remaining in the current rate limit window.
+                X-RateLimit-Reset:
+                  type: number
+                  description: The time at which the current rate limit window resets in UTC epoch seconds.
             500:
               description: An unknown error occurred
 
@@ -2217,8 +1932,6 @@ securedBy: [ oauth_2_0 ]
           responses:
             200:
               description: Success
-            401:
-              description: Unauthorized
             500:
               description: An unknown error occurred
 
@@ -2232,8 +1945,6 @@ securedBy: [ oauth_2_0 ]
           responses:
             200:
               description: Success
-            401:
-              description: Unauthorized
             500:
               description: An unknown error occurred
 
@@ -2248,87 +1959,6 @@ securedBy: [ oauth_2_0 ]
               body:
                 application/json:
                   example: !include examples/permissions.json
-            401:
-              description: Unauthorized
-
-        post:
-          description: Assign permissions to a given role
-          body:
-            application/json:
-              example: !include examples/guid-array.json
-          responses:
-            200:
-              description: Success
-            401:
-              description: Unauthorized
-            500:
-              description: An unknown error occurred
-
-        put:
-          description: Create, update and/or delete permissions assigned to the role
-          queryParameters:
-            namespace:
-              description: limits permission updates to the specified namespace
-              type: string
-          body:
-            application/json:
-              example: !include examples/role-permissions-update.json
-          responses:
-            200:
-              description: Success
-            401:
-              description: Unauthorized
-            500:
-              description: An unknown error occurred
-
-        delete:
-          description: Unassign permissions from a role
-          body:
-            application/json:
-              example: !include examples/guid-array.json
-          responses:
-            200:
-              description: Success
-            401:
-              description: Unauthorized
-            500:
-              description: An unknown error occurred
-
-        /{permissionId}:
-          description: Single permission in a role
-          uriParameters:
-            permissionId:
-              description: The ID of the permission in GUID format
-
-          get:
-            description: Guess if permission is in role
-            responses:
-              200:
-                description: Success
-              401:
-                description: Unauthorized
-              500:
-                description: An unknown error occurred
-
-          post:
-            description: Assign a single permission to a given role
-            responses:
-              200:
-                description: Success
-              401:
-                description: Unauthorized
-              500:
-                description: An unknown error occurred
-
-          delete:
-            description: Unassign a single permission from a role
-            responses:
-              200:
-                description: Success
-              401:
-                description: Unauthorized
-              500:
-                description: An unknown error occurred
 
   /signup:
     description: Signup for for the Anypoint Platform
@@ -2379,8 +2009,6 @@ securedBy: [ oauth_2_0 ]
             body:
               application/json:
                 example: !include examples/signup-existing-user-response.json
-          401:
-            description: Unauthorized
           500:
             description: An unknown error occurred
 
@@ -2406,18 +2034,109 @@ securedBy: [ oauth_2_0 ]
           description: An unknown error occurred
 
   /status:
-    description: Application health
+    description: Application healthcheck, used by the load balancer to detect the instance status.
+    get:
+      description: Retrieves the health of the application.
+      securedBy: [ null ]
+      queryParameters:
+        db:
+          description: Flag that indicates if we should perform a DB connection check or not as part of the healthcheck.
+          type: boolean
+          default: false
+      responses:
+        200:
+          description: Everything is working ok.
+          body:
+            application/json:
+              example: |
+                {"status": "ok"}
+        503:
+          description: The application isn't working properly, and shouldn't accept incoming requests.
+          body:
+            application/json:
+              example: |
+                {"status": "quiesced"}
+
+  /subscriptions:
+    description: Subscriptions
 
     get:
-      description: Retrieves whether of not the application is ok
-      securedBy: [ null ]
+      description: Retrieve the subscriptions supported
       responses:
         200:
           description: Success
           body:
             application/json:
-              example: |
-                {"ok":true}
+              schema: !include schemas/subscriptions.json
+              example: !include examples/subscriptions.json
+
+  /admin:
+    get:
+      description: Configuration data for all roles, clients, and products
+      responses:
+        200:
+          description: Success
+          body:
+            application/json:
+              schema: !include schemas/admin/all.json
+#              example: !include examples/admin/all.json
+
+
+    /clients:
+      get:
+        description: Configuration data for all clients
+        queryParameters:
+          enabled:
+            description: If false, retrieve only disabled clients. If true, retrieve only enabled clients. If not specified, return everything.
+            type: boolean
+        responses:
+          200:
+            description: Success
+            body:
+              application/json:
+                schema: !include schemas/admin/adminClients.json
+#                example: !include examples/admin/adminClients.json
+
+      /{clientId}:
+        get:
+          description: Configuration data for a specific client
+          responses:
+            200:
+              description: Success
+              body:
+                application/json:
+                  schema: !include schemas/admin/adminClient.json
+#                  example: !include examples/admin/adminClient.json
+            404:
+              description: Client configuration data does not exist
+
+    /roles:
+      get:
+        description: Configuration data for all roles
+        queryParameters:
+          enabled:
+            description: If false, retrieve only disabled roles. If true, retrieve only enabled roles. If not specified, return everything.
+            type: boolean
+        responses:
+          200:
+            description: Success
+            body:
+              application/json:
+                schema: !include schemas/admin/adminRoles.json
+#                example: !include examples/admin/adminRoles.json
+
+      /{roleId}:
+        get:
+          description: Configuration data for a specific role
+          responses:
+            200:
+              description: Success
+              body:
+                application/json:
+                  schema: !include schemas/admin/adminRole.json
+#                  example: !include examples/admin/adminRole.json
+            404:
+              description: Client configuration data does not exist
 
   /users:
     description: Users Resource
@@ -2447,8 +2166,6 @@ securedBy: [ oauth_2_0 ]
       responses:
         201:
           description: Success
-        401:
-          description: Unauthorized
         500:
           description: An unknown error occurred
 
@@ -2462,8 +2179,6 @@ securedBy: [ oauth_2_0 ]
           description: Success
         400:
           description: Invalid data in body
-        401:
-          description: Unauthorized
         500:
           description: An unknown error occurred
 
@@ -2475,8 +2190,6 @@ securedBy: [ oauth_2_0 ]
       responses:
         204:
           description: Success
-        401:
-          description: Unauthorized
         500:
           description: An unknown error occurred
 
@@ -2491,6 +2204,23 @@ securedBy: [ oauth_2_0 ]
                 example: !include examples/user.json
           401:
             description: Unauthorized. There is no user attached to the token
+
+    /search:
+      post:
+        description: Returns a list of users which match a set of filters
+        body:
+          application/json:
+            example: !include examples/user-search-request.raml
+            type: search.UserSearch
+        responses:
+          200:
+            description: Success
+            body:
+              application/json:
+                example:
+                  !include examples/users.json
+          400:
+            description: Bad Request. Invalid POST body
 
     /{userId}:
       description: A single user
@@ -2507,8 +2237,6 @@ securedBy: [ oauth_2_0 ]
             body:
               application/json:
                 example: !include examples/user.json
-          401:
-            description: Unauthorized
           404:
             description: User does not exist
           500:
@@ -2524,8 +2252,6 @@ securedBy: [ oauth_2_0 ]
             description: Success
           400:
             description: Invalid data in body
-          401:
-            description: Unauthorized
           404:
             description: User does not exist
           500:
@@ -2536,8 +2262,6 @@ securedBy: [ oauth_2_0 ]
         responses:
           200:
             description: Success
-          401:
-            description: Unauthorized
           500:
             description: An unknown error occurred
 
@@ -2549,8 +2273,6 @@ securedBy: [ oauth_2_0 ]
           responses:
             200:
               description: Success
-            401:
-              description: Unauthorized
             500:
               description: An unknown error occurred
 
@@ -2581,24 +2303,34 @@ securedBy: [ oauth_2_0 ]
           responses:
             200:
               description: Success
-            401:
-              description: Unauthorized
-            500:
-              description: An unknown error occurred
+              body:
+                application/json:
+                  example: !include examples/user-properties.json
 
       /roles:
         description: Roles assigned to the user
 
         get:
           description: Returns a list of roles assigned to the user
+          queryParameters:
+            role_id:
+              type: string | string[]
+              description: return only role assignments containing one of the supplied role_ids
+              required: false
+            namepace:
+              type: string
+              description: return only role assignments where a role contains a permission that is part of the given namespace
+              required: false
+            namespaces:
+              type: string | string[]
+              description: return only role assignments where a role belongs to the given namespace
+              required: false
           responses:
             200:
               description: Success
               body:
                 application/json:
                   example: !include examples/user-roles.json
-            401:
-              description: Unauthorized
             500:
               description: An unknown error occurred
 
@@ -2614,8 +2346,6 @@ securedBy: [ oauth_2_0 ]
             responses:
               200:
                 description: Success
-              401:
-                description: Unauthorized
               500:
                 description: An unknown error occurred
 
@@ -2624,8 +2354,6 @@ securedBy: [ oauth_2_0 ]
             responses:
               200:
                 description: Success
-              401:
-                description: Unauthorized
               500:
                 description: An unknown error occurred
 
@@ -2717,7 +2445,8 @@ securedBy: [ oauth_2_0 ]
 
 /login:
   description: login to the Anypoint Platform
-
+#  This resource is not secured
+  securedBy: [null]
   post:
     description: login to the Anypoint Platform
     body:
@@ -2742,9 +2471,21 @@ securedBy: [ oauth_2_0 ]
     post:
       description: receive saml assertions from federated identity management systems
       body:
-        text/plain:
-          example: TODO
+        application/x-www-form-urlencoded:
+          properties:
+            SAMLResponse:
+              description: |
+                The SAML assertion from the IDP provider.
+              type: string
+              required: true
+        application/json:
+          example: !include examples/login-saml.json
       responses:
+        200:
+          description: Success; returns the bearer token for the user's session without re-directing if called via ajax
+          body:
+            application/json:
+              example: !include examples/login-token.json
         302:
           description: Success; redirects to continue an oauth login flow
         401:
@@ -2767,13 +2508,13 @@ securedBy: [ oauth_2_0 ]
           description: no organization exists with the given domain
 
 /oauth2:
-  description: oauth 2 routes
+  description: OAuth2 routes
 
   /authorize:
-    description: oauth 2 authorization route for non-federated users
+    description: OAuth2 authorization route for non-federated users
 
     get:
-      description: oauth 2 authorization route to have the user authorize an application defined in our system
+      description: OAuth2 authorization route to have the user authorize an application defined in our system
       queryParameters:
         redirect_uri:
           description: redirect uri for the application
@@ -2800,14 +2541,14 @@ securedBy: [ oauth_2_0 ]
           description: An unknown error occurred
 
     /{domain}:
-      description: oauth 2 authorization route for federated or non-federated users
+      description: OAuth2 authorization route for federated or non-federated users
       uriParameters:
         domain:
           description: domain name to identify the organization to identify what identity management system needs to authentication the user.
           type: string
 
       get:
-        description: oauth 2 authorization route that will route federated users to their authentication system and non-federated users to ours
+        description: OAuth2 authorization route that will route federated users to their authentication system and non-federated users to ours
         securedBy: [ null ]
         queryParameters:
           redirect_uri:
@@ -2834,11 +2575,101 @@ securedBy: [ oauth_2_0 ]
           500:
             description: An unknown error occurred
 
+  /{domain}:
+    description: OAuth2 routes for Connected App clients
+    uriParameters:
+      domain:
+        description: Domain name to identify the organization that owns the clients
+        type: string
+    /revoke:
+      post:
+        description: Revoke an access token or a refresh token
+        body:
+          application/x-www-form-urlencoded:
+            properties:
+              token:
+                description: The token to revoke
+                type: string
+                required: true
+              token_type_hint:
+                description: A hint about the type of the token submitted for revocation
+                enum:
+                  - access_token
+                  - refresh_token
+                required: false
+                default: access_token
+    /clients:
+      description: Access to clients for a particular domain
+      get:
+        description: Get all clients for a domain
+        is: [
+          offset-paginated,
+          searchable: {targetDesc: 'all object properties'},
+          sortable: {fields: ['client_id', 'client_name'], default: 'client_name'}
+        ]
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/domainClients/clients.json
+
+      post:
+        description: Create a new client under a particular domain
+        body:
+          application/json:
+            example: !include examples/client.json
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/domainClients/client.json
+
+      /{clientId}:
+        description: Access to individual clients in a given domain
+        get:
+          description: Get a single client
+          responses:
+            200:
+              body:
+                application/json:
+                  example: !include examples/domainClients/client.json
+            404:
+              description: Client with that clientId could not be found
+
+        patch:
+          description: Patches a single client
+          queryParameters:
+            resetSecret?:
+              description: Asks service to reset secret as part of this operation
+              type: boolean
+              default: false
+          responses:
+            200:
+              description: Client was successfully updated
+              body:
+                application/json:
+                  example: !include examples/domainClients/client.json
+            404:
+              description: Client with that clientId could not be found
+
+        delete:
+          description: Deletes a single client
+          responses:
+            204:
+              description: Client was deleted
+
+        /revoke:
+          delete:
+            description: Revoke all access tokens and refresh tokens issued to the client
+            responses:
+              204:
+                description: All tokens were revoked successfully
+
   /token:
-    description: oauth 2 token resource
+    description: OAuth2 token resource
 
     post:
-      description: create or retrieve an oauth 2 token
+      description: create or retrieve an OAuth2 token
       body:
         application/json:
           example: !include examples/token-new.json

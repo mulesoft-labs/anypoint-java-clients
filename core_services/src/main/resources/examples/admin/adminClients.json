@@ -1,0 +1,18 @@
+[
+  {
+    "data": {
+      "client_id": "9845b9a8-f8c7-4ead-843c-e180d41a86e9",
+      "name": "Blockchain Integration",
+      "redirect_uris": [
+        "https://some.garbage:3344"
+      ],
+      "client_secrets": [
+        "OMITTED"
+      ]
+    },
+    "enabled": false,
+    "details": [
+      "Client Blockchain Integration (9845b9a8-f8c7-4ead-843c-e180d41a86e9) has no client secrets, but requires at least one"
+    ]
+  }
+]

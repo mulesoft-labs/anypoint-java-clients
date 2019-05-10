@@ -1,0 +1,11 @@
+{
+  "granted_to": {
+    "client_id": "d5e32198-7cc1-4c26-ab83-fd8912e16967",
+    "domain": "raml-sync"
+  },
+  "scopes": [
+    "read:RAML",
+    "read:Users",
+    "offline_access"
+  ]
+}

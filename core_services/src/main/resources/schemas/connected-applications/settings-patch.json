@@ -1,0 +1,61 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "id": "http://cs.anypoint.mulesoft.com/settings-patch.json",
+  "properties": {
+    "allowed": {
+      "type": "string",
+      "enum": [
+        "none",
+        "first_party_only",
+        "all"
+      ]
+    },
+    "first_party": {
+      "type": "object",
+      "properties": {
+        "show_consent": {
+          "type": "boolean"
+        },
+        "scopes": {
+          "type": "object",
+          "properties": {
+            "blocked": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "uniqueItems": true
+            }
+          },
+          "minProperties": 1,
+          "additionalProperties": false
+        }
+      },
+      "minProperties": 1,
+      "additionalProperties": false
+    },
+    "third_party": {
+      "properties": {
+        "scopes": {
+          "type": "object",
+          "properties": {
+            "blocked": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "uniqueItems": true
+            }
+          },
+          "minProperties": 1,
+          "additionalProperties": false
+        }
+      },
+      "minProperties": 1,
+      "additionalProperties": false
+    }
+  },
+  "minProperties": 1,
+  "additionalProperties": false
+}

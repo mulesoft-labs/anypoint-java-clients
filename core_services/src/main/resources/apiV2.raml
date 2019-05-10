@@ -1,0 +1,193 @@
+#%RAML 1.0
+
+baseUri: https://anypoint.mulesoft.com/accounts/api/{version}
+
+title: Core Services API
+version: v2
+mediaType: application/json
+
+uses:
+  providers: types/external-client-provider.raml
+
+securitySchemes:
+  oauth_2_0_raml_1_0: !include oauth_2_0_raml_1_0.raml
+
+securedBy: [ oauth_2_0_raml_1_0 ]
+
+types:
+  Organization:
+    type: object
+  Entitlements:
+    type: object
+
+/organizations:
+  description: Organizations
+  /{orgId}:
+    description: A single organization
+    uriParameters:
+      orgId:
+        description: The id of the organization
+        type: string
+    get:
+      queryParameters:
+        include?:
+          type: string | array
+          description: attributes to include as part of response
+      responses:
+        200:
+          body:
+            type: Organization
+
+    /entitlements:
+      get:
+        responses:
+          200:
+            description: Return entitlements for this organization
+            body:
+              application/json:
+                example: !include examples/entitlements_v2.json
+                type: object
+      put:
+        description: Sets one or more values for entitlements
+        body:
+          application/json:
+            example: !include examples/entitlements_v2.json
+            type: Entitlements
+        responses:
+          200:
+            description: Entitlement has been modified
+            body:
+              application/json:
+                example: !include examples/entitlements_v2.json
+                type: object
+          404:
+            description: Resource does not exist
+
+      /{entitlementName}:
+        uriParameters:
+          entitlementName:
+            type: string
+            description: The name of the entitlement
+        get:
+          description: Returns the name and value of the specified entitlement
+          responses:
+            200:
+              description: Returns entitlement
+              body:
+                application/json:
+                  example: !include examples/entitlements-new_v2.json
+                  type: object
+            404:
+              description: Resource does not exists
+
+    /provider:
+      /clients:
+        get:
+          description: Returns list of client management providers for the master organization with a subset of values (providerId, organizationId, name, type (name, description, version))
+          queryParameters:
+            limit:
+              description: pagination parameter for how many results to return
+              type: integer
+              default: 25
+            offset:
+              description: pagination parameter to start returning results from this position of matches
+              type: integer
+              default: 0
+          responses:
+            200:
+              description: Success
+              body:
+                application/json:
+                  type: providers.ExternalClientProviderAll
+                  example: !include examples/client-management-providers.json
+            401:
+              description: Unauthorized
+            404:
+              description: Organization does not exist
+        post:
+          description: Adds a new client management provider for the organization. This can be called only on Master Organizations
+          body:
+            application/json:
+              type: providers.ExternalClientProvider
+              example: !include examples/client-management-provider.json
+          responses:
+            201:
+              description: Success
+            400:
+              description: Invalid data in body
+            401:
+              description: Unauthorized
+            404:
+              description: Organization does not exist
+            405:
+              description: Method Not Allowed because the organization is not a Master organization
+
+        /{clientProviderId}:
+          get:
+            description: Returns the associated client management provider config for the master organization and a subset of values (providerId, organizationId, name, type (name, description, version)) for Business Groups
+            queryParameters:
+              includeSecrets:
+                description: flag to include the secrets as part of the response or not
+                type: boolean
+                default: false
+            responses:
+              200:
+                description: Success
+                body:
+                  application/json:
+                    type: providers.ExternalClientProvider
+                    example: !include examples/client-management-provider-get.json
+              401:
+                description: Unauthorized
+              404:
+                description: Client Provider Id does not exist in the Organization
+          put:
+            description: Replaces the associated client management provider config
+            body:
+              application/json:
+                type: providers.ExternalClientProvider
+                example: !include examples/client-management-provider.json
+            responses:
+              200:
+                description: Success
+              400:
+                description: Invalid data in body
+              401:
+                description: Unauthorized
+              404:
+                description: Client Provider Id does not exist in the Organization
+              405:
+                description: Method Not Allowed because the organization is not a Master organization
+          patch:
+            description: Updates the associated client management provider config
+            queryParameters:
+              recreateTokenValidationClient:
+                description: flag to indicate whether to recreate token validation client on update or not
+                type: boolean
+                default: false
+            body:
+              application/json:
+                type: providers.ExternalClientProviderOptional
+                example: !include examples/client-management-provider-patch.json
+            responses:
+              200:
+                description: Success
+              400:
+                description: Invalid data in body
+              401:
+                description: Unauthorized
+              404:
+                description: Client Provider Id does not exist in the Organization
+              405:
+                description: Method Not Allowed because the organization is not a Master organization
+          delete:
+            description: Deletes the associated client management provider
+            responses:
+              204:
+                description: Success
+              401:
+                description: Unauthorized
+              404:
+                description: Client Provider Id does not exist in the Organization
+              405:
+                description: Method Not Allowed because the organization is not a Master organization

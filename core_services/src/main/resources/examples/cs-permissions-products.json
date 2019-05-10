@@ -1,0 +1,94 @@
+[
+  {
+    "product_id": "app_viz",
+    "label": "Visualizer",
+    "roles": [
+      {
+        "environment_ids": [],
+        "role_id": "040c5d2f-c321-4456-b40f-8c37cbd4d8f4",
+        "name": "Visualizer Viewer",
+        "context_keys": [
+          "org"
+        ]
+      },
+      {
+        "environment_ids": [],
+        "role_id": "6a78512a-8c75-4744-ad24-87e6e5847e73",
+        "name": "Visualizer Editor",
+        "context_keys": [
+          "org"
+        ]
+      }
+    ]
+  },
+  {
+    "product_id": "cloudhub",
+    "label": "Runtime Manager",
+    "roles": [
+      {
+        "environment_ids": [],
+        "role_id": "177750b0-9407-4261-92b5-93e772c8ea84",
+        "name": "Cloudhub Network Administrator",
+        "context_keys": [
+          "org"
+        ]
+      },
+      {
+        "environment_ids": [],
+        "role_id": "bcd24100-7cf8-4a03-ae21-bd505d36f8c1",
+        "name": "Cloudhub Network Viewer",
+        "context_keys": [
+          "org"
+        ]
+      },
+      {
+        "environment_ids": [
+          "6b45d911-30e7-49f8-ab02-373cc3d7f185",
+          "7601c87f-27d4-4f98-8d75-8ce87559f7dc"
+        ],
+        "role_id": "4b3b5050-2f33-4740-9b63-dccc421b9f92",
+        "name": "Delete Applications",
+        "context_keys": [
+          "org",
+          "envId"
+        ]
+      },
+      {
+        "environment_ids": [
+          "6b45d911-30e7-49f8-ab02-373cc3d7f185",
+          "7601c87f-27d4-4f98-8d75-8ce87559f7dc"
+        ],
+        "role_id": "4e2a978e-0c79-4131-bebf-a653fd8ba039",
+        "name": "Download Applications",
+        "context_keys": [
+          "envId",
+          "org"
+        ]
+      },
+      {
+        "environment_ids": [
+          "6b45d911-30e7-49f8-ab02-373cc3d7f185",
+          "7601c87f-27d4-4f98-8d75-8ce87559f7dc"
+        ],
+        "role_id": "26500650-0fd6-4045-aa5f-8c749ce278e4",
+        "name": "Manage Alerts",
+        "context_keys": [
+          "envId",
+          "org"
+        ]
+      },
+      {
+        "environment_ids": [
+          "6b45d911-30e7-49f8-ab02-373cc3d7f185",
+          "7601c87f-27d4-4f98-8d75-8ce87559f7dc"
+        ],
+        "role_id": "51de3390-9bfe-4bcc-a790-6016b820ba92",
+        "name": "Manage Application Data",
+        "context_keys": [
+          "envId",
+          "org"
+        ]
+      }
+    ]
+  }
+]

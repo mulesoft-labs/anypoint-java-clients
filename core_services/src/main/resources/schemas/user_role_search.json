@@ -1,0 +1,138 @@
+{
+  "type": "array",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "id": "http://cs.anypoint.mulesoft.com/user_role_search.json",
+  "items": {
+    "anyOf": [
+      {
+        "$ref": "#/definitions/expression"
+      },
+      {
+        "$ref": "#/definitions/pagination"
+      },
+      {
+        "$ref": "#/definitions/sort"
+      }
+    ]
+  },
+  "minItems": 1,
+  "maxItems": 3,
+  "uniqueItems": true,
+  "definitions": {
+    "assertion": {
+      "type": "object",
+      "properties": {
+        "role_id": {
+          "type": "string",
+          "minLength": 36,
+          "maxLength": 36
+        },
+        "context_params": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "match_type": {
+          "type": "string",
+          "enum": [
+            "exact",
+            "partial"
+          ],
+          "default": "partial"
+        }
+      },
+      "required": [
+        "role_id",
+        "context_params",
+        "match_type"
+      ],
+      "additionalProperties": false
+    },
+    "expression": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "operator": {
+          "type": "string",
+          "enum": [
+            "AND",
+            "OR"
+          ]
+        },
+        "operands": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/assertion"
+          },
+          "minItems": 1,
+          "maxItems": 5,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "name",
+        "operator",
+        "operands"
+      ],
+      "additionalProperties": false
+    },
+    "pagination": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "limit": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 25
+        },
+        "offset": {
+          "type": "number",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "name",
+        "limit",
+        "offset"
+      ],
+      "additionalProperties": false
+    },
+    "sort": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "order": {
+          "type": "string",
+          "enum": [
+            "ASC",
+            "DESC"
+          ]
+        },
+        "field": {
+          "type": "string",
+          "enum": [
+            "id",
+            "first_name",
+            "firstName",
+            "last_name",
+            "lastName",
+            "username"
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "order",
+        "field"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

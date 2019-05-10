@@ -1,0 +1,32 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "id": "http://cs.anypoint.mulesoft.com/client_search.json",
+  "properties": {
+    "name": {
+      "$ref": "#/definitions/stringOrArray"
+    },
+    "client_id": {
+      "$ref": "#/definitions/stringOrArray"
+    },
+    "org_id": {
+      "$ref": "#/definitions/stringOrArray"
+
+    }
+  },
+  "definitions": {
+    "stringOrArray": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      ]
+    }
+  }
+}

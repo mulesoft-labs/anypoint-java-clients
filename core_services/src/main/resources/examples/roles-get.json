@@ -1,0 +1,21 @@
+{
+  "data": [
+    {
+      "role_id": "e5df881e-e2e8-11e4-8a00-1681e6b88ec1",
+      "name": "Add Server Groups",
+      "description": "Being able to create server group resources",
+      "internal": false,
+      "org_id": null,
+      "namespaces": []
+    },
+    {
+      "role_id": "fa6b43ac-c436-11e4-8dfc-aa07a5b093db",
+      "name": "Add Servers",
+      "description": "Being able to create server resources",
+      "internal": false,
+      "org_id": null,
+      "namespaces": []
+    }
+  ],
+  "total": 2
+}

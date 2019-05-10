@@ -1,0 +1,96 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "id": "http://cs.anypoint.mulesoft.com/settings.json",
+  "properties": {
+    "created_at": {
+      "format": "date-time",
+      "description": "The time the external application were first modified to deviate from the default settings"
+    },
+    "updated_at": {
+      "format": "date-time",
+      "description": "The time the external application settings were last modified"
+    },
+    "allowed": {
+      "type": "string",
+      "enum": [
+        "none",
+        "first_party_only",
+        "all"
+      ],
+      "default": "all",
+      "description": "The type of external applications that users in this organization are allowed to authorize"
+    },
+    "domain": {
+      "type": "string",
+      "default": "all",
+      "description": "The domain of the organization that these settings are applicable for. Used to determine if a client is a first_party or third_party"
+    },
+    "first_party": {
+      "type": "object",
+      "properties": {
+        "show_consent": {
+          "type": "boolean",
+          "default": true,
+          "description": "Whether or not to show the consent screen when a user authorizes a first-party application"
+        },
+        "scopes": {
+          "type": "object",
+          "properties": {
+            "blocked": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "uniqueItems": true,
+              "default": [],
+              "description": "A list of scopes that users cannot grant to first-party applications"
+            }
+          },
+          "required": [
+            "blocked"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "scopes",
+        "show_consent"
+      ],
+      "additionalProperties": false
+    },
+    "third_party": {
+      "type": "object",
+      "properties": {
+        "scopes": {
+          "type": "object",
+          "properties": {
+            "blocked": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "uniqueItems": true,
+              "default": [],
+              "description": "A list of scopes that users cannot grant to third-party applications"
+            }
+          },
+          "required": [
+            "blocked"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "scopes"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "allowed",
+    "first_party",
+    "third_party"
+  ],
+  "additionalProperties": false
+}

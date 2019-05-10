@@ -1,0 +1,11 @@
+{
+  "allowed": "first_party_only",
+  "first_party": {
+    "show_consent": false,
+    "scopes": {
+      "blocked": [
+        "offline_access"
+      ]
+    }
+  }
+}

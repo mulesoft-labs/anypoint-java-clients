@@ -1,0 +1,28 @@
+#%RAML 1.0 NamedExample
+value:
+  - name: 'createdAt'
+    gt: '2018-03-14T17:14:15.92Z'
+    lt: '2018-03-30T17:14:15.92Z'
+  - name: 'deleted'
+    bool: false
+  - name: 'email'
+    eqlIS: 'jane.doe@example.com'
+  - name: 'enabled'
+    bool: true
+  - name: 'hostUserId'
+    eql: '1020bb55-3e01-428d-96c4-e05cb86c4bdb'
+  - name: 'id'
+    not: '8d1e6f7d-373c-47d9-9c9a-73d08b08b0f8'
+  - name: 'organizationId'
+    eql: '69c84ae4-1e05-479e-b8f2-6cff8f7a283d'
+  - name: 'updatedAt'
+    gt: '2018-03-14T17:14:15.92Z'
+    lte: '2018-03-30T17:14:15.92Z'
+  - name: 'username'
+    not: 'maxthemule'
+  - name: 'pagination'
+    offset: 0
+    limit: 10
+  - name: 'sort'
+    field: 'updatedAt'
+    order: 'DESC'

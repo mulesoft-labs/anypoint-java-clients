@@ -1,0 +1,9 @@
+{
+  "active": true,
+  "token_type": "bearer",
+  "user_id": "40e238d8-9f6c-495f-b000-0029f5576041",
+  "username": "paul.hilfinger",
+  "client_id": null,
+  "iat": 1539823220995,
+  "exp": 1539857830528
+}

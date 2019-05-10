@@ -1,0 +1,21 @@
+{
+  "created_at": "2018-01-26T22:39:02.312Z",
+  "updated_at": "2018-01-26T22:39:02.312Z",
+  "last_used": "2018-01-26T22:39:02.312Z",
+  "granted_by" : {
+    "user_id": "b65f412f-7d36-4109-b196-9d5ad07c2083",
+    "username": "organization_owner"
+  },
+  "granted_to": {
+    "client_id": "d5e32198-7cc1-4c26-ab83-fd8912e16967",
+    "domain": "domain-0",
+    "client_name": "RAML Sync Tool",
+    "owner_organization": "Tooling Co",
+    "logo_uri": "https://op.certification.openid.net:61353/static/logo.png"
+  },
+  "scopes": [
+    "read:raml",
+    "read:users",
+    "offline_access"
+  ]
+}

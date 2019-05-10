@@ -147,12 +147,15 @@
     },
     "support": {
       "view": true
+    },
+    "partner_manager": {
+      "view": true
     }
   },
   "accessToken": "fd139fe0-dc81-46f3-b75d-bfe7eefbe834",
   "apiPlatform": {
     "adminSite": {
-      "baseUri": "https://anypoint.mulesoft.com/apiplatform/router/#/access_token=fd139fe0-dc81-46f3-b75d-bfe7eefbe834&token_type=bearer&state="
+      "baseUri": "https://anypoint.mulesoft.com/apiplatform/router/#/state="
     }
   },
   "cloudhub": {

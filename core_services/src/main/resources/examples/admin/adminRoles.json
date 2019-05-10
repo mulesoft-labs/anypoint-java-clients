@@ -1,0 +1,78 @@
+[
+  {
+    "data": {
+      "role_id": "ba7b9829-ae4c-4231-8e93-e4809b10e16d",
+      "name": "Alert Service API Backend",
+      "description": "Backend of rest api for alert service",
+      "internal": true,
+      "permissions": [
+        {
+          "namespace": "cloudhub",
+          "resource": "applications.settings:*",
+          "actions": [
+            "read",
+            "update"
+          ]
+        },
+        {
+          "namespace": "cloudhub",
+          "resource": "applications.dashboard:*",
+          "actions": [
+            "read"
+          ]
+        },
+        {
+          "namespace": "cloudhub",
+          "resource": "/organizations/*/environments/*/applications",
+          "actions": [
+            "GET"
+          ]
+        },
+        {
+          "namespace": "cloudhub",
+          "resource": "/organizations/*/environments/*/applications/*",
+          "actions": [
+            "GET"
+          ]
+        },
+        {
+          "namespace": "cloudhub",
+          "resource": "/organizations/*/environments/*/applications/*/autoscalepolicies/trigger",
+          "actions": [
+            "POST"
+          ]
+        },
+        {
+          "namespace": "cs_auth",
+          "resource": "/organizations/*",
+          "actions": [
+            "GET"
+          ]
+        },
+        {
+          "namespace": "cs_auth",
+          "resource": "/organizations/*/environments/*",
+          "actions": [
+            "GET"
+          ]
+        },
+        {
+          "namespace": "cs_auth",
+          "resource": "/organizations/*/users",
+          "actions": [
+            "GET"
+          ]
+        },
+        {
+          "namespace": "platform_messages",
+          "resource": "/organizations/*/messages",
+          "actions": [
+            "CREATE"
+          ]
+        }
+      ],
+      "tags": []
+    },
+    "details": []
+  }
+]

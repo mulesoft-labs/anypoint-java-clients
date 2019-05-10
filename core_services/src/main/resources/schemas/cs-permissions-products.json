@@ -1,0 +1,64 @@
+{
+  "type": "array",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "id": "http://cs.anypoint.mulesoft.com/cs-permissions-products.json",
+  "items": {
+    "$ref": "#/definitions/productPermissionsEntry"
+  },
+  "definitions": {
+    "productPermissionsEntry": {
+      "type": "object",
+      "properties": {
+        "product_id": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "roles": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/productRoleEntry"
+          },
+          "minItems": 1
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "product_id",
+        "label",
+        "roles"
+      ]
+    },
+    "productRoleEntry": {
+      "type": "object",
+      "properties": {
+        "role_id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "context_keys": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "environment_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "role_id",
+        "name",
+        "context_keys",
+        "environment_ids"
+      ]
+    }
+  }
+}

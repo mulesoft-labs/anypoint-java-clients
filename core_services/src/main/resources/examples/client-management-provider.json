@@ -1,0 +1,83 @@
+{
+  "name": "Production Client Management Config",
+  "type": {
+    "description": "PingFederate",
+    "name": "ping"
+  },
+  "enabled": true,
+  "allow_untrusted_certificates": true,
+  "oauth2_authorization_provider": {
+    "urls": {
+      "authorize": "https://example.com/as/authorization.oauth2"
+    }
+  },
+  "oauth2_token_provider": {
+    "urls": {
+      "create": "https:/example.com/as/token.oauth2"
+    }
+  },
+  "oauth2_token_validation_provider": {
+    "urls": {
+      "validate": "https://example.com/as/token.oauth2"
+    },
+    "client_id": "c123985a07a64c08ad7a12738a954471",
+    "client_secret": "********",
+    "token_mapping": {
+      "username": "username",
+      "email": "email",
+      "firstName": "firstName",
+      "lastName": "lastName",
+      "user": "user"
+    }
+  },
+  "oauth2_client_provider": {
+    "urls": {
+      "create": "https://example.com/pf-ws/rest/oauth/clients",
+      "delete": "https://example.com/pf-ws/rest/oauth/clients/{{client_id}}"
+    },
+    "username": "max.mule",
+    "password": "********",
+    "grant_types": [
+      {
+        "name": "password",
+        "label": "Resource Owner Grant",
+        "required": false,
+        "exclude": [],
+        "depends": []
+      },
+      {
+        "name": "implicit",
+        "label": "Implicit Grant",
+        "required": false,
+        "exclude": [],
+        "depends": []
+      },
+      {
+        "name": "client_credentials",
+        "label": "Client Credentials Grant",
+        "required": false,
+        "exclude": [],
+        "depends": []
+      },
+      {
+        "name": "authorization_code",
+        "label": "Authorization Code Grant",
+        "required": false,
+        "exclude": [],
+        "depends": []
+      },
+      {
+        "name": "refresh_token",
+        "label": "Refresh Token",
+        "required": false,
+        "exclude": [],
+        "depends": [
+          "authorization_code",
+          "password"
+        ]
+      }
+    ],
+    "bypass_approval_page": false,
+    "send_credentials_in_header": false
+  }
+}

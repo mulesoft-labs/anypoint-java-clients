@@ -33,6 +33,7 @@
       "vCoresDesign": { "assigned": 1, "reassigned": 0 },
       "staticIps": { "assigned": 1, "reassigned": 0 },
       "vpcs": { "assigned": 0, "reassigned": 0 },
+      "vpns": { "assigned": 0, "reassigned": 0 },
       "workerLoggingOverride": { "enabled": false },
       "messaging": { "assigned": 0 },
       "mqMessages": { "base": 0, "addOn": 0 },
@@ -41,15 +42,19 @@
       "objectStoreRequestUnits": { "base": 0, "addOn": 0 },
       "objectStoreKeys": { "base": 0, "addOn": 0 },
       "gateways": { "assigned": 0 },
-      "designCenter": { "mozart": true, "api": true, "apiVisual": false },
+      "designCenter": { "mozart": true, "api": true, "apiVisual": false, "apiExample": false },
       "partnersProduction": { "assigned": 0 },
       "partnersSandbox": { "assigned": 0 },
+      "tradingPartnersProduction":  { "assigned": 0 },
+      "tradingPartnersSandbox":  { "assigned": 0 },
       "loadBalancer": { "assigned": 1, "reassigned": 0 },
       "externalIdentity": true,
       "autoscaling": false,
       "armAlerts": false,
       "apis": { "enabled": true },
       "apiMonitoring": { "schedules": 0},
+      "apiCommunityManager": { "enabled": false },
+      "monitoringCenter": { "productSKU": 0},
       "crowd": {
         "hideApiManagerDesigner": false,
         "hideFormerApiPlatform": false,
@@ -57,9 +62,12 @@
       },
       "cam": { "enabled": false },
       "exchange2": { "enabled": false },
+      "crowdSelfServiceMigration": { "enabled": false },
       "kpiDashboard": { "enabled": false },
       "pcf": false,
-      "appViz": false
+      "appViz": false,
+      "workerClouds": { "assigned": 0, "reassigned": 0 },
+      "runtimeFabric": false
     },
     "isFederated": false,
     "isMaster": true,
@@ -67,6 +75,7 @@
     "subOrganizationIds": [],
     "tenantOrganizationIds": [],
     "subscription": {
+      "category": "Developer",
       "type": "Free",
       "expiration": "2014-07-27T20:56:02.125Z"
     }

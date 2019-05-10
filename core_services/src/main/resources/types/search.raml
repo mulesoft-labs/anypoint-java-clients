@@ -1,0 +1,112 @@
+#%RAML 1.0 Library
+uses:
+  primitives: ./primitives.raml
+types:
+  BoolFilter:
+    type: object
+    properties:
+      name: string
+      bool: boolean
+  DateFilter:
+    type: object
+    maxProperties: 3
+    minProperties: 2
+    properties:
+      name: string
+      eql?: datetime
+      gt?: datetime
+      gte?: datetime
+      lt?: datetime
+      lte?: datetime
+  PaginationFilter:
+    type: object
+    properties:
+      name:
+        enum: [pagination]
+      offset: number
+      limit: number
+  SortFilter:
+    type: object
+    properties:
+      name:
+        enum: [sort]
+      field: string
+      order:
+        enum: [ASC, DESC]
+  TextFilter:
+    type: object
+    minProperties: 2
+    maxProperties: 2
+    properties:
+      name: string
+      eql?: string
+      eqlIS?: string
+      not?: string
+      notIS?: string
+  UuidFilter:
+    type: object
+    properties:
+      name: string
+      eql?: primitives.uuid
+      eqlIS?: primitives.uuid
+      not?: primitives.uuid
+      notIS?: primitives.uuid
+
+  OrgDateFilter:
+    type: DateFilter
+    properties:
+      name:
+        enum: [subscription.expiration, createdAt, updatedAt]
+  OnlyMasterOrgsFilter:
+    type: object
+    properties:
+      name:
+        enum: [onlyMasterOrgs]
+      bool:
+        type: boolean
+        default: true
+  OrgSortFilter:
+    type: SortFilter
+    properties:
+      field:
+        default: name
+  OrgTextFilter:
+    type: TextFilter
+    properties:
+      name:
+        enum: [subscription.category, subscription.type]
+  OrgSearchFilter:
+    type: OrgDateFilter | OnlyMasterOrgsFilter | PaginationFilter | OrgSortFilter | OrgTextFilter
+  OrganizationSearch:
+    type: OrgSearchFilter[]
+
+
+  UserBoolFilter:
+    type: BoolFilter
+    properties:
+      name:
+        enum: [deleted, enabled]
+  UserDateFilter:
+    type: DateFilter
+    properties:
+      name:
+        enum: [createdAt, updatedAt]
+  UserSortFilter:
+    type: SortFilter
+    properties:
+      field:
+        default: username
+  UserTextFilter:
+    type: TextFilter
+    properties:
+      name:
+        enum: [email, username]
+  UserUuidFilter:
+    type: UuidFilter
+    properties:
+      name:
+        enum: [hostUserId, id, organizationId]
+  UserSearchFilter:
+    type: PaginationFilter | UserBoolFilter | UserDateFilter | UserTextFilter | UserSortFilter | UserUuidFilter
+  UserSearch:
+    type: UserSearchFilter[]

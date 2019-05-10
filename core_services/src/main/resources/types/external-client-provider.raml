@@ -1,0 +1,490 @@
+#%RAML 1.0 Library
+
+usage: Type definitions for supported external client IdPs
+
+types:
+  GrantType:
+    properties:
+      name: string
+      label: string
+      required: boolean
+      exclude: string[]
+      depends: string[]
+  
+  ClientProviderTypes:
+    additionalProperties: false
+    properties:
+      providerId?: string
+      organizationId?: string
+      name?: string
+      allow_untrusted_certificates?: boolean
+      enabled?: boolean
+  
+  PingFederateProvider:
+    type: ClientProviderTypes
+    properties:
+      type:
+        properties:
+          description?: string
+          name:
+            enum: [ ping ]
+      oauth2_authorization_provider:
+        properties:
+          urls:
+            properties:
+              authorize: string
+      oauth2_token_provider:
+        properties:
+          urls:
+            properties:
+              create: string
+      oauth2_token_validation_provider:
+        properties:
+          urls:
+            properties:
+              validate: string
+          client_id?: string
+          client_secret?: string
+          token_mapping?:
+            properties:
+              email?: string
+              firstName?: string
+              lastName?: string
+              user?: string
+              username?: string
+      oauth2_client_provider:
+        properties:
+          urls:
+            properties:
+              create: string
+              delete: string
+          username: string
+          password: string
+          grant_types?: GrantType[]
+          bypass_approval_page?: boolean
+          send_credentials_in_header?: boolean
+  
+  PingFederateProviderOptional:
+    type: ClientProviderTypes
+    additionalProperties: false
+    properties:
+      type?:
+        additionalProperties: false
+        properties:
+          description?: string
+      oauth2_authorization_provider?:
+        additionalProperties: false
+        properties:
+          urls?:
+            additionalProperties: false
+            properties:
+              authorize?: string
+      oauth2_token_provider?:
+        additionalProperties: false
+        properties:
+          urls?:
+            additionalProperties: false
+            properties:
+              create?: string
+      oauth2_token_validation_provider?:
+        properties:
+          urls?:
+            additionalProperties: false
+            properties:
+              validate?: string
+          client_id?: string
+          client_secret?: string
+          token_mapping?:
+            additionalProperties: false
+            properties:
+              email?: string
+              firstName?: string
+              lastName?: string
+              user?: string
+              username?: string
+      oauth2_client_provider?:
+        additionalProperties: false
+        properties:
+          urls?:
+            additionalProperties: false
+            properties:
+              create?: string
+              delete?: string
+          username?: string
+          password?: string
+          grant_types?: GrantType[]
+          bypass_approval_page?: boolean
+          send_credentials_in_header?: boolean
+  
+  PingFederateProviderOptionalV1:
+    type: ClientProviderTypes
+    additionalProperties: false
+    properties:
+      type:
+        additionalProperties: false
+        properties:
+          description?: string
+          name:
+            enum: [ ping ]
+      oauth2_authorization_provider?:
+        additionalProperties: false
+        properties:
+          name?: string
+          urls?:
+            additionalProperties: false
+            properties:
+              authorize?: string
+          url?: string
+      oauth2_token_provider?:
+        additionalProperties: false
+        properties:
+          name?: string
+          urls?:
+            additionalProperties: false
+            properties:
+              create?: string
+          url?: string
+      oauth2_token_validation_provider?:
+        properties:
+          name?: string
+          urls?:
+            additionalProperties: false
+            properties:
+              validate?: string
+          url?: string
+          client_id?: string
+          client_secret?: string
+          token_mapping?:
+            additionalProperties: false
+            properties:
+              email?: string
+              firstName?: string
+              lastName?: string
+              user?: string
+              username?: string
+      oauth2_client_provider?:
+        additionalProperties: false
+        properties:
+          name?: string
+          urls?:
+            additionalProperties: false
+            properties:
+              create?: string
+              delete?: string
+          username?: string
+          password?: string
+          url?: string
+          grant_types?: GrantType[]
+          bypass_approval_page?: boolean
+          send_credentials_in_header?: boolean
+  
+  OpenAMProvider:
+    type: ClientProviderTypes
+    properties:
+      type:
+        properties:
+          description?: string
+          name:
+            enum: [ openam ]
+          version?: string
+      admin_token:
+        properties:
+          urls:
+            properties:
+              create: string
+          username: string
+          password: string
+      oauth2_authorization_provider:
+        properties:
+          urls:
+            properties:
+              authorize: string
+      oauth2_token_provider:
+        properties:
+          urls:
+            properties:
+              create: string
+      oauth2_token_validation_provider:
+        properties:
+          urls:
+            properties:
+              validate: string
+      oauth2_client_provider:
+        properties:
+          urls:
+            properties:
+              create: string
+              delete: string
+          scopes?: string[]
+          default_scopes?: string[]
+          allowed_client_types?:
+            properties:
+              Confidential: string[]
+              Public: string[]
+          grant_types?: GrantType[]
+  
+  OpenAMProviderOptional:
+    type: ClientProviderTypes
+    additionalProperties: false
+    properties:
+      type?:
+        additionalProperties: false
+        properties:
+          description?: string
+          version?: string
+      admin_token?:
+        additionalProperties: false
+        properties:
+          urls?:
+            additionalProperties: false
+            properties:
+              create?: string
+          username?: string
+          password?: string
+      oauth2_authorization_provider?:
+        additionalProperties: false
+        properties:
+          urls?:
+            additionalProperties: false
+            properties:
+              authorize?: string
+      oauth2_token_provider?:
+        additionalProperties: false
+        properties:
+          urls?:
+            additionalProperties: false
+            properties:
+              create?: string
+      oauth2_token_validation_provider?:
+        properties:
+          urls?:
+            additionalProperties: false
+            properties:
+              validate?: string
+      oauth2_client_provider?:
+        additionalProperties: false
+        properties:
+          urls?:
+            additionalProperties: false
+            properties:
+              create?: string
+              delete?: string
+          scopes?: string[]
+          default_scopes?: string[]
+          allowed_client_types?:
+            additionalProperties: false
+            properties:
+              Confidential?: string[]
+              Public?: string[]
+          grant_types?: GrantType[]
+  
+  OpenAMProviderOptionalV1:
+    type: ClientProviderTypes
+    additionalProperties: false
+    properties:
+      type:
+        additionalProperties: false
+        properties:
+          description?: string
+          name:
+            enum: [ openam ]
+          version?: string
+      admin_token?:
+        additionalProperties: false
+        properties:
+          name?: string
+          urls?:
+            additionalProperties: false
+            properties:
+              create?: string
+          username?: string
+          password?: string
+      oauth2_authorization_provider?:
+        additionalProperties: false
+        properties:
+          name?: string
+          urls?:
+            additionalProperties: false
+            properties:
+              authorize?: string
+          url?: string
+      oauth2_token_provider?:
+        additionalProperties: false
+        properties:
+          name?: string
+          urls?:
+            additionalProperties: false
+            properties:
+              create?: string
+          url?: string
+      oauth2_token_validation_provider?:
+        properties:
+          name?: string
+          urls?:
+            additionalProperties: false
+            properties:
+              validate?: string
+          url?: string
+      oauth2_client_provider?:
+        additionalProperties: false
+        properties:
+          name?: string
+          urls?:
+            additionalProperties: false
+            properties:
+              create?: string
+              delete?: string
+          url?: string
+          scopes?: string[]
+          default_scopes?: string[]
+          allowed_client_types?:
+            additionalProperties: false
+            properties:
+              Confidential?: string[]
+              Public?: string[]
+          grant_types?: GrantType[]
+  
+  OIDCDynamicClientProvider:
+    type: ClientProviderTypes
+    properties:
+      type:
+        properties:
+          description?: string
+          name:
+            enum: [ openid-dynamic-client ]
+      oidc_dynamic_client_provider:
+        properties:
+          issuer?: string
+          client:
+            properties:
+              urls:
+                properties:
+                  register: string
+              registration?:
+                properties:
+                  authorization: string
+              token_endpoint_auth_methods_supported?: string[]
+          primary_client:
+            properties:
+              id: string
+              secret: string
+          urls:
+            properties:
+              authorize: string
+              token: string
+              introspect: string
+          supported_grant_types?: GrantType[]
+          allow_local_client_deletion?: boolean
+          allow_external_client_modification?: boolean
+  
+  OIDCDynamicClientProviderOptional:
+    type: ClientProviderTypes
+    additionalProperties: false
+    properties:
+      type?:
+        additionalProperties: false
+        properties:
+          description?: string
+      oidc_dynamic_client_provider?:
+        additionalProperties: false
+        properties:
+          issuer?: string
+          client?:
+            additionalProperties: false
+            properties:
+              urls?:
+                additionalProperties: false
+                properties:
+                  register?: string
+              registration?:
+                additionalProperties: false
+                properties:
+                  authorization?: string
+              token_endpoint_auth_methods_supported?: string[]
+          primary_client?:
+            additionalProperties: false
+            properties:
+              id?: string
+              secret?: string
+          urls?:
+            additionalProperties: false
+            properties:
+              authorize?: string
+              introspect?: string
+              token?: string
+          supported_grant_types?: GrantType[]
+          allow_local_client_deletion?: boolean
+          allow_external_client_modification?: boolean
+  
+  OIDCDynamicClientProviderOptionalV1:
+    type: ClientProviderTypes
+    additionalProperties: false
+    properties:
+      type:
+        additionalProperties: false
+        properties:
+          description?: string
+          name:
+            enum: [ openid-dynamic-client ]
+      oidc_dynamic_client_provider?:
+        additionalProperties: false
+        properties:
+          issuer?: string
+          client?:
+            additionalProperties: false
+            properties:
+              urls?:
+                additionalProperties: false
+                properties:
+                  register?: string
+              registration?:
+                additionalProperties: false
+                properties:
+                  authorization?: string
+              token_endpoint_auth_methods_supported?: string[]
+          primary_client?:
+            additionalProperties: false
+            properties:
+              id?: string
+              secret?: string
+          urls?:
+            additionalProperties: false
+            properties:
+              authorize?: string
+              introspect?: string
+              token?: string
+          supported_grant_types?: GrantType[]
+          allow_local_client_deletion?: boolean
+          allow_external_client_modification?: boolean
+
+  ExternalClientProvider:
+    type: [OpenAMProvider | PingFederateProvider | OIDCDynamicClientProvider]
+  
+  ExternalClientProviderOptional:
+    type: [OpenAMProviderOptional | PingFederateProviderOptional | OIDCDynamicClientProviderOptional]
+
+  ExternalClientProvidersFind:
+    properties:
+      providerId: string
+      organizationId: string
+      name: string
+      type:
+        properties:
+          description?: string
+          name:
+            enum: [ ping, openam, openid-dynamic-client ]
+          version?: string
+      enabled: boolean
+
+  ExternalClientProviderAll:
+    properties:
+      data: ExternalClientProvidersFind[]
+      total: integer
+  
+  ExternalClientProviderV1:
+    type: [OpenAMProviderOptionalV1 | PingFederateProviderOptionalV1 | OIDCDynamicClientProviderOptionalV1]
+
+  ExternalClientProviderPutV1:
+    properties: 
+      client_management:  
+        type: [OpenAMProviderOptionalV1 | PingFederateProviderOptionalV1 | OIDCDynamicClientProviderOptionalV1]

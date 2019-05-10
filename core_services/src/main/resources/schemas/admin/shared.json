@@ -1,0 +1,83 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "id": "http://cs.anypoint.mulesoft.com/shared.json",
+  "definitions": {
+    "adminMessage": {
+      "required": ["enabled", "info"],
+      "properties": {
+        "enabled": {
+         "type": "boolean"
+        },
+        "details": {
+          "type": "array",
+          "items": {"type": "string"}
+        }
+      }
+    },
+    "adminAllMessage": {
+      "required": ["clients", "roles", "products"],
+      "properties": {
+        "clients":  {
+          "required": ["enabled", "disabled"],
+          "properties": {
+            "enabled": {
+              "type": "array",
+              "items": {"$ref": "#/definitions/adminClientMessage"}
+            },
+            "disabled": {
+              "type": "array",
+              "items": {"$ref": "#/definitions/adminClientMessage"}
+            }
+          }
+        },
+        "roles": {
+          "required": ["enabled", "disabled"],
+          "properties": {
+            "enabled": {
+              "type": "array",
+              "items": {"$ref": "#/definitions/adminRoleMessage"}
+            },
+            "disabled": {
+              "type": "array",
+              "items": {"$ref": "#/definitions/adminRoleMessage"}
+            }
+          }
+        },
+        "products": {
+          "required": ["enabled", "disabled"],
+          "properties": {
+            "enabled": {
+              "type": "array",
+              "items": {"$ref": "#/definitions/adminProductMessage"}
+            },
+            "disabled": {
+              "type": "array",
+              "items": {"$ref": "#/definitions/adminProductMessage"}
+            }
+          }
+        }
+      }
+    },
+    "adminClientMessage": {
+      "allOf": [{ "$ref": "#/definitions/adminMessage" }],
+      "required": ["data"],
+      "properties": {
+        "data":  { "$ref": "../ARC/shared.json#/definitions/ARC-Client" }
+      }
+    },
+    "adminRoleMessage": {
+      "allOf": [{ "$ref": "#/definitions/adminMessage" }],
+      "required": ["data"],
+      "properties": {
+        "data":  { "$ref": "../ARC/shared.json#/definitions/ARC-Role" }
+      }
+    },
+    "adminProductMessage": {
+      "allOf": [{ "$ref": "#/definitions/adminMessage" }],
+      "required": ["data"],
+      "properties": {
+        "data":  { "$ref": "../ARC/shared.json#/definitions/ARC-Product" }
+      }
+    }
+  }
+}

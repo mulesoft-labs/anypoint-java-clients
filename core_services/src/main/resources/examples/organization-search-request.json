@@ -1,5 +1,9 @@
 [
   {
+    "name": "onlyMasterOrgs",
+    "bool": true
+  },
+  {
     "name": "sort",
     "field": "name",
     "order": "DESC"
@@ -27,11 +31,19 @@
     "bool": true
   },
   {
-    "name": "subscription_type",
-    "eqlIS": "free"
+    "name": "subscription.category",
+    "eqlIS": "Developer"
   },
   {
-    "name": "expiration",
+    "name": "subscription.type",
+    "eqlIS": "Free"
+  },
+  {
+    "name": "createdAt",
+    "gt": "Wed May 30 2016 18:07:57 GMT-7"
+  },
+  {
+    "name": "subscription.expiration",
     "lt": "Wed May 25 2016 18:07:57 GMT-7"
   }
 ]

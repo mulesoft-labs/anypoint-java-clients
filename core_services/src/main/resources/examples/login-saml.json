@@ -1,0 +1,4 @@
+{
+  "SAMLResponse": "SAMLAssertion_Value",
+  "returnToken": true
+}

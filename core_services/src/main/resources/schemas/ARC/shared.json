@@ -1,0 +1,201 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "id": "http://cs.anypoint.mulesoft.com",
+  "definitions": {
+    "ARC-Client": {
+      "type": "object",
+      "required": [
+        "client_id",
+        "name",
+        "redirect_uris",
+        "user_id",
+        "grant_types",
+        "client_secrets"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "client_id": {
+          "type": "string"
+        },
+        "user_id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "redirect_uris": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "grant_types": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "client_secrets": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "ARC-Product": {
+      "type": "object",
+      "required": [
+        "product_id",
+        "configKey",
+        "slug",
+        "apiName",
+        "userConfig",
+        "label",
+        "conditionalRoleBlocks"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "product_id": {
+          "type": "string"
+        },
+        "configKey": {
+          "type": "string",
+          "enum": [
+            "view",
+            "enabled",
+            "edit"
+          ]
+        },
+        "slug": {
+          "type": "string",
+          "maxLength": 255,
+          "minLength": 1
+        },
+        "apiName": {
+          "type": "string",
+          "format": "apiName",
+          "maxLength": 255,
+          "minLength": 1
+        },
+        "label": {
+          "type": "string",
+          "maxLength": 255,
+          "minLength": 1
+        },
+        "userConfig": {
+          "type": "object",
+          "properties": {
+            "view": {
+              "$ref": "#/definitions/ARC-Product-Conditional"
+            },
+            "enabled": {
+              "$ref": "#/definitions/ARC-Product-Conditional"
+            },
+            "edit": {
+              "$ref": "#/definitions/ARC-Product-Conditional"
+            }
+          },
+          "additionalProperties": false,
+          "minProperties": 1
+        },
+        "conditionalRoleBlocks": {
+          "type": "array",
+          "minItems": 0,
+          "items": {"$ref": "#/definitions/ARC-Product-Conditional-Role-Block"}
+        }
+      }
+    },
+    "ARC-Product-Conditional": {
+      "properties": {
+        "value": {
+          "type": "boolean"
+        },
+        "rule": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "minProperties": 1
+    },
+    "ARC-Product-Conditional-Role-Block": {
+      "type": "object",
+      "properties": {
+        "role_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "condition": { "$ref": "#/definitions/ARC-Product-Conditional" }
+      },
+      "additionalProperties": false,
+      "required": [
+        "role_ids"
+      ]
+    },
+    "ARC-Role": {
+      "type": "object",
+      "required": [
+        "role_id",
+        "name",
+        "description",
+        "internal",
+        "tags"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "role_id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "internal": {
+          "type": "boolean"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "permissions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ARC-Permission"
+          }
+        }
+      }
+    },
+    "ARC-Permission": {
+      "type": "object",
+      "required": [
+        "namespace",
+        "actions",
+        "resource"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "namespace": {
+          "type": "string"
+        },
+        "resource": {
+          "type": "string"
+        },
+        "actions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

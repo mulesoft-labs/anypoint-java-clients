@@ -1,0 +1,32 @@
+[
+  {
+    "name": "expression",
+    "operator": "AND",
+    "operands": [
+      {
+        "role_id": "b7711f5b-6d74-440b-84f1-0648e84f8ebc",
+        "context_params": {
+          "org": "8b2ce61f-9ebb-4f2a-98e8-bfe730bb90a2"
+        },
+        "match_type": "exact"
+      },
+      {
+        "role_id": "b5860f29-7e8e-4a87-8264-b3759d976e90",
+        "context_params": {
+          "org": "8b2ce61f-9ebb-4f2a-98e8-bfe730bb90a2"
+        },
+        "match_type": "partial"
+      }
+    ]
+  },
+  {
+    "name": "pagination",
+    "limit": 25,
+    "offset": 0
+  },
+  {
+    "name": "sort",
+    "order": "ASC",
+    "field": "id"
+  }
+]

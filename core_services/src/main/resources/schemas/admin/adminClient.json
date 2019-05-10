@@ -1,0 +1,5 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "id": "http://cs.anypoint.mulesoft.com/adminClient.json",
+  "$ref": "shared.json#/definitions/adminClientMessage"
+}

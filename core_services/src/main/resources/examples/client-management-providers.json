@@ -1,0 +1,15 @@
+{
+  "data": [
+    {
+      "providerId": "2e50e859-0042-46ff-8cf8-1ad6f0c78b67",
+      "organizationId": "2e71d283-6248-4c81-98eb-e254a89b7e0a",
+      "name": "Production Client Management Config",
+      "type": {
+        "description": "PingFederate",
+        "name": "ping"
+      },
+      "enabled": true
+    }
+  ],
+  "total": 1
+}

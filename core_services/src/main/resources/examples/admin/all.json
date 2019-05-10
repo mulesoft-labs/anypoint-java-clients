@@ -1,0 +1,108 @@
+{
+  "clients": {
+    "enabled": [
+      {
+        "data": {
+          "client_id": "9845b9a8-f8c7-4ead-843c-e180d41a86e9",
+          "name": "Blockchain Integration",
+          "redirect_uris": [
+            "https://some.garbage:3344"
+          ],
+          "client_secrets": [
+            "OMITTED"
+          ]
+        },
+        "enabled": false,
+        "details": [
+          "Client Blockchain Integration (9845b9a8-f8c7-4ead-843c-e180d41a86e9) has no client secrets, but requires at least one"
+        ]
+      }
+    ],
+    "disabled":[]
+  },
+  "roles": {
+    "enabled": [
+      {
+        "data": {
+          "role_id": "ba7b9829-ae4c-4231-8e93-e4809b10e16d",
+          "name": "Alert Service API Backend",
+          "description": "Backend of rest api for alert service",
+          "internal": true,
+          "permissions": [
+            {
+              "namespace": "cloudhub",
+              "resource": "applications.settings:*",
+              "actions": [
+                "read",
+                "update"
+              ]
+            },
+            {
+              "namespace": "cloudhub",
+              "resource": "applications.dashboard:*",
+              "actions": [
+                "read"
+              ]
+            },
+            {
+              "namespace": "cloudhub",
+              "resource": "/organizations/*/environments/*/applications",
+              "actions": [
+                "GET"
+              ]
+            },
+            {
+              "namespace": "cloudhub",
+              "resource": "/organizations/*/environments/*/applications/*",
+              "actions": [
+                "GET"
+              ]
+            },
+            {
+              "namespace": "cloudhub",
+              "resource": "/organizations/*/environments/*/applications/*/autoscalepolicies/trigger",
+              "actions": [
+                "POST"
+              ]
+            },
+            {
+              "namespace": "cs_auth",
+              "resource": "/organizations/*",
+              "actions": [
+                "GET"
+              ]
+            },
+            {
+              "namespace": "cs_auth",
+              "resource": "/organizations/*/environments/*",
+              "actions": [
+                "GET"
+              ]
+            },
+            {
+              "namespace": "cs_auth",
+              "resource": "/organizations/*/users",
+              "actions": [
+                "GET"
+              ]
+            },
+            {
+              "namespace": "platform_messages",
+              "resource": "/organizations/*/messages",
+              "actions": [
+                "CREATE"
+              ]
+            }
+          ],
+          "tags": []
+        },
+        "details": []
+      }
+    ],
+    "disabled": []
+  },
+  "products": {
+    "enabled": [],
+    "disabled": []
+  }
+}

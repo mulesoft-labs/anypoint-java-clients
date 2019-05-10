@@ -1,0 +1,22 @@
+{
+  "Developer": [
+    {
+      "name": "Free",
+      "description": "Expired trial"
+    },
+    {
+      "name": "Trial",
+      "description": "Trial"
+    }
+  ],
+  "Customer": [
+    {
+      "name": "Base",
+      "description": "Customer on Base platform without Platinum"
+    },
+    {
+      "name": "Enterprise",
+      "description": "Customer on old SKUs with Enterprise Subscription"
+    }
+  ]
+}

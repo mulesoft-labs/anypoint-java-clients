@@ -14,8 +14,11 @@
       "parent_organization_ids": [],
       "sub_organization_ids": [],
       "tenant_organization_ids": [],
-      "subscription_type": "Free",
-      "subscription_expiration": "2016-06-16T18:28:25.215Z"
+      "subscription": {
+        "category": "Developer",
+        "type": "Free",
+        "expiration": "2016-06-16T18:28:25.215Z"
+      }
     },
     {
       "id": "68ef9520-24e9-4cf2-b2f5-620025690913",
@@ -31,8 +34,11 @@
       "parent_organization_ids": [],
       "sub_organization_ids": [],
       "tenant_organization_ids": [],
-      "subscription_type": "Free",
-      "subscription_expiration": "2016-06-16T18:28:25.216Z"
+      "subscription": {
+        "category": "Developer",
+        "type": "Free",
+        "expiration": "2016-06-16T18:28:25.215Z"
+      }
     }
   ],
   "total": 4

@@ -1,0 +1,18 @@
+{
+  "data": [
+    {
+      "created_at": "2018-01-26T22:39:02.312Z",
+      "updated_at": "2018-01-26T22:39:02.312Z",
+      "last_used": "2018-01-26T22:39:02.312Z",
+      "user_id": "b65f412f-7d36-4109-b196-9d5ad07c2083",
+      "client_id": "d5e32198-7cc1-4c26-ab83-fd8912e16967",
+      "domain": "domain-0",
+      "scopes": [
+        "read:raml",
+        "read:users",
+        "offline_access"
+      ]
+    }
+  ],
+  "total": 1
+}

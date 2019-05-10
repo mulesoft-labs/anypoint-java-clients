@@ -1,0 +1,33 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "patternProperties": {
+    "^[a-zA-Z]+$": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/subscriptionType"
+      }
+    }
+  },
+  "additionalProperties":false,
+  "definitions": {
+    "subscriptionType": {
+      "type": "object",
+      "additionalProperties":false,
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255
+
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255
+        }
+      },
+      "required": ["description","name"]
+    }
+  }
+}

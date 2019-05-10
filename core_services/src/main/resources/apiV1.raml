@@ -1,0 +1,277 @@
+#%RAML 1.0
+title: Core Services API Reference
+mediaType: application/json
+baseUri: https://anypoint.mulesoft.com/accounts
+
+traits:
+  offset-paginated: !include traits/offset-paginated.raml
+  sortable_2: !include traits/arity/sortable_2.raml
+  searchable: !include traits/searchable.raml
+
+uses:
+  providers: types/external-client-provider.raml
+
+/roles:
+  /users:
+    /search:
+      description: Search users by role assignments
+
+      post:
+        description: Seach users by role assignments
+        body:
+          application/json:
+            schema: !include schemas/user_role_search.json
+            example: !include examples/user_role_search.json
+        responses:
+          200:
+            description: Success
+            body:
+              application/json:
+                example: !include examples/user_role_search_response.json
+
+/recover:
+  description: recover user's account
+
+  /username:
+    post:
+      description: sends email with list of usernames associated with the given email
+      securedBy: [ null ]
+      body:
+        application/json:
+          example: !include examples/recover-username.json
+          schema: !include schemas/recover/recover-username.json
+      responses:
+        200:
+          description: email was sent or no users are associated with the given email
+        400:
+          description: Bad request; missing email parameter
+
+  /password:
+    post:
+      description: sends a 'forgot password' email with password reset link to the email associated with the given username
+      securedBy: [ null ]
+      body:
+        application/json:
+          example: !include examples/recover-password.json
+          schema: !include schemas/recover/recover-password.json
+      responses:
+        200:
+          description: email was sent or user with username does not exist
+          body:
+            text/plain:
+              example: OK
+        400:
+          description: Bad request; missing username parameter
+
+    /{recoverCode}:
+      description: reset password
+      uriParameters:
+        recoverCode:
+          description: A code sent in a password reset email used to prove the bearer has the right to change a user's password
+          type: string
+
+      get:
+        description: Checks the validity of the password reset code
+        securedBy: [ null ]
+        responses:
+          200:
+            description: the code is valid
+            body:
+              text/plain:
+                example: OK
+          404:
+            description: the code does not exist
+
+      post:
+        description: Sets a new password for the user associated with the password reset code
+        securedBy: [ null ]
+        body:
+          application/json:
+            example: !include examples/change-password.json
+            schema: !include schemas/recover/change-password.json
+        responses:
+          200:
+            description: the password was successfully reset
+            body:
+              text/plain:
+                example: OK
+          400:
+            description: any of the code, password or confirmPassword are missing or password and confirmPassword do not match
+          404:
+            description: the code does not exist
+
+/oauth2:
+  description: oauth 2 routes
+
+  /{domain}:
+    description: OAuth2 routes for Connected App clients
+    uriParameters:
+      domain:
+        description: Domain name to identify the organization that owns the clients
+        type: string
+
+    /clients:
+      description: Access to clients for a particular domain
+      get:
+        description: Get all clients for a domain
+        is: [
+          offset-paginated,
+          searchable: {targetDesc: 'all object properties'},
+          sortable_2: { field_1: 'client_id', field_2: 'client_name', default: 'client_name' }
+        ]
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/domainClients/clients.json
+
+      post:
+        description: Create a new client under a particular domain
+        body:
+          application/json:
+            example: !include examples/domainClients/client.json
+            schema: !include schemas/domainClients/client.json
+        responses:
+          201:
+            body:
+              application/json:
+                example: !include examples/domainClients/client.json
+
+      /{clientId}:
+        description: Access to individual clients in a given domain
+        get:
+          description: Get a single client
+          responses:
+            200:
+              body:
+                application/json:
+                  example: !include examples/domainClients/client.json
+            404:
+              description: Client with that clientId could not be found
+
+        patch:
+          description: Patches a single client
+          queryParameters:
+            resetSecret?:
+              description: Asks service to reset secret as part of this operation
+              type: boolean
+              default: false
+          body:
+            schema: !include schemas/domainClients/client-patch.json
+          responses:
+            200:
+              description: Client was successfully updated
+              body:
+                application/json:
+                  example: !include examples/domainClients/client.json
+            404:
+              description: Client with that clientId could not be found
+
+        delete:
+          description: Deletes a single client
+          responses:
+            204:
+              description: Client was deleted
+
+  /introspect:
+    description: Look up caller information from an access token
+
+    post:
+      description: |
+        Look up caller information from an access token
+        This implements RFC-7662: OAuth 2.0 Token Introspection
+      body:
+        application/json:
+          schema: !include schemas/introspect.json
+          example: !include examples/introspect-query.json
+        application/x-www-form-urlencoded:
+          type: object
+          properties:
+            token: string
+            token_type_hint?: string
+      responses:
+        200:
+          description: success
+          body:
+            application/json:
+              example: !include examples/introspect-response.json
+              type: object
+
+/support:
+  description: Support portal
+
+  get:
+    description: Redirect to the support portal or the getting help documentation
+    responses:
+      302:
+        description: Location header contains the link to sso into the support portal, the link to the getting help documentation or (if not signed in) the signin page
+      500:
+        description: Support portal not available or an unknown error occurred
+
+/organizations:
+  /{orgId}:
+
+    /connectedApplications:
+      description: Routes for interacting with an organization's connected application authorizations and settings. Settings are shared between all business groups. Modifications are only allowed on the master organization.
+
+      /settings:
+        get:
+          description: Returns the organization's connected application settings. For business groups, this will return the master organization's settings.
+          responses:
+            200:
+              description: Success
+              body:
+                application/json:
+                  example: !include examples/connected-applications/settings.json
+                  schema: !include schemas/connected-applications/settings.json
+            404:
+              description: The organization does not exist
+
+        patch:
+          description: Updates the organization's connected application settings
+          body:
+            application/json:
+#              example: !include examples/connected-applications/settings-patch.json
+              schema: !include schemas/connected-applications/settings-patch.json
+          responses:
+            200:
+              description: Success
+              body:
+                application/json:
+                  example: !include examples/connected-applications/settings.json
+                  schema: !include schemas/connected-applications/settings.json
+            404:
+              description: The organization does not exist
+            405:
+              description: The organization is a business group. Settings are only editable on a master organization
+
+    /provider:
+      /clients:
+        description: Client provider information for the organization
+
+        get:
+          description: |
+            Retrieve resource(s)
+          responses:
+            200:
+              description: Success
+              body:
+                application/json:
+                  type: providers.ExternalClientProviderV1
+                  example: !include examples/client-management-provider-get.json
+
+        put:
+          description: Updates the client provider for the organization
+          body:
+            application/json:
+              type: providers.ExternalClientProviderPutV1
+              example: !include examples/client-management-provider-put.json
+          responses:
+            200:
+              description: Success
+
+        delete:
+          description: Revert to using the default client provider
+          responses:
+            200:
+              description: Success

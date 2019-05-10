@@ -1,0 +1,7 @@
+{
+  "scopes": [
+    "admin:RAML",
+    "admin:Users",
+    "offline_access"
+  ]
+}

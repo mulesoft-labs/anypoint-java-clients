@@ -15,6 +15,7 @@
       "subOrganizationIds": [],
       "tenantOrganizationIds": [],
       "subscription": {
+        "category": "Developer",
         "type" : "Free",
         "expiration": "Mon Feb 09 2016 17:47:26 GMT-0300 (ART)"
       },

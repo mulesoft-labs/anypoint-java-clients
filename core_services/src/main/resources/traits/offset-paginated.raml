@@ -1,0 +1,16 @@
+#%RAML 1.0 Trait
+
+queryParameters:
+  offset:
+    required: false
+    description: The number of records to omit from the response.
+    type: integer
+    default: 0
+    minimum: 0
+  limit:
+    required: false
+    description: Maximum records to retrieve per request.
+    type: integer
+    minimum: 0
+    maximum: 500
+    default: 25

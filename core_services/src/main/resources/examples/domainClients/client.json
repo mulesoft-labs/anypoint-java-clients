@@ -1,0 +1,17 @@
+{
+  "client_id": "d10dab01-e90c-43b1-bd66-4b9c78f23327",
+  "client_name": "SampleClient",
+  "redirect_uris": [
+    "https://localhost:3000/callback",
+    "https://example.com/auth-callback"
+  ],
+  "grant_types": [
+    "implicit",
+    "authorization_code"
+  ],
+  "properties": {
+    "additional": "meta-data"
+  },
+  "sector_identifier_uri": "https://sector_identifier_uri.com",
+  "require_auth_time": true
+}

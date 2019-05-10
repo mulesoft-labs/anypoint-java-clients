@@ -20,10 +20,17 @@
     "vCoresSandbox": { "assigned": 0 },
     "staticIps": { "assigned": 0 },
     "vpcs": { "assigned": 0, "reassigned": 0 },
+    "vpns": { "assigned": 0, "reassigned": 0 },
     "workerLoggingOverride": { "enabled": false },
     "partnersProduction": { "assigned": 0 },
     "partnersSandbox": { "assigned": 0 },
-    "designCenter": { "mozart": true, "api": true, "apiVisual": false },
-    "apiMonitoring": { "schedules": 0}
+    "tradingPartnersProduction":  { "assigned": 0 },
+    "tradingPartnersSandbox":  { "assigned": 0 },
+    "designCenter": { "mozart": true, "api": true, "apiVisual": false, "apiExample": false },
+    "apiMonitoring": { "schedules": 0},
+    "apiCommunityManager": { "enabled": false },
+    "monitoringCenter": { "productSKU": 0},
+    "workerClouds": { "assigned": 0, "reassigned": 0 },
+    "runtimeFabric": false
   }
 }

@@ -1,0 +1,35 @@
+{
+  "data": [
+    {
+      "id": "d5d309ee-8c23-49e3-bec1-70ee99c42061",
+      "username": "Immanuel1234",
+      "firstName": "Immanuel",
+      "lastName": "Jagerson",
+      "email": "Immanuel@gmail.com",
+      "enabled": true,
+      "idprovider_id": "mulesoft",
+      "type": "host",
+      "createdAt": "Mon Feb 09 2015 17:47:26 GMT-0300 (ART)",
+      "updatedAt": "Mon Feb 09 2015 17:47:26 GMT-0300 (ART)",
+      "lastLogin": "Mon Feb 09 2015 17:47:26 GMT-0300 (ART)",
+      "organizationId": "7f30ff47-5917-4a5a-b94d-9fe029edc04d",
+      "assignments": [
+        {
+          "role_id": "833ab9ca-0c72-45ba-9764-1df83240db57",
+          "context_params": {
+            "org": "7f30ff47-5917-4a5a-b94d-9fe029edc04d",
+            "user": "d5d309ee-8c23-49e3-bec1-70ee99c42061"
+          }
+        },
+        {
+          "role_id": "e3284047-6334-4580-b441-53afe7598b6e",
+          "context_params": {
+            "org": "7f30ff47-5917-4a5a-b94d-9fe029edc04d",
+            "envId": "4c4efd56-9232-4f41-bb5c-4990539d519f"
+          }
+        }
+      ]
+    }
+  ],
+  "total": 1
+}
