@@ -1,4 +1,5 @@
 {
-  "access_token": "d127e2ec-a703-4e2a-8629-e9158804748b",
-  "token_type": "bearer"
+  "access_token": "3c880a09-9c62-4d82-adc9-c0e2d9de0bca",
+  "token_type": "bearer",
+  "redirectUrl": "/home/"
 }

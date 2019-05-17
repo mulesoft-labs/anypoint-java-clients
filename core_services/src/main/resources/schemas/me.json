@@ -5,86 +5,1557 @@
   "type": "object",
   "title": "The Root Schema",
   "properties": {
-    "checked": {
-      "$id": "/properties/checked",
-      "type": "boolean",
-      "title": "The Checked Schema",
-      "default": false,
-      "examples": [
-        false
-      ]
-    },
-    "dimensions": {
-      "$id": "/properties/dimensions",
+    "access_token": {
+      "$id": "#/properties/access_token",
       "type": "object",
-      "title": "The Dimensions Schema",
-      "required": [
-        "width",
-        "height"
-      ],
+      "title": "The Access_token Schema",
       "properties": {
-        "width": {
-          "$id": "/properties/dimensions/properties/width",
-          "type": "integer",
-          "title": "The Width Schema",
-          "default": 0,
+        "access_token": {
+          "$id": "#/properties/access_token/properties/access_token",
+          "type": "string",
+          "title": "The Access_token Schema",
+          "default": "",
           "examples": [
-            5
-          ]
+            "64ed7879-90df-4f65-8d3d-4867a3fed5a1"
+          ],
+          "pattern": "^(.*)$"
         },
-        "height": {
-          "$id": "/properties/dimensions/properties/height",
+        "expires_in": {
+          "$id": "#/properties/access_token/properties/expires_in",
           "type": "integer",
-          "title": "The Height Schema",
+          "title": "The Expires_in Schema",
           "default": 0,
           "examples": [
-            10
+            1151
           ]
         }
       }
     },
-    "id": {
-      "$id": "/properties/id",
-      "type": "integer",
-      "title": "The Id Schema",
-      "default": 0,
-      "examples": [
-        1
-      ]
+    "client": {
+      "$id": "#/properties/client",
+      "type": "object",
+      "title": "The Client Schema",
+
+      "properties": {
+        "client_id": {
+          "$id": "#/properties/client/properties/client_id",
+          "type": "string",
+          "title": "The Client_id Schema",
+          "default": "",
+          "examples": [
+            "asdflkjlsdf09234oiuWERmn"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "name": {
+          "$id": "#/properties/client/properties/name",
+          "type": "string",
+          "title": "The Name Schema",
+          "default": "",
+          "examples": [
+            "Admin Client"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "redirect_uris": {
+          "$id": "#/properties/client/properties/redirect_uris",
+          "type": "array",
+          "title": "The Redirect_uris Schema"
+        },
+        "grant_types": {
+          "$id": "#/properties/client/properties/grant_types",
+          "type": "array",
+          "title": "The Grant_types Schema",
+          "items": {
+            "$id": "#/properties/client/properties/grant_types/items",
+            "type": "string",
+            "title": "The Items Schema",
+            "default": "",
+            "examples": [
+              "authorization_code",
+              "refresh_token",
+              "validate_bearer",
+              "password",
+              "client_credentials",
+              "implicit"
+            ],
+            "pattern": "^(.*)$"
+          }
+        }
+      }
     },
-    "name": {
-      "$id": "/properties/name",
-      "type": "string",
-      "title": "The Name Schema",
-      "default": "",
-      "examples": [
-        "A green door"
-      ],
-      "pattern": "^(.*)$"
-    },
-    "price": {
-      "$id": "/properties/price",
-      "type": "number",
-      "title": "The Price Schema",
-      "default": 0.0,
-      "examples": [
-        12.5
-      ]
-    },
-    "tags": {
-      "$id": "/properties/tags",
-      "type": "array",
-      "title": "The Tags Schema",
-      "items": {
-        "$id": "/properties/tags/items",
-        "type": "string",
-        "title": "The 0 Schema",
-        "default": "",
-        "examples": [
-          "home",
-          "green"
-        ],
-        "pattern": "^(.*)$"
+    "user": {
+      "$id": "#/properties/user",
+      "type": "object",
+      "title": "The User Schema",
+
+      "properties": {
+        "id": {
+          "$id": "#/properties/user/properties/id",
+          "type": "string",
+          "title": "The Id Schema",
+          "default": "",
+          "examples": [
+            "a23c0943-1cc4-47f1-aea2-cb6c2c2fca6a"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "createdAt": {
+          "$id": "#/properties/user/properties/createdAt",
+          "type": "string",
+          "title": "The Createdat Schema",
+          "default": "",
+          "examples": [
+            "2014-07-27T20:56:02.112Z"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "updatedAt": {
+          "$id": "#/properties/user/properties/updatedAt",
+          "type": "string",
+          "title": "The Updatedat Schema",
+          "default": "",
+          "examples": [
+            "2014-12-17T15:57:40.250Z"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "lastLogin": {
+          "$id": "#/properties/user/properties/lastLogin",
+          "type": "string",
+          "title": "The Lastlogin Schema",
+          "default": "",
+          "examples": [
+            "2014-12-17T15:57:40.250Z"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "firstName": {
+          "$id": "#/properties/user/properties/firstName",
+          "type": "string",
+          "title": "The Firstname Schema",
+          "default": "",
+          "examples": [
+            "Chris"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "lastName": {
+          "$id": "#/properties/user/properties/lastName",
+          "type": "string",
+          "title": "The Lastname Schema",
+          "default": "",
+          "examples": [
+            "Mordue"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "email": {
+          "$id": "#/properties/user/properties/email",
+          "type": "string",
+          "title": "The Email Schema",
+          "default": "",
+          "examples": [
+            "christopher.mordue@mulesoft.com"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "phoneNumber": {
+          "$id": "#/properties/user/properties/phoneNumber",
+          "type": "string",
+          "title": "The Phonenumber Schema",
+          "default": "",
+          "examples": [
+            "+1 123-456-7890"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "username": {
+          "$id": "#/properties/user/properties/username",
+          "type": "string",
+          "title": "The Username Schema",
+          "default": "",
+          "examples": [
+            "sundaycmordue"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "enabled": {
+          "$id": "#/properties/user/properties/enabled",
+          "type": "boolean",
+          "title": "The Enabled Schema",
+          "default": false,
+          "examples": [
+            true
+          ]
+        },
+        "deleted": {
+          "$id": "#/properties/user/properties/deleted",
+          "type": "boolean",
+          "title": "The Deleted Schema",
+          "default": false,
+          "examples": [
+            false
+          ]
+        },
+        "idprovider_id": {
+          "$id": "#/properties/user/properties/idprovider_id",
+          "type": "string",
+          "title": "The Idprovider_id Schema",
+          "default": "",
+          "examples": [
+            "mulesoft"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "type": {
+          "$id": "#/properties/user/properties/type",
+          "type": "string",
+          "title": "The Type Schema",
+          "default": "",
+          "examples": [
+            "host"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "organizationPreferences": {
+          "$id": "#/properties/user/properties/organizationPreferences",
+          "type": "object",
+          "title": "The Organizationpreferences Schema",
+          "properties": {
+            "0a14e2fd-1cfe-4310-acbc-54bf93eb8420": {
+              "$id": "#/properties/user/properties/organizationPreferences/properties/0a14e2fd-1cfe-4310-acbc-54bf93eb8420",
+              "type": "object",
+              "title": "The 0a14e2fd-1cfe-4310-acbc-54bf93eb8420 Schema",
+              "properties": {
+                "defaultEnvironment": {
+                  "$id": "#/properties/user/properties/organizationPreferences/properties/0a14e2fd-1cfe-4310-acbc-54bf93eb8420/properties/defaultEnvironment",
+                  "type": "string",
+                  "title": "The Defaultenvironment Schema",
+                  "default": "",
+                  "examples": [
+                    "a6217e66-faf1-4c17-bbbc-8c008ef4c8c6"
+                  ],
+                  "pattern": "^(.*)$"
+                }
+              }
+            }
+          }
+        },
+        "organizationId": {
+          "$id": "#/properties/user/properties/organizationId",
+          "type": "string",
+          "title": "The Organizationid Schema",
+          "default": "",
+          "examples": [
+            "0a14e2fd-1cfe-4310-acbc-54bf93eb8420"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "organization": {
+          "$id": "#/properties/user/properties/organization",
+          "type": "object",
+          "title": "The Organization Schema",
+          "properties": {
+            "name": {
+              "$id": "#/properties/user/properties/organization/properties/name",
+              "type": "string",
+              "title": "The Name Schema",
+              "default": "",
+              "examples": [
+                "Mordue's Sundays testing"
+              ],
+              "pattern": "^(.*)$"
+            },
+            "id": {
+              "$id": "#/properties/user/properties/organization/properties/id",
+              "type": "string",
+              "title": "The Id Schema",
+              "default": "",
+              "examples": [
+                "0a14e2fd-1cfe-4310-acbc-54bf93eb8420"
+              ],
+              "pattern": "^(.*)$"
+            },
+            "createdAt": {
+              "$id": "#/properties/user/properties/organization/properties/createdAt",
+              "type": "string",
+              "title": "The Createdat Schema",
+              "default": "",
+              "examples": [
+                "2014-07-27T20:56:02.125Z"
+              ],
+              "pattern": "^(.*)$"
+            },
+            "ownerId": {
+              "$id": "#/properties/user/properties/organization/properties/ownerId",
+              "type": "string",
+              "title": "The Ownerid Schema",
+              "default": "",
+              "examples": [
+                "a23c0943-1cc4-47f1-aea2-cb6c2c2fca6a"
+              ],
+              "pattern": "^(.*)$"
+            },
+            "updatedAt": {
+              "$id": "#/properties/user/properties/organization/properties/updatedAt",
+              "type": "string",
+              "title": "The Updatedat Schema",
+              "default": "",
+              "examples": [
+                "2015-01-29T18:34:54.570Z"
+              ],
+              "pattern": "^(.*)$"
+            },
+            "clientId": {
+              "$id": "#/properties/user/properties/organization/properties/clientId",
+              "type": "string",
+              "title": "The Clientid Schema",
+              "default": "",
+              "examples": [
+                "3b8650722f5847b1abf51f769c173514"
+              ],
+              "pattern": "^(.*)$"
+            },
+            "domain": {
+              "$id": "#/properties/user/properties/organization/properties/domain",
+              "type": "string",
+              "title": "The Domain Schema",
+              "default": "",
+              "examples": [
+                "mordues-sundays"
+              ],
+              "pattern": "^(.*)$"
+            },
+            "isFederated": {
+              "$id": "#/properties/user/properties/organization/properties/isFederated",
+              "type": "boolean",
+              "title": "The Isfederated Schema",
+              "default": false,
+              "examples": [
+                false
+              ]
+            },
+            "parentOrganizationIds": {
+              "$id": "#/properties/user/properties/organization/properties/parentOrganizationIds",
+              "type": "array",
+              "title": "The Parentorganizationids Schema"
+            },
+            "subOrganizationIds": {
+              "$id": "#/properties/user/properties/organization/properties/subOrganizationIds",
+              "type": "array",
+              "title": "The Suborganizationids Schema"
+            },
+            "tenantOrganizationIds": {
+              "$id": "#/properties/user/properties/organization/properties/tenantOrganizationIds",
+              "type": "array",
+              "title": "The Tenantorganizationids Schema"
+            },
+            "idprovider_id": {
+              "$id": "#/properties/user/properties/organization/properties/idprovider_id",
+              "type": "string",
+              "title": "The Idprovider_id Schema",
+              "default": "",
+              "examples": [
+                "mulesoft"
+              ],
+              "pattern": "^(.*)$"
+            },
+            "properties": {
+              "$id": "#/properties/user/properties/organization/properties/properties",
+              "type": "object",
+              "title": "The Properties Schema",
+
+              "properties": {
+                "cs_auth": {
+                  "$id": "#/properties/user/properties/organization/properties/properties/properties/cs_auth",
+                  "type": "object",
+                  "title": "The Cs_auth Schema",
+                  "properties": {
+                    "session_timeout": {
+                      "$id": "#/properties/user/properties/organization/properties/properties/properties/cs_auth/properties/session_timeout",
+                      "type": "integer",
+                      "title": "The Session_timeout Schema",
+                      "default": 0,
+                      "examples": [
+                        1200000
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "subscription": {
+              "$id": "#/properties/user/properties/organization/properties/subscription",
+              "type": "object",
+              "title": "The Subscription Schema",
+              "properties": {
+                "category": {
+                  "$id": "#/properties/user/properties/organization/properties/subscription/properties/category",
+                  "type": "string",
+                  "title": "The Category Schema",
+                  "default": "",
+                  "examples": [
+                    "Developer"
+                  ],
+                  "pattern": "^(.*)$"
+                },
+                "type": {
+                  "$id": "#/properties/user/properties/organization/properties/subscription/properties/type",
+                  "type": "string",
+                  "title": "The Type Schema",
+                  "default": "",
+                  "examples": [
+                    "Free"
+                  ],
+                  "pattern": "^(.*)$"
+                },
+                "expiration": {
+                  "$id": "#/properties/user/properties/organization/properties/subscription/properties/expiration",
+                  "type": "string",
+                  "title": "The Expiration Schema",
+                  "default": "",
+                  "examples": [
+                    "2014-07-27T20:56:02.125Z"
+                  ],
+                  "pattern": "^(.*)$"
+                }
+              }
+            },
+            "entitlements": {
+              "$id": "#/properties/user/properties/organization/properties/entitlements",
+              "type": "object",
+              "title": "The Entitlements Schema",
+              "properties": {
+                "partnersProduction": {
+                  "$id": "#/properties/user/properties/organization/properties/entitlements/properties/partnersProduction",
+                  "type": "object",
+                  "title": "The Partnersproduction Schema",
+                  "properties": {
+                    "assigned": {
+                      "$id": "#/properties/user/properties/organization/properties/entitlements/properties/partnersProduction/properties/assigned",
+                      "type": "integer",
+                      "title": "The Assigned Schema",
+                      "default": 0,
+                      "examples": [
+                        0
+                      ]
+                    }
+                  }
+                },
+                "partnersSandbox": {
+                  "$id": "#/properties/user/properties/organization/properties/entitlements/properties/partnersSandbox",
+                  "type": "object",
+                  "title": "The Partnerssandbox Schema",
+                  "properties": {
+                    "assigned": {
+                      "$id": "#/properties/user/properties/organization/properties/entitlements/properties/partnersSandbox/properties/assigned",
+                      "type": "integer",
+                      "title": "The Assigned Schema",
+                      "default": 0,
+                      "examples": [
+                        0
+                      ]
+                    }
+                  }
+                },
+                "tradingPartnersProduction": {
+                  "$id": "#/properties/user/properties/organization/properties/entitlements/properties/tradingPartnersProduction",
+                  "type": "object",
+                  "title": "The Tradingpartnersproduction Schema",
+                  "properties": {
+                    "assigned": {
+                      "$id": "#/properties/user/properties/organization/properties/entitlements/properties/tradingPartnersProduction/properties/assigned",
+                      "type": "integer",
+                      "title": "The Assigned Schema",
+                      "default": 0,
+                      "examples": [
+                        0
+                      ]
+                    }
+                  }
+                },
+                "tradingPartnersSandbox": {
+                  "$id": "#/properties/user/properties/organization/properties/entitlements/properties/tradingPartnersSandbox",
+                  "type": "object",
+                  "title": "The Tradingpartnerssandbox Schema",
+                  "properties": {
+                    "assigned": {
+                      "$id": "#/properties/user/properties/organization/properties/entitlements/properties/tradingPartnersSandbox/properties/assigned",
+                      "type": "integer",
+                      "title": "The Assigned Schema",
+                      "default": 0,
+                      "examples": [
+                        0
+                      ]
+                    }
+                  }
+                },
+                "createSubOrgs": {
+                  "$id": "#/properties/user/properties/organization/properties/entitlements/properties/createSubOrgs",
+                  "type": "boolean",
+                  "title": "The Createsuborgs Schema",
+                  "default": false,
+                  "examples": [
+                    false
+                  ]
+                },
+                "createEnvironments": {
+                  "$id": "#/properties/user/properties/organization/properties/entitlements/properties/createEnvironments",
+                  "type": "boolean",
+                  "title": "The Createenvironments Schema",
+                  "default": false,
+                  "examples": [
+                    false
+                  ]
+                },
+                "hybrid": {
+                  "$id": "#/properties/user/properties/organization/properties/entitlements/properties/hybrid",
+                  "type": "object",
+                  "title": "The Hybrid Schema",
+                  "properties": {
+                    "enabled": {
+                      "$id": "#/properties/user/properties/organization/properties/entitlements/properties/hybrid/properties/enabled",
+                      "type": "boolean",
+                      "title": "The Enabled Schema",
+                      "default": false,
+                      "examples": [
+                        false
+                      ]
+                    }
+                  }
+                },
+                "globalDeployment": {
+                  "$id": "#/properties/user/properties/organization/properties/entitlements/properties/globalDeployment",
+                  "type": "boolean",
+                  "title": "The Globaldeployment Schema",
+                  "default": false,
+                  "examples": [
+                    false
+                  ]
+                },
+                "vCoresProduction": {
+                  "$id": "#/properties/user/properties/organization/properties/entitlements/properties/vCoresProduction",
+                  "type": "object",
+                  "title": "The Vcoresproduction Schema",
+                  "properties": {
+                    "assigned": {
+                      "$id": "#/properties/user/properties/organization/properties/entitlements/properties/vCoresProduction/properties/assigned",
+                      "type": "integer",
+                      "title": "The Assigned Schema",
+                      "default": 0,
+                      "examples": [
+                        1
+                      ]
+                    },
+                    "reassigned": {
+                      "$id": "#/properties/user/properties/organization/properties/entitlements/properties/vCoresProduction/properties/reassigned",
+                      "type": "integer",
+                      "title": "The Reassigned Schema",
+                      "default": 0,
+                      "examples": [
+                        0
+                      ]
+                    }
+                  }
+                },
+                "vCoresSandbox": {
+                  "$id": "#/properties/user/properties/organization/properties/entitlements/properties/vCoresSandbox",
+                  "type": "object",
+                  "title": "The Vcoressandbox Schema",
+                  "properties": {
+                    "assigned": {
+                      "$id": "#/properties/user/properties/organization/properties/entitlements/properties/vCoresSandbox/properties/assigned",
+                      "type": "integer",
+                      "title": "The Assigned Schema",
+                      "default": 0,
+                      "examples": [
+                        1
+                      ]
+                    },
+                    "reassigned": {
+                      "$id": "#/properties/user/properties/organization/properties/entitlements/properties/vCoresSandbox/properties/reassigned",
+                      "type": "integer",
+                      "title": "The Reassigned Schema",
+                      "default": 0,
+                      "examples": [
+                        0
+                      ]
+                    }
+                  }
+                },
+                "vCoresDesign": {
+                  "$id": "#/properties/user/properties/organization/properties/entitlements/properties/vCoresDesign",
+                  "type": "object",
+                  "title": "The Vcoresdesign Schema",
+                  "properties": {
+                    "assigned": {
+                      "$id": "#/properties/user/properties/organization/properties/entitlements/properties/vCoresDesign/properties/assigned",
+                      "type": "integer",
+                      "title": "The Assigned Schema",
+                      "default": 0,
+                      "examples": [
+                        1
+                      ]
+                    },
+                    "reassigned": {
+                      "$id": "#/properties/user/properties/organization/properties/entitlements/properties/vCoresDesign/properties/reassigned",
+                      "type": "integer",
+                      "title": "The Reassigned Schema",
+                      "default": 0,
+                      "examples": [
+                        0
+                      ]
+                    }
+                  }
+                },
+                "staticIps": {
+                  "$id": "#/properties/user/properties/organization/properties/entitlements/properties/staticIps",
+                  "type": "object",
+                  "title": "The Staticips Schema",
+                  "properties": {
+                    "assigned": {
+                      "$id": "#/properties/user/properties/organization/properties/entitlements/properties/staticIps/properties/assigned",
+                      "type": "integer",
+                      "title": "The Assigned Schema",
+                      "default": 0,
+                      "examples": [
+                        1
+                      ]
+                    },
+                    "reassigned": {
+                      "$id": "#/properties/user/properties/organization/properties/entitlements/properties/staticIps/properties/reassigned",
+                      "type": "integer",
+                      "title": "The Reassigned Schema",
+                      "default": 0,
+                      "examples": [
+                        0
+                      ]
+                    }
+                  }
+                },
+                "vpcs": {
+                  "$id": "#/properties/user/properties/organization/properties/entitlements/properties/vpcs",
+                  "type": "object",
+                  "title": "The Vpcs Schema",
+                  "properties": {
+                    "assigned": {
+                      "$id": "#/properties/user/properties/organization/properties/entitlements/properties/vpcs/properties/assigned",
+                      "type": "integer",
+                      "title": "The Assigned Schema",
+                      "default": 0,
+                      "examples": [
+                        0
+                      ]
+                    },
+                    "reassigned": {
+                      "$id": "#/properties/user/properties/organization/properties/entitlements/properties/vpcs/properties/reassigned",
+                      "type": "integer",
+                      "title": "The Reassigned Schema",
+                      "default": 0,
+                      "examples": [
+                        0
+                      ]
+                    }
+                  }
+                },
+                "vpns": {
+                  "$id": "#/properties/user/properties/organization/properties/entitlements/properties/vpns",
+                  "type": "object",
+                  "title": "The Vpns Schema",
+
+                  "properties": {
+                    "assigned": {
+                      "$id": "#/properties/user/properties/organization/properties/entitlements/properties/vpns/properties/assigned",
+                      "type": "integer",
+                      "title": "The Assigned Schema",
+                      "default": 0,
+                      "examples": [
+                        0
+                      ]
+                    },
+                    "reassigned": {
+                      "$id": "#/properties/user/properties/organization/properties/entitlements/properties/vpns/properties/reassigned",
+                      "type": "integer",
+                      "title": "The Reassigned Schema",
+                      "default": 0,
+                      "examples": [
+                        0
+                      ]
+                    }
+                  }
+                },
+                "workerLoggingOverride": {
+                  "$id": "#/properties/user/properties/organization/properties/entitlements/properties/workerLoggingOverride",
+                  "type": "object",
+                  "title": "The Workerloggingoverride Schema",
+                  "properties": {
+                    "enabled": {
+                      "$id": "#/properties/user/properties/organization/properties/entitlements/properties/workerLoggingOverride/properties/enabled",
+                      "type": "boolean",
+                      "title": "The Enabled Schema",
+                      "default": false,
+                      "examples": [
+                        false
+                      ]
+                    }
+                  }
+                },
+                "messaging": {
+                  "$id": "#/properties/user/properties/organization/properties/entitlements/properties/messaging",
+                  "type": "object",
+                  "title": "The Messaging Schema",
+                  "properties": {
+                    "assigned": {
+                      "$id": "#/properties/user/properties/organization/properties/entitlements/properties/messaging/properties/assigned",
+                      "type": "integer",
+                      "title": "The Assigned Schema",
+                      "default": 0,
+                      "examples": [
+                        0
+                      ]
+                    }
+                  }
+                },
+                "mqMessages": {
+                  "$id": "#/properties/user/properties/organization/properties/entitlements/properties/mqMessages",
+                  "type": "object",
+                  "title": "The Mqmessages Schema",
+                  "properties": {
+                    "base": {
+                      "$id": "#/properties/user/properties/organization/properties/entitlements/properties/mqMessages/properties/base",
+                      "type": "integer",
+                      "title": "The Base Schema",
+                      "default": 0,
+                      "examples": [
+                        0
+                      ]
+                    },
+                    "addOn": {
+                      "$id": "#/properties/user/properties/organization/properties/entitlements/properties/mqMessages/properties/addOn",
+                      "type": "integer",
+                      "title": "The Addon Schema",
+                      "default": 0,
+                      "examples": [
+                        0
+                      ]
+                    }
+                  }
+                },
+                "mqRequests": {
+                  "$id": "#/properties/user/properties/organization/properties/entitlements/properties/mqRequests",
+                  "type": "object",
+                  "title": "The Mqrequests Schema",
+                  "properties": {
+                    "base": {
+                      "$id": "#/properties/user/properties/organization/properties/entitlements/properties/mqRequests/properties/base",
+                      "type": "integer",
+                      "title": "The Base Schema",
+                      "default": 0,
+                      "examples": [
+                        0
+                      ]
+                    },
+                    "addOn": {
+                      "$id": "#/properties/user/properties/organization/properties/entitlements/properties/mqRequests/properties/addOn",
+                      "type": "integer",
+                      "title": "The Addon Schema",
+                      "default": 0,
+                      "examples": [
+                        0
+                      ]
+                    }
+                  }
+                },
+                "mqAdvancedFeatures": {
+                  "$id": "#/properties/user/properties/organization/properties/entitlements/properties/mqAdvancedFeatures",
+                  "type": "object",
+                  "title": "The Mqadvancedfeatures Schema",
+                  "properties": {
+                    "enabled": {
+                      "$id": "#/properties/user/properties/organization/properties/entitlements/properties/mqAdvancedFeatures/properties/enabled",
+                      "type": "boolean",
+                      "title": "The Enabled Schema",
+                      "default": false,
+                      "examples": [
+                        false
+                      ]
+                    }
+                  }
+                },
+                "objectStoreRequestUnits": {
+                  "$id": "#/properties/user/properties/organization/properties/entitlements/properties/objectStoreRequestUnits",
+                  "type": "object",
+                  "title": "The Objectstorerequestunits Schema",
+                  "properties": {
+                    "base": {
+                      "$id": "#/properties/user/properties/organization/properties/entitlements/properties/objectStoreRequestUnits/properties/base",
+                      "type": "integer",
+                      "title": "The Base Schema",
+                      "default": 0,
+                      "examples": [
+                        0
+                      ]
+                    },
+                    "addOn": {
+                      "$id": "#/properties/user/properties/organization/properties/entitlements/properties/objectStoreRequestUnits/properties/addOn",
+                      "type": "integer",
+                      "title": "The Addon Schema",
+                      "default": 0,
+                      "examples": [
+                        0
+                      ]
+                    }
+                  }
+                },
+                "objectStoreKeys": {
+                  "$id": "#/properties/user/properties/organization/properties/entitlements/properties/objectStoreKeys",
+                  "type": "object",
+                  "title": "The Objectstorekeys Schema",
+                  "properties": {
+                    "base": {
+                      "$id": "#/properties/user/properties/organization/properties/entitlements/properties/objectStoreKeys/properties/base",
+                      "type": "integer",
+                      "title": "The Base Schema",
+                      "default": 0,
+                      "examples": [
+                        0
+                      ]
+                    },
+                    "addOn": {
+                      "$id": "#/properties/user/properties/organization/properties/entitlements/properties/objectStoreKeys/properties/addOn",
+                      "type": "integer",
+                      "title": "The Addon Schema",
+                      "default": 0,
+                      "examples": [
+                        0
+                      ]
+                    }
+                  }
+                },
+                "gateways": {
+                  "$id": "#/properties/user/properties/organization/properties/entitlements/properties/gateways",
+                  "type": "object",
+                  "title": "The Gateways Schema",
+                  "properties": {
+                    "assigned": {
+                      "$id": "#/properties/user/properties/organization/properties/entitlements/properties/gateways/properties/assigned",
+                      "type": "integer",
+                      "title": "The Assigned Schema",
+                      "default": 0,
+                      "examples": [
+                        0
+                      ]
+                    }
+                  }
+                },
+                "designCenter": {
+                  "$id": "#/properties/user/properties/organization/properties/entitlements/properties/designCenter",
+                  "type": "object",
+                  "title": "The Designcenter Schema",
+                  "properties": {
+                    "mozart": {
+                      "$id": "#/properties/user/properties/organization/properties/entitlements/properties/designCenter/properties/mozart",
+                      "type": "boolean",
+                      "title": "The Mozart Schema",
+                      "default": false,
+                      "examples": [
+                        true
+                      ]
+                    },
+                    "api": {
+                      "$id": "#/properties/user/properties/organization/properties/entitlements/properties/designCenter/properties/api",
+                      "type": "boolean",
+                      "title": "The Api Schema",
+                      "default": false,
+                      "examples": [
+                        true
+                      ]
+                    },
+                    "apiVisual": {
+                      "$id": "#/properties/user/properties/organization/properties/entitlements/properties/designCenter/properties/apiVisual",
+                      "type": "boolean",
+                      "title": "The Apivisual Schema",
+                      "default": false,
+                      "examples": [
+                        false
+                      ]
+                    },
+                    "apiExample": {
+                      "$id": "#/properties/user/properties/organization/properties/entitlements/properties/designCenter/properties/apiExample",
+                      "type": "boolean",
+                      "title": "The Apiexample Schema",
+                      "default": false,
+                      "examples": [
+                        false
+                      ]
+                    }
+                  }
+                },
+                "loadBalancer": {
+                  "$id": "#/properties/user/properties/organization/properties/entitlements/properties/loadBalancer",
+                  "type": "object",
+                  "title": "The Loadbalancer Schema",
+                  "properties": {
+                    "assigned": {
+                      "$id": "#/properties/user/properties/organization/properties/entitlements/properties/loadBalancer/properties/assigned",
+                      "type": "integer",
+                      "title": "The Assigned Schema",
+                      "default": 0,
+                      "examples": [
+                        0
+                      ]
+                    },
+                    "reassigned": {
+                      "$id": "#/properties/user/properties/organization/properties/entitlements/properties/loadBalancer/properties/reassigned",
+                      "type": "integer",
+                      "title": "The Reassigned Schema",
+                      "default": 0,
+                      "examples": [
+                        0
+                      ]
+                    }
+                  }
+                },
+                "externalIdentity": {
+                  "$id": "#/properties/user/properties/organization/properties/entitlements/properties/externalIdentity",
+                  "type": "boolean",
+                  "title": "The Externalidentity Schema",
+                  "default": false,
+                  "examples": [
+                    true
+                  ]
+                },
+                "autoscaling": {
+                  "$id": "#/properties/user/properties/organization/properties/entitlements/properties/autoscaling",
+                  "type": "boolean",
+                  "title": "The Autoscaling Schema",
+                  "default": false,
+                  "examples": [
+                    false
+                  ]
+                },
+                "armAlerts": {
+                  "$id": "#/properties/user/properties/organization/properties/entitlements/properties/armAlerts",
+                  "type": "boolean",
+                  "title": "The Armalerts Schema",
+                  "default": false,
+                  "examples": [
+                    false
+                  ]
+                },
+                "hybridInsight": {
+                  "$id": "#/properties/user/properties/organization/properties/entitlements/properties/hybridInsight",
+                  "type": "boolean",
+                  "title": "The Hybridinsight Schema",
+                  "default": false,
+                  "examples": [
+                    true
+                  ]
+                },
+                "hybridAutoDiscoverProperties": {
+                  "$id": "#/properties/user/properties/organization/properties/entitlements/properties/hybridAutoDiscoverProperties",
+                  "type": "boolean",
+                  "title": "The Hybridautodiscoverproperties Schema",
+                  "default": false,
+                  "examples": [
+                    true
+                  ]
+                },
+                "apis": {
+                  "$id": "#/properties/user/properties/organization/properties/entitlements/properties/apis",
+                  "type": "object",
+                  "title": "The Apis Schema",
+                  "properties": {
+                    "enabled": {
+                      "$id": "#/properties/user/properties/organization/properties/entitlements/properties/apis/properties/enabled",
+                      "type": "boolean",
+                      "title": "The Enabled Schema",
+                      "default": false,
+                      "examples": [
+                        true
+                      ]
+                    }
+                  }
+                },
+                "apiMonitoring": {
+                  "$id": "#/properties/user/properties/organization/properties/entitlements/properties/apiMonitoring",
+                  "type": "object",
+                  "title": "The Apimonitoring Schema",
+                  "properties": {
+                    "schedules": {
+                      "$id": "#/properties/user/properties/organization/properties/entitlements/properties/apiMonitoring/properties/schedules",
+                      "type": "integer",
+                      "title": "The Schedules Schema",
+                      "default": 0,
+                      "examples": [
+                        0
+                      ]
+                    }
+                  }
+                },
+                "apiCommunityManager": {
+                  "$id": "#/properties/user/properties/organization/properties/entitlements/properties/apiCommunityManager",
+                  "type": "object",
+                  "title": "The Apicommunitymanager Schema",
+                  "properties": {
+                    "enabled": {
+                      "$id": "#/properties/user/properties/organization/properties/entitlements/properties/apiCommunityManager/properties/enabled",
+                      "type": "boolean",
+                      "title": "The Enabled Schema",
+                      "default": false,
+                      "examples": [
+                        false
+                      ]
+                    }
+                  }
+                },
+                "monitoringCenter": {
+                  "$id": "#/properties/user/properties/organization/properties/entitlements/properties/monitoringCenter",
+                  "type": "object",
+                  "title": "The Monitoringcenter Schema",
+                  "properties": {
+                    "productSKU": {
+                      "$id": "#/properties/user/properties/organization/properties/entitlements/properties/monitoringCenter/properties/productSKU",
+                      "type": "integer",
+                      "title": "The Productsku Schema",
+                      "default": 0,
+                      "examples": [
+                        0
+                      ]
+                    }
+                  }
+                },
+                "crowd": {
+                  "$id": "#/properties/user/properties/organization/properties/entitlements/properties/crowd",
+                  "type": "object",
+                  "title": "The Crowd Schema",
+                  "properties": {
+                    "hideApiManagerDesigner": {
+                      "$id": "#/properties/user/properties/organization/properties/entitlements/properties/crowd/properties/hideApiManagerDesigner",
+                      "type": "boolean",
+                      "title": "The Hideapimanagerdesigner Schema",
+                      "default": false,
+                      "examples": [
+                        false
+                      ]
+                    },
+                    "hideFormerApiPlatform": {
+                      "$id": "#/properties/user/properties/organization/properties/entitlements/properties/crowd/properties/hideFormerApiPlatform",
+                      "type": "boolean",
+                      "title": "The Hideformerapiplatform Schema",
+                      "default": false,
+                      "examples": [
+                        false
+                      ]
+                    },
+                    "environments": {
+                      "$id": "#/properties/user/properties/organization/properties/entitlements/properties/crowd/properties/environments",
+                      "type": "boolean",
+                      "title": "The Environments Schema",
+                      "default": false,
+                      "examples": [
+                        false
+                      ]
+                    }
+                  }
+                },
+                "cam": {
+                  "$id": "#/properties/user/properties/organization/properties/entitlements/properties/cam",
+                  "type": "object",
+                  "title": "The Cam Schema",
+                  "properties": {
+                    "enabled": {
+                      "$id": "#/properties/user/properties/organization/properties/entitlements/properties/cam/properties/enabled",
+                      "type": "boolean",
+                      "title": "The Enabled Schema",
+                      "default": false,
+                      "examples": [
+                        false
+                      ]
+                    }
+                  }
+                },
+                "exchange2": {
+                  "$id": "#/properties/user/properties/organization/properties/entitlements/properties/exchange2",
+                  "type": "object",
+                  "title": "The Exchange2 Schema",
+                  "properties": {
+                    "enabled": {
+                      "$id": "#/properties/user/properties/organization/properties/entitlements/properties/exchange2/properties/enabled",
+                      "type": "boolean",
+                      "title": "The Enabled Schema",
+                      "default": false,
+                      "examples": [
+                        false
+                      ]
+                    }
+                  }
+                },
+                "crowdSelfServiceMigration": {
+                  "$id": "#/properties/user/properties/organization/properties/entitlements/properties/crowdSelfServiceMigration",
+                  "type": "object",
+                  "title": "The Crowdselfservicemigration Schema",
+                  "properties": {
+                    "enabled": {
+                      "$id": "#/properties/user/properties/organization/properties/entitlements/properties/crowdSelfServiceMigration/properties/enabled",
+                      "type": "boolean",
+                      "title": "The Enabled Schema",
+                      "default": false,
+                      "examples": [
+                        false
+                      ]
+                    }
+                  }
+                },
+                "kpiDashboard": {
+                  "$id": "#/properties/user/properties/organization/properties/entitlements/properties/kpiDashboard",
+                  "type": "object",
+                  "title": "The Kpidashboard Schema",
+                  "properties": {
+                    "enabled": {
+                      "$id": "#/properties/user/properties/organization/properties/entitlements/properties/kpiDashboard/properties/enabled",
+                      "type": "boolean",
+                      "title": "The Enabled Schema",
+                      "default": false,
+                      "examples": [
+                        false
+                      ]
+                    }
+                  }
+                },
+                "pcf": {
+                  "$id": "#/properties/user/properties/organization/properties/entitlements/properties/pcf",
+                  "type": "boolean",
+                  "title": "The Pcf Schema",
+                  "default": false,
+                  "examples": [
+                    false
+                  ]
+                },
+                "appViz": {
+                  "$id": "#/properties/user/properties/organization/properties/entitlements/properties/appViz",
+                  "type": "boolean",
+                  "title": "The Appviz Schema",
+                  "default": false,
+                  "examples": [
+                    false
+                  ]
+                },
+                "workerClouds": {
+                  "$id": "#/properties/user/properties/organization/properties/entitlements/properties/workerClouds",
+                  "type": "object",
+                  "title": "The Workerclouds Schema",
+                  "properties": {
+                    "assigned": {
+                      "$id": "#/properties/user/properties/organization/properties/entitlements/properties/workerClouds/properties/assigned",
+                      "type": "integer",
+                      "title": "The Assigned Schema",
+                      "default": 0,
+                      "examples": [
+                        0
+                      ]
+                    },
+                    "reassigned": {
+                      "$id": "#/properties/user/properties/organization/properties/entitlements/properties/workerClouds/properties/reassigned",
+                      "type": "integer",
+                      "title": "The Reassigned Schema",
+                      "default": 0,
+                      "examples": [
+                        0
+                      ]
+                    }
+                  }
+                },
+                "runtimeFabric": {
+                  "$id": "#/properties/user/properties/organization/properties/entitlements/properties/runtimeFabric",
+                  "type": "boolean",
+                  "title": "The Runtimefabric Schema",
+                  "default": false,
+                  "examples": [
+                    false
+                  ]
+                }
+              }
+            },
+            "isMaster": {
+              "$id": "#/properties/user/properties/organization/properties/isMaster",
+              "type": "boolean",
+              "title": "The Ismaster Schema",
+              "default": false,
+              "examples": [
+                true
+              ]
+            }
+          }
+        },
+        "memberOfOrganizations": {
+          "$id": "#/properties/user/properties/memberOfOrganizations",
+          "type": "array",
+          "title": "The Memberoforganizations Schema",
+          "items": {
+            "$id": "#/properties/user/properties/memberOfOrganizations/items",
+            "type": "object",
+            "title": "The Items Schema",
+            "properties": {
+              "name": {
+                "$id": "#/properties/user/properties/memberOfOrganizations/items/properties/name",
+                "type": "string",
+                "title": "The Name Schema",
+                "default": "",
+                "examples": [
+                  "Mordue's Sundays testing"
+                ],
+                "pattern": "^(.*)$"
+              },
+              "id": {
+                "$id": "#/properties/user/properties/memberOfOrganizations/items/properties/id",
+                "type": "string",
+                "title": "The Id Schema",
+                "default": "",
+                "examples": [
+                  "0a14e2fd-1cfe-4310-acbc-54bf93eb8420"
+                ],
+                "pattern": "^(.*)$"
+              },
+              "createdAt": {
+                "$id": "#/properties/user/properties/memberOfOrganizations/items/properties/createdAt",
+                "type": "string",
+                "title": "The Createdat Schema",
+                "default": "",
+                "examples": [
+                  "2014-07-27T20:56:02.125Z"
+                ],
+                "pattern": "^(.*)$"
+              },
+              "ownerId": {
+                "$id": "#/properties/user/properties/memberOfOrganizations/items/properties/ownerId",
+                "type": "string",
+                "title": "The Ownerid Schema",
+                "default": "",
+                "examples": [
+                  "a23c0943-1cc4-47f1-aea2-cb6c2c2fca6a"
+                ],
+                "pattern": "^(.*)$"
+              },
+              "updatedAt": {
+                "$id": "#/properties/user/properties/memberOfOrganizations/items/properties/updatedAt",
+                "type": "string",
+                "title": "The Updatedat Schema",
+                "default": "",
+                "examples": [
+                  "2015-01-29T18:34:54.570Z"
+                ],
+                "pattern": "^(.*)$"
+              },
+              "clientId": {
+                "$id": "#/properties/user/properties/memberOfOrganizations/items/properties/clientId",
+                "type": "string",
+                "title": "The Clientid Schema",
+                "default": "",
+                "examples": [
+                  "3b8650722f5847b1abf51f769c173514"
+                ],
+                "pattern": "^(.*)$"
+              },
+              "domain": {
+                "$id": "#/properties/user/properties/memberOfOrganizations/items/properties/domain",
+                "type": "string",
+                "title": "The Domain Schema",
+                "default": "",
+                "examples": [
+                  "mordues-sundays"
+                ],
+                "pattern": "^(.*)$"
+              },
+              "isFederated": {
+                "$id": "#/properties/user/properties/memberOfOrganizations/items/properties/isFederated",
+                "type": "boolean",
+                "title": "The Isfederated Schema",
+                "default": false,
+                "examples": [
+                  false
+                ]
+              },
+              "parentOrganizationIds": {
+                "$id": "#/properties/user/properties/memberOfOrganizations/items/properties/parentOrganizationIds",
+                "type": "array",
+                "title": "The Parentorganizationids Schema"
+              },
+              "parentId": {
+                "$id": "#/properties/user/properties/memberOfOrganizations/items/properties/parentId",
+                "type": "null",
+                "title": "The Parentid Schema",
+                "default": null,
+                "examples": [
+                  null
+                ]
+              },
+              "parentName": {
+                "$id": "#/properties/user/properties/memberOfOrganizations/items/properties/parentName",
+                "type": "null",
+                "title": "The Parentname Schema",
+                "default": null,
+                "examples": [
+                  null
+                ]
+              },
+              "subOrganizationIds": {
+                "$id": "#/properties/user/properties/memberOfOrganizations/items/properties/subOrganizationIds",
+                "type": "array",
+                "title": "The Suborganizationids Schema"
+              },
+              "tenantOrganizationIds": {
+                "$id": "#/properties/user/properties/memberOfOrganizations/items/properties/tenantOrganizationIds",
+                "type": "array",
+                "title": "The Tenantorganizationids Schema"
+              },
+              "idprovider_id": {
+                "$id": "#/properties/user/properties/memberOfOrganizations/items/properties/idprovider_id",
+                "type": "string",
+                "title": "The Idprovider_id Schema",
+                "default": "",
+                "examples": [
+                  "mulesoft"
+                ],
+                "pattern": "^(.*)$"
+              },
+              "isMaster": {
+                "$id": "#/properties/user/properties/memberOfOrganizations/items/properties/isMaster",
+                "type": "boolean",
+                "title": "The Ismaster Schema",
+                "default": false,
+                "examples": [
+                  true
+                ]
+              },
+              "subscription": {
+                "$id": "#/properties/user/properties/memberOfOrganizations/items/properties/subscription",
+                "type": "object",
+                "title": "The Subscription Schema",
+                "properties": {
+                  "category": {
+                    "$id": "#/properties/user/properties/memberOfOrganizations/items/properties/subscription/properties/category",
+                    "type": "string",
+                    "title": "The Category Schema",
+                    "default": "",
+                    "examples": [
+                      "Developer"
+                    ],
+                    "pattern": "^(.*)$"
+                  },
+                  "type": {
+                    "$id": "#/properties/user/properties/memberOfOrganizations/items/properties/subscription/properties/type",
+                    "type": "string",
+                    "title": "The Type Schema",
+                    "default": "",
+                    "examples": [
+                      "Free"
+                    ],
+                    "pattern": "^(.*)$"
+                  },
+                  "expiration": {
+                    "$id": "#/properties/user/properties/memberOfOrganizations/items/properties/subscription/properties/expiration",
+                    "type": "string",
+                    "title": "The Expiration Schema",
+                    "default": "",
+                    "examples": [
+                      "2014-07-27T20:56:02.125Z"
+                    ],
+                    "pattern": "^(.*)$"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "contributorOfOrganizations": {
+          "$id": "#/properties/user/properties/contributorOfOrganizations",
+          "type": "array",
+          "title": "The Contributoroforganizations Schema",
+          "items": {
+            "$id": "#/properties/user/properties/contributorOfOrganizations/items",
+            "type": "object",
+            "title": "The Items Schema",
+
+            "properties": {
+              "name": {
+                "$id": "#/properties/user/properties/contributorOfOrganizations/items/properties/name",
+                "type": "string",
+                "title": "The Name Schema",
+                "default": "",
+                "examples": [
+                  "Mordue's Sundays testing"
+                ],
+                "pattern": "^(.*)$"
+              },
+              "id": {
+                "$id": "#/properties/user/properties/contributorOfOrganizations/items/properties/id",
+                "type": "string",
+                "title": "The Id Schema",
+                "default": "",
+                "examples": [
+                  "0a14e2fd-1cfe-4310-acbc-54bf93eb8420"
+                ],
+                "pattern": "^(.*)$"
+              },
+              "createdAt": {
+                "$id": "#/properties/user/properties/contributorOfOrganizations/items/properties/createdAt",
+                "type": "string",
+                "title": "The Createdat Schema",
+                "default": "",
+                "examples": [
+                  "2014-07-27T20:56:02.125Z"
+                ],
+                "pattern": "^(.*)$"
+              },
+              "ownerId": {
+                "$id": "#/properties/user/properties/contributorOfOrganizations/items/properties/ownerId",
+                "type": "string",
+                "title": "The Ownerid Schema",
+                "default": "",
+                "examples": [
+                  "a23c0943-1cc4-47f1-aea2-cb6c2c2fca6a"
+                ],
+                "pattern": "^(.*)$"
+              },
+              "updatedAt": {
+                "$id": "#/properties/user/properties/contributorOfOrganizations/items/properties/updatedAt",
+                "type": "string",
+                "title": "The Updatedat Schema",
+                "default": "",
+                "examples": [
+                  "2015-01-29T18:34:54.570Z"
+                ],
+                "pattern": "^(.*)$"
+              },
+              "clientId": {
+                "$id": "#/properties/user/properties/contributorOfOrganizations/items/properties/clientId",
+                "type": "string",
+                "title": "The Clientid Schema",
+                "default": "",
+                "examples": [
+                  "3b8650722f5847b1abf51f769c173514"
+                ],
+                "pattern": "^(.*)$"
+              },
+              "domain": {
+                "$id": "#/properties/user/properties/contributorOfOrganizations/items/properties/domain",
+                "type": "string",
+                "title": "The Domain Schema",
+                "default": "",
+                "examples": [
+                  "mordues-sundays"
+                ],
+                "pattern": "^(.*)$"
+              },
+              "isFederated": {
+                "$id": "#/properties/user/properties/contributorOfOrganizations/items/properties/isFederated",
+                "type": "boolean",
+                "title": "The Isfederated Schema",
+                "default": false,
+                "examples": [
+                  false
+                ]
+              },
+              "parentOrganizationIds": {
+                "$id": "#/properties/user/properties/contributorOfOrganizations/items/properties/parentOrganizationIds",
+                "type": "array",
+                "title": "The Parentorganizationids Schema"
+              },
+              "parentId": {
+                "$id": "#/properties/user/properties/contributorOfOrganizations/items/properties/parentId",
+                "type": "null",
+                "title": "The Parentid Schema",
+                "default": null,
+                "examples": [
+                  null
+                ]
+              },
+              "parentName": {
+                "$id": "#/properties/user/properties/contributorOfOrganizations/items/properties/parentName",
+                "type": "null",
+                "title": "The Parentname Schema",
+                "default": null,
+                "examples": [
+                  null
+                ]
+              },
+              "subOrganizationIds": {
+                "$id": "#/properties/user/properties/contributorOfOrganizations/items/properties/subOrganizationIds",
+                "type": "array",
+                "title": "The Suborganizationids Schema"
+              },
+              "tenantOrganizationIds": {
+                "$id": "#/properties/user/properties/contributorOfOrganizations/items/properties/tenantOrganizationIds",
+                "type": "array",
+                "title": "The Tenantorganizationids Schema"
+              },
+              "idprovider_id": {
+                "$id": "#/properties/user/properties/contributorOfOrganizations/items/properties/idprovider_id",
+                "type": "string",
+                "title": "The Idprovider_id Schema",
+                "default": "",
+                "examples": [
+                  "mulesoft"
+                ],
+                "pattern": "^(.*)$"
+              },
+              "isMaster": {
+                "$id": "#/properties/user/properties/contributorOfOrganizations/items/properties/isMaster",
+                "type": "boolean",
+                "title": "The Ismaster Schema",
+                "default": false,
+                "examples": [
+                  true
+                ]
+              },
+              "subscription": {
+                "$id": "#/properties/user/properties/contributorOfOrganizations/items/properties/subscription",
+                "type": "object",
+                "title": "The Subscription Schema",
+
+                "properties": {
+                  "category": {
+                    "$id": "#/properties/user/properties/contributorOfOrganizations/items/properties/subscription/properties/category",
+                    "type": "string",
+                    "title": "The Category Schema",
+                    "default": "",
+                    "examples": [
+                      "Developer"
+                    ],
+                    "pattern": "^(.*)$"
+                  },
+                  "type": {
+                    "$id": "#/properties/user/properties/contributorOfOrganizations/items/properties/subscription/properties/type",
+                    "type": "string",
+                    "title": "The Type Schema",
+                    "default": "",
+                    "examples": [
+                      "Free"
+                    ],
+                    "pattern": "^(.*)$"
+                  },
+                  "expiration": {
+                    "$id": "#/properties/user/properties/contributorOfOrganizations/items/properties/subscription/properties/expiration",
+                    "type": "string",
+                    "title": "The Expiration Schema",
+                    "default": "",
+                    "examples": [
+                      "2014-07-27T20:56:02.125Z"
+                    ],
+                    "pattern": "^(.*)$"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "properties": {
+          "$id": "#/properties/user/properties/properties",
+          "type": "object",
+          "title": "The Properties Schema"
+        }
       }
     }
   }
