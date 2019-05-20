@@ -13,7 +13,7 @@
     </modules>
      <properties>
         <jersey.version>2.24</jersey.version>
-        <raml.generator.version>0.7</raml.generator.version>
+        <raml.generator.version>0.8</raml.generator.version>
     </properties>
 
     <build>

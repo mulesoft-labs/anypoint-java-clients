@@ -51,7 +51,7 @@ traits:
     body:
       type: ProjectCreate
     responses:
-      201:
+      200:
         body: Project
       409:
         description: Project {type}-{name} already exists
@@ -165,7 +165,8 @@ traits:
             responses:
               200:
                 body:
-                  "*/*":
+                  application/json:
+                    type: string
           delete:
             description: Deletes the given file or folder and commit changes (deleteFile)
             is: [ commonHeaders ]
