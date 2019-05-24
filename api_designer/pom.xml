@@ -17,7 +17,7 @@
                 <artifactId>raml-client-generator-maven-plugin</artifactId>
                 <version>${raml.generator.version}</version>
                 <configuration>
-                    <basePackage>org.mule.designcenter</basePackage>
+                    <basePackage>org.mule.apidesigner</basePackage>
                 </configuration>
                 <executions>
                     <execution>
