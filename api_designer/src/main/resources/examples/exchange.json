@@ -1,0 +1,16 @@
+{
+  "name": "ApiUsingLibrary",
+  "apiVersion": "0.8.0",
+  "version": "1.0.3",
+  "tags": [],
+  "main": "apiusinglibrary.raml",
+  "assetId": "apiusinglibrary",
+  "groupId": "2f45ba3e-06fc-4bb5-91f8-2e0a3a6f540f",
+  "classifier": "raml",
+  "isVisual": false,
+  "metadata": {
+    "projectId": "5544ed10-a9b8-43f9-964c-029b069f6580",
+    "branchId": "master"
+  },
+  "backwardsCompatible": false
+}
