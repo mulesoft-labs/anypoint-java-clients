@@ -10,6 +10,7 @@
     <modules>
         <module>core_services</module>        
         <module>api_designer</module>
+        <module>exchange</module>
     </modules>
      <properties>
         <jersey.version>2.24</jersey.version>

@@ -1,0 +1,32 @@
+[
+  {
+    "id": "99691563-b5ce-448c-b450-82db6aab7037",
+    "organizationId": "f0c9b011-980e-4928-9430-e60e3a97c042",
+    "displayName": "Remus Lupin",
+    "dataType": "enum",
+    "tagKey": "remun",
+    "acceptedValues": [
+      "dogo",
+      "dosmangos"
+    ],
+    "assetTypeRestrictions": [
+      "connector"
+    ],
+    "createdDate": "2018-03-05T17:50:05.318Z",
+    "updatedDate": "2018-03-05T17:50:05.318Z"
+  },
+  {
+    "id": "59ad31bd-a3f4-4c86-b2f2-a9e619e55ce7",
+    "organizationId": "f0c9b011-980e-4928-9430-e60e3a97c042",
+    "displayName": "Remu Ñeracion",
+    "dataType": "enum",
+    "tagKey": "remunis",
+    "acceptedValues": null,
+    "assetTypeRestrictions": [
+      "connector",
+      "rest-api"
+    ],
+    "createdDate": "2018-03-12T13:53:32.197Z",
+    "updatedDate": "2018-03-12T13:53:32.197Z"
+  }
+]

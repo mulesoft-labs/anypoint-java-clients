@@ -1,0 +1,10 @@
+{
+  "id": "c9d1d230-9be3-4196-bbb9-27c532183e1b",
+  "organizationId": "f0c9b011-980e-4928-9430-e60e3a97c042",
+  "displayName": "Medical Discipline",
+  "tagKey": "nmedical-discipline",
+  "acceptedValues": ["cardiology", "nephrology"],
+  "assetTypeRestrictions": ["connector"],
+  "createdDate": "2018-03-02T15:00:30.820Z",
+  "updatedDate": "2018-03-02T15:00:30.820Z"
+}

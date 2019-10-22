@@ -1,0 +1,5 @@
+{
+  "displayName": "Medical Discipline",
+  "assetTypeRestrictions": ["connector", "rest-api"],
+  "acceptedValues": ["cardiology", "nephrology"]
+}
