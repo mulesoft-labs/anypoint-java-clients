@@ -9,3 +9,56 @@ This repo contains java clients for public Anypoint Platform APIs. This clients 
 * Exchange
 
 
+## Examples
+
+### Core Services example (login):
+```
+private String getCSToken(){
+    try {
+        final String username = "yourUsername";
+        final String password = "yourPassword";
+        //get the client
+        final CoreServicesAPIReferenceClient csClient = 
+                CoreServicesAPIReferenceClient.create();
+        //perform the call
+        final CoreServicesAPIReferenceResponse<LoginPOSTResponseBody> userData = 
+                csClient.login.post(new LoginPOSTBody(username, password));
+        return userData.getBody().getAccessToken();
+    } catch (CoreServicesAPIReferenceException e) {
+        throw new RuntimeException("Got a response error, see stack", e);
+    }
+}
+```
+
+### Exchange example (upload asset):
+```
+//use the token provided by Core Services
+private void uploadAsset(String token) {
+    try {
+        String orgId = "UUID-for-exchange";
+        String groupId = "com.yourcompany";
+        String artifactId = "some-id";
+        String version = "1.0.0";
+        String name = "aName";
+        File networkFile = new File("point to the asset");
+        ExchangexapiClient exchangexapiClient = new ExchangexapiClient();
+        AssetsPOSTBody assetsPOSTBody = 
+                new AssetsPOSTBody(orgId, groupId, artifactId, version, name, EXCHANGE_CUSTOM_CLASSIFIER, networkFile);
+        ExchangexapiResponse<Void> post = 
+                exchangexapiClient.assets.post(assetsPOSTBody, token);
+    } catch (ExchangexapiException e) {
+        String body = e.getReason();
+        try {
+            body += "\n" + IOUtils.toString((InputStream) e.getResponse().getEntity());
+        } catch (IOException ex) {
+            getLog().debug("Cant read the entity from the error response, failing silently", ex);
+        }
+        throw new RuntimeException(
+                String.format("Issue while uploading the asset (check your GAV, it might not be able to uploading it for the current username/password), message: %s",
+                        body), e);
+    }
+}
+```
+
+
+
