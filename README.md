@@ -6,5 +6,6 @@ This repo contains java clients for public Anypoint Platform APIs. This clients 
 
 * Api Designer
 * Core Services
+* Exchange
 
 
