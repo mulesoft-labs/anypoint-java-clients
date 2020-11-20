@@ -1,0 +1,45 @@
+{
+  "type": {
+    "name": "ping"
+  },
+  "grant_types": [
+    {
+      "name": "password",
+      "label": "Resource Owner Grant",
+      "depends": [],
+      "exclude": [],
+      "required": false
+    },
+    {
+      "name": "implicit",
+      "label": "Implicit Grant",
+      "depends": [],
+      "exclude": [],
+      "required": false
+    },
+    {
+      "name": "client_credentials",
+      "label": "Client Credentials Grant",
+      "depends": [],
+      "exclude": [],
+      "required": false
+    },
+    {
+      "name": "authorization_code",
+      "label": "Authorization Code Grant",
+      "depends": [],
+      "exclude": [],
+      "required": false
+    },
+    {
+      "name": "refresh_token",
+      "label": "Refresh Token",
+      "depends": [
+        "authorization_code",
+        "password"
+      ],
+      "exclude": [],
+      "required": false
+    }
+  ]
+}

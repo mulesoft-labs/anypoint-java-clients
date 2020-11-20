@@ -1,0 +1,65 @@
+#%RAML 1.0 ResourceType
+usage: Use this resourceType to represent an asset
+description: An asset
+post:
+  description: |
+    Uploads an asset.
+    Available fields for describing the asset are: "name", "description", "type", "dependencies", "keywords" and "files".
+    You can also add properties by prefixing them with “properties”, e.g: properties.apiVersion, properties.mainFile.
+  is: [assetsPostHeader]
+  body:
+    multipart/form-data:
+      properties:
+        name:
+          description: The visible name of the asset
+          type: string
+          required: false
+          example: Rate limiting SLA Policy
+        description:
+          description: The description of the asset being created
+          type: string
+          required: false
+          example: Specifies the maximum value for the number of messages processed per time period, and rejects any messages beyond the maximum
+        type:
+          description: The type of the asset to be created, if none has been specified it will be inferred by the file's classifier
+          type: string
+          required: false
+          example: rest-api
+        dependencies:
+          description: |
+            A string of comma-separated dependencies
+            The dependencies field must respect the following convention: dependencies=GROUP_ID:ASSET_ID:VERSION,GROUP_ID:ASSET_ID:VERSION
+          type: string
+          required: false
+          example: 1da12ec1-7614-43a3-bf24-ff754cab8ddf:american-flights:1.0.0,org.mule.examples:salesforce-fragment:2.1.0
+        keywords:
+          description: |
+            A string of comma-separated values that represents the values to be saved as asset's attributes.
+            Used to facilitate to find the asset by these keywords in the search
+          type: string
+          required: false
+          example: api,raml,auth,jwt,token
+        properties:
+          description: |
+            Used to identificate some property of the asset.
+            The field's name should have the following format: properties.propertyToAdd. Example: "properties.apiVersion"
+          type: string
+          required: false
+          example: v2
+        files:
+          description: |
+            Every file needed for the asset creation.
+            The field's name should have the following format: files.classifier.packaging or files.packaging
+          required: false
+  responses:
+    202:
+      description: Asset asynchronic publication has been started, the link provided in the body will have the necessary information to know its status
+      body:
+        application/json:
+          type: string
+          example: !include ../examples/v2/post-asset-created.json
+    201:
+      description: Asset successfully created, If the publication was triggered as synchronic (through the header x-sync-publication)
+      body:
+        application/json:
+          example: !include ../examples/v2/post-asset-accepted.json

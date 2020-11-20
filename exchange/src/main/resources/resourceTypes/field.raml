@@ -1,0 +1,25 @@
+#%RAML 1.0 ResourceType
+
+usage: Use this resourceType to represent an organization category
+description: Field
+patch:
+  displayName: Updates field config
+  description: |
+    Updates a custom field configuration
+    - Body should be application/json. This is not specified in the raml as it conflicts with Osprey.
+  is: [updateableByForce]
+  body:
+    "*/*":
+      example: !include ../examples/v2/patchCustomTagConfigurationBody.json
+  responses:
+    200:
+      body:
+        application/json:
+          type: !include ../schemas/field-configuration.json
+          example: !include ../examples/field-configuration.json
+
+delete:
+  description: Deletes a custom field configuration
+  is: [deleteableByForce]
+  responses:
+    204:

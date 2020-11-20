@@ -1,0 +1,32 @@
+{
+  "title": "Client Application",
+  "type": "object", 
+  "properties": {
+    "name": {
+      "type": "string", 
+      "title": "Name"
+    }, 
+    "description": {
+      "type": "string", 
+      "title": "Description"
+    }, 
+    "grantTypes": {
+      "type": "array",
+      "title": "Grant Types",
+      "items": {
+        "type": "string"
+      }
+    }, 
+    "redirectUri": {
+      "type": "array",
+      "title": "Redirect Uri",
+      "items": {
+        "type": "string"
+      }
+    },
+    "url": {
+      "type": "string",
+      "title": "URL"
+    }
+  }
+}

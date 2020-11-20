@@ -1,0 +1,11 @@
+#%RAML 1.0 ResourceType
+usage: Use this resourceType to get the Terms and Conditions of an API
+description: Terms and Conditions associated to an API
+
+get:
+  description: Gets Terms and Conditions associated to the API
+  responses:
+    200:
+      body:
+        application/json:
+          example: !include ../examples/v2/get-underlying-terms.json

@@ -1,22 +1,18 @@
 [
   {
     "value": "Twitter",
-    "key": "Apps",
-    "mutable": true
+    "key": "Apps"
   },
   {
     "value": "Finance",
-    "key": "Others",
-    "mutable": true
+    "key": "Others"
   },
   {
     "value": "Enterprise IT",
-    "key": "IT",
-    "mutable": true
+    "key": "IT"
   },
   {
     "value": "HTTP",
-    "key": "Tech",
-    "mutable": true
+    "key": "Tech"
   }
 ]

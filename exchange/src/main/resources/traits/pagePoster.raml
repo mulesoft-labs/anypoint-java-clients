@@ -1,0 +1,16 @@
+
+description: |
+    Creates an empty page for a draft version. Remember that:
+    - A page cannot be moved/created to/in a path that already contains another page with the same name.
+headers:
+  x-move-source:
+    type: string
+    description: |
+      This header is used when you want to rename or move an existing page.
+      `x-move-source` specifies the path of the page or folder that wants to be moved, the source.
+      The request body property `path` will be the destination.
+    example: "/examples/"
+    required: false
+body:
+  type: !include ../schemas/v2/pagesCreate.json
+  example: !include ../examples/pageCreate.json

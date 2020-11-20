@@ -1,0 +1,15 @@
+[{
+  "organizationId": "9efb6531-9fa2-4a45-ac42-bd157773ce95",
+  "groupId": "9efb6531-9fa2-4a45-ac42-bd157773aa00",
+  "assetId": "endpoints-review",
+  "version": "1.0.0",
+  "minorVersion": "1.0",
+  "description": "description of the asset",
+  "versionGroup": "1.0.0",
+  "isPublic": false,
+  "name": "Endpoints Review",
+  "type": "custom",
+  "status": "published",
+  "createdById": "102d0953-9cca-475e-1919-768cd7aa7695",
+  "createdAt": "2020-09-07T17:48:33.995Z"
+ }]

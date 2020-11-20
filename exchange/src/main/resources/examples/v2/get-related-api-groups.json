@@ -1,0 +1,18 @@
+[
+  {
+    "id": 266126,
+    "organizationId": "930f973d-e5a7-4e48-acfa-3b30de06f98d",
+    "groupId": "930f973d-e5a7-4e48-acfa-3b30de06f98d",
+    "assetId": "social-media",
+    "version": "1.0.0",
+    "isPublic": true
+  },
+  {
+    "id": 266127,
+    "organizationId": "930f973d-e5a7-4e48-acfa-3b30de06f98d",
+    "groupId": "930f973d-e5a7-4e48-acfa-3b30de06f98d",
+    "assetId": "social-media",
+    "version": "2.0.0",
+    "isPublic": false
+  }
+]

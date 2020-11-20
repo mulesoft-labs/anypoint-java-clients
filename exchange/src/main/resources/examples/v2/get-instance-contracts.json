@@ -1,0 +1,195 @@
+[
+  {
+    "audit": {
+      "created": {
+        "date": "2020-05-12T18:47:09.746Z"
+      },
+      "updated": {
+        "date": "2020-07-27T14:35:16.685Z"
+      }
+    },
+    "masterOrganizationId": "f68e6165-99ce-4499-97e2-2d1d45498c73",
+    "organizationId": "f68e6165-99ce-4499-97e2-2d1d45498c73",
+    "id": 298286,
+    "status": "APPROVED",
+    "approvedDate": "2020-07-27T14:35:16.685Z",
+    "rejectedDate": null,
+    "revokedDate": null,
+    "applicationId": 213125,
+    "application": {
+      "audit": {
+        "created": {
+          "date": "2020-02-11T14:09:40.515Z"
+        },
+        "updated": {
+          "date": "2020-07-28T20:54:51.546Z"
+        }
+      },
+      "id": 213125,
+      "name": "Application",
+      "description": null,
+      "clientProvider": {},
+      "coreServicesId": "150bc7635a014fd38fc6deddee942561",
+      "url": null
+    },
+    "tierId": 138725,
+    "requestedTierId": null,
+    "apiVersionId": 699301,
+    "apiVersion": {
+      "audit": {
+        "created": {},
+        "updated": {}
+      },
+      "organizationId": "f68e6165-99ce-4499-97e2-2d1d45498c73",
+      "id": 699301,
+      "apiId": 309557,
+      "masterOrganizationId": "f68e6165-99ce-4499-97e2-2d1d45498c73",
+      "groupId": "f68e6165-99ce-4499-97e2-2d1d45498c73",
+      "assetId": "some-api",
+      "assetVersion": "1.0.0"
+    },
+    "partyId": null,
+    "partyName": null,
+    "condition": "APPLIED",
+    "tier": {
+      "id": 138725,
+      "name": "Free",
+      "description": null,
+      "limits": [
+        {
+          "timePeriodInMilliseconds": 60000,
+          "maximumRequests": 30
+        },
+        {
+          "timePeriodInMilliseconds": 86400000,
+          "maximumRequests": 1000
+        }
+      ],
+      "status": "ACTIVE",
+      "autoApprove": true
+    },
+    "possibleTiers": [
+      {
+        "masterOrganizationId": "f68e6165-99ce-4499-97e2-2d1d45498c73",
+        "organizationId": "f68e6165-99ce-4499-97e2-2d1d45498c73",
+        "id": 138726,
+        "apiVersionId": 699301,
+        "name": "Improved",
+        "description": null,
+        "limits": [
+          {
+            "timePeriodInMilliseconds": 60000,
+            "maximumRequests": 30
+          }
+        ],
+        "status": "ACTIVE",
+        "autoApprove": true,
+        "compareToActual": "LESS RESTRICTIVE"
+      },
+      {
+        "masterOrganizationId": "f68e6165-99ce-4499-97e2-2d1d45498c73",
+        "organizationId": "f68e6165-99ce-4499-97e2-2d1d45498c73",
+        "id": 138727,
+        "apiVersionId": 699301,
+        "name": "Premium",
+        "description": null,
+        "limits": [
+          {
+            "timePeriodInMilliseconds": 60000,
+            "maximumRequests": 60
+          }
+        ],
+        "status": "ACTIVE",
+        "autoApprove": false,
+        "compareToActual": "LESS RESTRICTIVE"
+      }
+    ],
+    "versionGroup": "v1",
+    "assetName": "Some API"
+  },
+  {
+    "audit": {
+      "created": {
+        "date": "2020-06-26T13:50:48.981Z"
+      },
+      "updated": {}
+    },
+    "masterOrganizationId": "f68e6165-99ce-4499-97e2-2d1d45498c73",
+    "organizationId": "f68e6165-99ce-4499-97e2-2d1d45498c73",
+    "id": 336926,
+    "status": "APPROVED",
+    "approvedDate": "2020-06-26T13:50:48.995Z",
+    "rejectedDate": null,
+    "revokedDate": null,
+    "applicationId": 213125,
+    "application": {
+      "audit": {
+        "created": {
+          "date": "2020-02-11T14:09:40.515Z"
+        },
+        "updated": {
+          "date": "2020-07-28T20:54:51.546Z"
+        }
+      },
+      "id": 213125,
+      "name": "Third application",
+      "description": null,
+      "clientProvider": {},
+      "coreServicesId": "150bc7635a014fd38fc6deddee942561",
+      "url": null
+    },
+    "tierId": 138733,
+    "requestedTierId": null,
+    "apiVersionId": null,
+    "partyId": null,
+    "partyName": null,
+    "condition": "NOT_APPLIED",
+    "apiGroupInstance": {
+      "audit": {
+        "created": {},
+        "updated": {}
+      },
+      "id": 3840,
+      "organizationId": "f68e6165-99ce-4499-97e2-2d1d45498c73",
+      "environmentId": "4b131683-a8d4-459d-8ada-deb6578dfaaa",
+      "assetId": "api-group",
+      "assetVersion": "1.0.0",
+      "productVersion": "v1",
+      "name": "undefined:3840",
+      "groupId": "f68e6165-99ce-4499-97e2-2d1d45498c73",
+      "apiGroupVersionId": 3689
+    },
+    "apiGroupInstanceId": 3840,
+    "tier": {
+      "id": 138733,
+      "name": "Group Free",
+      "description": null,
+      "status": "ACTIVE",
+      "autoApprove": true,
+      "limitsByApi": [
+        {
+          "apiId": 699301,
+          "groupId": "f68e6165-99ce-4499-97e2-2d1d45498c73",
+          "assetId": "some-api",
+          "assetVersion": "1.0.0",
+          "productVersion": "v1",
+          "organizationId": "f68e6165-99ce-4499-97e2-2d1d45498c73",
+          "limits": [
+            {
+              "timePeriodInMilliseconds": 60000,
+              "maximumRequests": 20
+            },
+            {
+              "timePeriodInMilliseconds": 86400000,
+              "maximumRequests": 500
+            }
+          ]
+        }
+      ],
+      "apiGroupInstanceId": 3840
+    },
+    "possibleTiers": [],
+    "versionGroup": "v1",
+    "assetName": "API Group"
+  }
+]

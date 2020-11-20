@@ -1,0 +1,17 @@
+#%RAML 1.0 ResourceType
+
+type: page
+usage: When portal edition is needed
+put:
+  description: Updates a page for a <<type>> portal
+  body:
+    text/markdown:
+      example: !include ../examples/page.md
+  responses:
+    204:
+      description: Page updated
+delete:
+  description: Deletes a page of a <<type>> portal
+  responses:
+    204:
+      description: Page deleted

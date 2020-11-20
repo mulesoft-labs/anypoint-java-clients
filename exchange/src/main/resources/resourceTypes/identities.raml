@@ -1,0 +1,18 @@
+#%RAML 1.0 ResourceType
+usage: Use this resourceType to represent a collection of identities
+description: A collection of identities
+is: [pagination]
+get:
+  description: Gets identities for an organization
+  queryParameters:
+    search:
+      displayName: Search
+      type: string
+      description: Filters results that partially match the input with any identity property
+      example: "my name"
+  responses:
+    200:
+      body:
+        application/json:
+          type: IdentityTypes.Identity[]
+          example: !include ../examples/v2/get-identities.json

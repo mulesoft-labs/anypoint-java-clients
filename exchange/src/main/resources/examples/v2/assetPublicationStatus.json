@@ -1,0 +1,16 @@
+{
+  "status": "running",
+  "assetType": "rest-api",
+  "steps": [
+      {
+          "description": "Files processing",
+          "status": "completed",
+          "errors":[]
+      },
+      {
+          "description": "Inferring type",
+          "status": "completed",
+          "errors":[]
+      }
+  ]
+}

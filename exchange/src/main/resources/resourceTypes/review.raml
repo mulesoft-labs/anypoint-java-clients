@@ -1,0 +1,20 @@
+#%RAML 1.0 ResourceType
+
+usage: Use this resourceType to represent any single review
+description: A single asset review
+patch:
+    description: Edits an asset review
+    body:
+        application/json:
+            type:  !include ../schemas/patch-review-body.json
+            example: !include ../examples/patch-review-body.json
+    responses:
+        200:
+            body:
+                application/json:
+                    example: !include ../examples/review.json
+delete:
+    description: Deletes an specific asset review.
+    responses:
+        204:
+            description: Review deleted

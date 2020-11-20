@@ -1,6 +1,5 @@
 {
   "displayName": "Medical Discipline",
   "tagKey": "medical-discipline",
-  "assetTypeRestrictions": ["connector", "rest-api"],
-  "acceptedValues": ["cardiology", "nephrology"]
+  "assetTypeRestrictions": ["connector", "rest-api"]
 }

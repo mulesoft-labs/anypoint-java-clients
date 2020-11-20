@@ -1,0 +1,9 @@
+#%RAML 0.8
+
+responses:
+  <<statusCode>>:
+    headers:
+      X-Pages-Order-Revision:
+        type: string
+        description: |
+          Hash which represents the most recent pages order revision. This hash should be sent back to the server when attempting to store a new pages order.

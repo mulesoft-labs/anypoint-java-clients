@@ -1,0 +1,37 @@
+[
+  {
+    "id": 22,
+    "name": "Social Media",
+    "assetVersion": "1.0.0",
+    "isPublic": true,
+    "deprecated": true,
+    "instances": [
+      {
+        "groupId": "ba3dd49c-9bd3-43a3-bb54-226715e9c57a",
+        "assetId": "facebook-api",
+        "assetVersion": "1.0.0",
+        "productApiVersion": "v1",
+        "apiVersionId": 1,
+        "instanceName": "Instance 1",
+        "environmentName": "Prod",
+        "environmentId": "f81fb343-3649-4990-832e-27de26ee649e",
+        "providerId": "ed687558-f86e-465f-bf88-45c989f0c2ad",
+        "isPublic": true,
+        "endpointUri": ""
+      },
+      {
+        "groupId": "ba3dd49c-9bd3-43a3-bb54-226715e9c57a",
+        "assetId": "instagram-api",
+        "assetVersion": "1.0.1",
+        "productApiVersion": "v1",
+        "apiVersionId": 2,
+        "instanceName": "Instance 2",
+        "environmentName": "Prod",
+        "environmentId": "5d15a77c-0d35-400e-9a90-61d0beb09409",
+        "providerId": "ed687558-f86e-465f-bf88-45c989f0c2ad",
+        "isPublic": true,
+        "endpointUri": ""
+      }
+    ]
+  }
+]

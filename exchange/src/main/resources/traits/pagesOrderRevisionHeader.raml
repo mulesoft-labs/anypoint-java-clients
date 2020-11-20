@@ -1,0 +1,9 @@
+#%RAML 0.8
+
+headers:
+  X-Pages-Order-Revision:
+    type: string
+    minLength: 1
+    required: false
+    description: |
+      Hash that must be sent to ensure the client is in sync with the most recent pages order stored by the server.

@@ -1,0 +1,16 @@
+[
+  {
+    "apiName": "8becfaac-7f03-4272-a5cd-fd83177af58d",
+    "environment": "production",
+    "instanceName": "v1:7",
+    "apiVersion": "v1",
+    "url":"localhost:8088/api/v1"
+  },
+  {
+    "apiName": "8becfaac-7f03-4272-a5cd-fd83177af58d",
+    "environment": "production",
+    "instanceName": "v1:8",
+    "apiVersion": "v1",
+    "url":"localhost:8088/api/v1"
+  }
+]

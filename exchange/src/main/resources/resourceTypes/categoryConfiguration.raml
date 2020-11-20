@@ -1,0 +1,26 @@
+#%RAML 1.0 ResourceType
+
+usage: Use this resourceType to represent category configurations
+description: Category configurations
+get:
+  description: Gets category configurations available for the organization
+  responses:
+    200:
+      body:
+        application/json:
+          example: !include ../examples/category-configurations.json
+
+post:
+  displayName: Creates new configuration
+  description: |
+    Adds a category configuration to the organization
+    - Body should be application/json. This is not specified in the raml as it conflicts with Osprey.
+  body:
+    "*/*":
+      example: !include ../examples/v2/categoryTagConfigurationBody.json
+  responses:
+    201:
+      body:
+        application/json:
+          type: !include ../schemas/category-configuration.json
+          example: !include ../examples/category-configuration.json

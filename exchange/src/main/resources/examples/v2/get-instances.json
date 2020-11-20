@@ -1,0 +1,32 @@
+[
+  {
+    "id": "3defc266-c001-431c-88d2-7cc83928efca",
+    "groupId": "com.mulesoft",
+    "assetId": "salesforce",
+    "productApiVersion": "v1",
+    "environmentId": "1234",
+    "endpointUri": "https://www.yes.com/dog",
+    "name": "Instance name",
+    "isPublic": true,
+    "type": "external",
+    "createdBy": "e1dd88f8-dG6e-4443-93a1-bd074603e118",
+    "createdDate": "2017-09-22T19:26:00.815Z",
+    "updatedDate": "2017-09-22T19:26:00.815Z",
+    "providerId": "aaf409a9-08c3-4c32-bb66-d6f2e4dba153"
+  },
+  {
+    "id": "96ccd7af-c88b-40b9-af89-bad8c039a353",
+    "groupId": "com.mulesoft",
+    "assetId": "salesforce",
+    "productApiVersion": "v2",
+    "environmentId": "1234568",
+    "endpointUri": "https://www.no.com/cat",
+    "name": "Another instance name",
+    "isPublic": false,
+    "type": "external",
+    "createdBy": "e1dd88f8-dG6e-4443-93a1-bd074603e118",
+    "createdDate": "2016-12-27T20:47:46.470Z",
+    "updatedDate": "2016-12-27T20:47:46.470Z",
+    "providerId": "aaf409a9-08c3-4c32-bb66-d6f2e4dba153"
+  }
+]

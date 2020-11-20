@@ -1,0 +1,36 @@
+[
+  {
+    "apiVersionId": 307123,
+    "assetId": "oas-api-indexed",
+    "groupId": "f68e6165-99ce-4499-97e2-2d1d45498c73",
+    "assetVersion": "1.0.0",
+    "productVersion": "v1",
+    "organizationId": "f68e6165-99ce-4499-97e2-2d1d45498c73",
+    "environmentId": "90b78656-99e5-4754-a2ec-09f2eefc7d02",
+    "isPublic": true,
+    "tier": {
+      "audit": {
+        "created": {
+          "date": "2020-09-17T13:10:55.006Z"
+        },
+        "updated": {}
+      },
+      "masterOrganizationId": "f68e6165-99ce-4499-97e2-2d1d45498c73",
+      "organizationId": "f68e6165-99ce-4499-97e2-2d1d45498c73",
+      "id": 173842,
+      "groupInstanceId": 1901,
+      "name": "Free",
+      "description": null,
+      "status": "ACTIVE",
+      "autoApprove": true,
+      "applicationCount": 0,
+      "limits": [
+        {
+          "visible": true,
+          "maximumRequests": 1,
+          "timePeriodInMilliseconds": 1000
+        }
+      ]
+    }
+  }
+]

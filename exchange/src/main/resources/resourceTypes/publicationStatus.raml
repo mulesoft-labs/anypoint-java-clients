@@ -1,0 +1,11 @@
+#%RAML 1.0 ResourceType
+description: Asset publication status
+usage: Use this resourceType to get the asset publication status
+
+get:
+  description: Gets asset publication status
+  responses:
+    200:
+      body:
+        type: !include ../types/assetPublicationStatus.raml
+        example: !include ../examples/v2/assetPublicationStatus.json

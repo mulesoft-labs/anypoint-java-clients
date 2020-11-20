@@ -1,0 +1,10 @@
+#%RAML 1.0 ResourceType
+usage: Use this resourceType to represent an asset
+description: An asset
+get:
+  description: Gets an asset
+  responses:
+    200:
+      body:
+        application/json:
+          example: !include ../examples/v2/simpleAsset.json

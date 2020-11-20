@@ -1,0 +1,12 @@
+#%RAML 1.0 ResourceType
+
+usage: Use this resourceType to represent the rating of an asset
+description: Rating of asset
+get:
+    description: Gets the asset rating
+    responses:
+        200:
+            body:
+                application/json:
+                    type: !include ../schemas/rating.json
+                    example: !include ../examples/rating.json

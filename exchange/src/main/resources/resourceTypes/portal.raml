@@ -1,0 +1,13 @@
+#%RAML 1.0 ResourceType
+
+usage: Use this resourceType to represent an asset portal documentation
+description: An Asset portal
+get:
+  description: Gets an asset portal
+  is: [pagesOrderRevisionResponseHeader: { statusCode: 200 }]
+  responses:
+    200:
+      body:
+        application/json:
+          type: !include ../schemas/portal.json
+          example: !include ../examples/portal.json

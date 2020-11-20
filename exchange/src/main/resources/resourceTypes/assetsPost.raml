@@ -1,0 +1,90 @@
+#%RAML 1.0 ResourceType
+usage: Use this resourceType to represent a collection of assets
+description: A collection of assets
+post:
+  description: Uploads an asset
+  headers:
+    Content-Type:
+      description: Use "multipart/form-data"
+      type: string
+      example: multipart/form-data
+    x-allowed-api-spec-formats:
+      description: Specify API SPECS formats that assets are allowed to use
+      type: string
+      required: false
+  body:
+    multipart/form-data:
+      properties:
+        organizationId:
+          description: The id of the organization the asset will belong to
+          type: string
+          required: true
+          example: 777cd8d1-2cda-4da0-a13c-fb5b38e6c3c2
+        groupId:
+          description: The id of the business group the asset will belong to
+          type: string
+          required: true
+          example: 777cd8d1-2cda-4da0-a13c-fb5b38e6c3c2
+        assetId:
+          description: The id of the asset
+          type: string
+          required: true
+          example: mule-policies-api
+        version:
+          description: The version of the asset being created (must follow Semver syntax)
+          type: string
+          required: true
+          example: 1.4.0
+        name:
+          description: The visible name of the asset
+          type: string
+          required: true
+          example: Mule Policies API
+        classifier:
+          description: The type of the asset to be created
+          type: string
+          enum:
+            - raml-fragment
+            - raml
+            - oas
+            - wsdl
+            - http
+            - custom
+          required: true
+        assetLink:
+          description: The link of the asset. Required for "wsdl" or "http" assets
+          required: false
+          example: https://some.implementation.com
+        apiVersion:
+          description: The product version of API assets. Required for "raml", "oas", "wsdl" and "http" assets
+          required: false
+          example: v1
+        main:
+          description: The main file of the asset. Required for "raml", "raml-fragment", "oas" and "wsdl".
+          required: false
+          example: index.yaml
+        dependencies:
+          description: |
+            Required for "api-group" classifier only, They are APIs included in it, as a JSON array of objects.
+            Because the field must be of String type, the stringified value of the JSON array must be passed as parameter.
+          type: string
+          required: false
+        originalFormatVersion:
+          description: The version of the format of the api specification. ie ‘2.0’  for OAS 2.0
+          type: string
+          required: false
+        metadata:
+          description: A design center object describing asset projectId, branchId and commitId. Because the field must be of String type, the stringified value of the JSON object must be passed as parameter.
+          type: string
+          required: false
+        tags:
+          description: An array of strings to be saved as asset's tags. Because the field must be of String type, the stringified value of the JSON array must be passed as parameter.
+          type: string
+          required: false
+        asset:
+          description: The asset file. Required for "raml", "raml-fragment", "oas" and "wsdl". Maximum size of 5 MB. This field must be the last field of the multipart.
+          type: file
+          required: false
+  responses:
+    201:
+      description: Asset created

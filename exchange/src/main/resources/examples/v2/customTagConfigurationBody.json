@@ -1,0 +1,7 @@
+{
+  "displayName": "Medical Discipline",
+  "tagKey": "medical-discipline",
+  "dataType": "enum",
+  "assetTypeRestrictions": ["connector", "rest-api"],
+  "acceptedValues": ["cardiology", "nephrology"]
+}

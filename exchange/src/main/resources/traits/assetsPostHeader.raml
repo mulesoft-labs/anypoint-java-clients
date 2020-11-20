@@ -1,0 +1,16 @@
+#%RAML 1.0 Trait
+headers:
+    Content-Type:
+      description: Use "multipart/form-data"
+      type: string
+      example: multipart/form-data
+      required: true
+    x-sync-publication:
+      description: Indicates if the publicacation should be synchronic or not
+      type: boolean
+      default: false
+    x-allowed-api-spec-formats:
+      description: Specify API specs formats that assets are allowed to use
+      type: string[]
+      required: false
+      example: ["application/raml", "application/vnd.oai.openapi;version=2.0"]

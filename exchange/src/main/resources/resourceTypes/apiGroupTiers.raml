@@ -1,0 +1,11 @@
+#%RAML 1.0 ResourceType
+
+usage: Use this resourceType to represent a list of API group tiers
+description: A list of tiers
+get:
+  description: Gets a list of tiers
+  responses:
+    200:
+      body:
+        application/json:
+          example: !include ../examples/v2/get-api-group-tiers.json

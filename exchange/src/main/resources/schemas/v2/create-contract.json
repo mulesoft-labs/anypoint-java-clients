@@ -1,0 +1,83 @@
+  {
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "properties": {
+    "organizationId": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$"
+    },
+    "groupId": {
+      "type": "string",
+      "maxLength": 256
+    },
+    "assetId": {
+      "type": "string",
+      "maxLength": 256
+    },
+    "version": {
+      "type": "string",
+      "maxLength": 256
+    },
+    "versionGroup": {
+      "type": "string",
+      "maxLength": 256
+    },
+    "environmentId": {
+      "type": "string",
+      "maxLength": 256
+    },
+    "instanceType": {
+      "type": "string",
+      "enum": ["api", "api-group"]
+    },
+    "acceptedTerms": {
+      "type": "boolean"
+    },
+    "apiGroupInstanceId": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "apiId": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "requestedTierId": {
+      "type": "integer",
+      "minimum": 1
+    }
+  },
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "required": [
+        "acceptedTerms",
+        "instanceType",
+        "organizationId",
+        "groupId",
+        "assetId",
+        "version",
+        "versionGroup"
+      ]
+    },
+    {
+      "oneOf": [
+        {
+          "properties": {
+            "instanceType": {
+              "enum": ["api-group"]
+            }
+          },
+          "required": ["apiGroupInstanceId"]
+        },
+        {
+          "properties": {
+            "instanceType": {
+              "enum": ["api"]
+            }
+          },
+          "required": ["apiId"]
+        }
+      ]
+    }
+  ]
+}

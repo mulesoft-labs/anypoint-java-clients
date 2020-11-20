@@ -1,0 +1,72 @@
+{
+  "groupId": "org.mule.modules",
+  "assetId": "asset-with-files",
+  "version": "2.0.0",
+  "minorVersion": "2.0",
+  "organizationId": "org.mule.modules",
+  "description": "My asset description",
+  "versionGroup": "v2",
+  "isPublic": false,
+  "name": "Asset with files",
+  "type": "rest-api",
+  "status": "published",
+  "createdAt": "2020-09-08T16:44:04.238Z",
+  "labels": ["asset-tag", "another-tag"],
+  "categories": [
+    { "value": ["value"], "displayName": "Category", "key": "Category" }
+  ],
+  "customFields": [
+    { "value": ["john@doe.com"], "displayName": "Email", "key": "Email" }
+  ],
+  "files": [
+    {
+      "classifier": "raml",
+      "packaging": "zip",
+      "downloadURL": "https://anypoint.mulesoft.com/exchange/files/api/v1/organizations/org.mule.modules/assets/org.mule.modules/asset-with-files/2.0.0/raml/zip",
+      "externalLink": "http://localhost/org.mule.modules/asset-with-files-2.0.0-raml.zip",
+      "md5": "d2dd14a6cbbb15869105d9755d2f8345",
+      "sha1": "d2dd14a6cbbb15869105d9755d2f8345",
+      "createdDate": "2020-09-08T16:44:03.861Z",
+      "mainFile": "instagram-secure.raml",
+      "isGenerated": false
+    },
+    {
+      "classifier": "fat-raml",
+      "packaging": "zip",
+      "downloadURL": "https://anypoint.mulesoft.com/exchange/files/api/v1/organizations/org.mule.modules/assets/org.mule.modules/asset-with-files/2.0.0/fat-raml/zip",
+      "externalLink": "http://localhost/org.mule.modules/asset-with-files-2.0.0-raml.zip",
+      "md5": "d2dd14a6cbbb15869105d9755d2f8345",
+      "sha1": "d2dd14a6cbbb15869105d9755d2f8345",
+      "createdDate": "2020-09-08T16:44:03.887Z",
+      "mainFile": "instagram-secure.raml",
+      "isGenerated": false
+    },
+    {
+      "classifier": "oas",
+      "packaging": "zip",
+      "downloadURL": "https://anypoint.mulesoft.com/exchange/files/api/v1/organizations/org.mule.modules/assets/org.mule.modules/asset-with-files/2.0.0/oas/zip",
+      "externalLink": "http://localhost/org.mule.modules/asset-with-files-2.0.0-oas.zip",
+      "md5": "d2dd14a6cbbb15869105d9755d2f8345",
+      "sha1": "d2dd14a6cbbb15869105d9755d2f8345",
+      "createdDate": "2020-09-08T16:44:04.117Z",
+      "mainFile": "api.json",
+      "isGenerated": true
+    }
+  ],
+  "dependencies": [
+    {
+        "organizationId": "68ef9520-24e9-4cf2-b2f5-620025690000",
+        "groupId": "68ef9520-24e9-4cf2-b2f5-620025690913",
+        "assetId": "training-american-flight-data-type",
+        "version": "1.0.1"
+    },
+    {
+        "organizationId": "68ef9520-24e9-4cf2-b2f5-620025690000",
+        "groupId": "org.mule.examples",
+        "assetId": "devrel-quick_start_product_example",
+        "version": "1.0.1"
+    }
+],
+  "createdById": "102d0953-9cca-475e-8767-768cd7aa7695",
+  "versions": ["1.0.1", "1.0.0"]
+}

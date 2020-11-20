@@ -1,0 +1,18 @@
+[
+  {
+      "identityType": "user",
+      "username": "username",
+      "firstName": "Scott",
+      "lastName": "Lawson",
+      "email": "email@gmail.com",
+      "id": "3db3585a-db33-4fe6-b8e7-b91ac953e482",
+      "role": "admin",
+      "roleId": "03bf5aff-a0e2-4e1a-8377-b7e4f67750df",
+      "createdAt": "2020-08-10T20:02:11.955239",
+      "organization": {
+          "id": "d4e2bceb-baae-484c-92f3-3cc272256c7f",
+          "name": "Mulesoft Inc",
+          "domain": "mulesoft-inc"
+      }
+  }
+]

@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Page Created",
+  "type" : "object",
+  "required": [ 
+    "pagePath"
+  ],
+  "properties": {
+    "pagePath": {
+      "title": "Page Path",
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+#%RAML 1.0 ResourceType
+
+usage: Use this resourceType to represent a saved search query
+description: A saved search query
+patch:
+    description: Edits a saved search query
+    body:
+        application/json:
+            type: !include ../schemas/update-search-query.json
+            example: !include ../examples/search-query.json
+    responses:
+        201:
+            body:
+                application/json:
+                    example: !include ../examples/search-query.json
+delete:
+    description: Deletes the query
+    responses:
+        204:
+            description: Saved search query deleted

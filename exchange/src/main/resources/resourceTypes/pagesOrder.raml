@@ -1,0 +1,16 @@
+#%RAML 1.0 ResourceType
+
+usage: Use this resourceType to represent the portal pages order
+description: Pages order of portal
+put:
+  description: Saves the pages order for portal
+  body:
+    application/json:
+      type: !include ../schemas/pagesOrder.json
+      example: !include ../examples/pagesOrder.json
+  is: [pagesOrderRevisionHeader, pagesOrderRevisionResponseHeader: { statusCode: 204 }]
+  responses:
+    204:
+      description: Pages order stored successfully
+    409:
+      description: Pages order out of syncs

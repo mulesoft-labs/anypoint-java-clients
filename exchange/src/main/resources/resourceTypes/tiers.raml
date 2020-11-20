@@ -1,0 +1,12 @@
+#%RAML 1.0 ResourceType
+
+usage: Use this resourceType to represent tiers of an API instance
+description: Tiers
+get:
+    description: Gets a list of tiers
+    responses:
+        200:
+            body:
+                application/json:
+                    type: !include ../schemas/tiers.json
+                    example: !include ../examples/tiers.json

@@ -1,22 +1,56 @@
 {
-  "title": "Searcj query",
-  "type": "array", 
+  "title": "Search queries",
+  "type": "array",
   "items": {
-    "type": "object", 
+    "type": "object",
     "properties": {
       "name": {
         "type": "string",
         "title": "Name"
-      }, 
+      },
       "types": {
-        "type": "array", 
+        "type": "array",
+        "title": "Types",
         "items": {
           "type": "string"
         }
-      }, 
+      },
       "search": {
         "type": "string",
         "title": "Search"
+      },
+      "includeDeprecated": {
+        "type": "boolean",
+        "title": "Include deprecated"
+      },
+      "updatedAt": {
+        "type": "string",
+        "title": "Updated at"
+      },
+      "categories": {
+        "type": "array",
+        "title": "Categories",
+        "items": {
+          "type": "string"
+        }
+      },
+      "tags": {
+        "type": "array",
+        "title": "Tags",
+        "items": {
+          "type": "string"
+        }
+      },
+      "sort": {
+        "type": "string",
+        "title": "Sorting"
+      },
+      "organizationIds": {
+        "type": "array",
+        "title": "Organizations",
+        "items": {
+          "type": "string"
+        }
       }
     }
   }

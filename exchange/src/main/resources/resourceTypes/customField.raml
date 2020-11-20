@@ -1,0 +1,19 @@
+#%RAML 1.0 ResourceType
+
+usage: Use this resourceType to represent a custom field
+description: Custom Field
+put:
+  displayName: Creates a custom field
+  description: |
+    Updates or creates a custom field.
+    - Should receive application/json. This is not specified in the raml as it conflicts with Osprey.
+  responses:
+    200:
+  body:
+    "*/*":
+      type: !include ../schemas/v2/put-fields.json
+      example: !include ../examples/v2/put-fields.json
+delete:
+  description: Deletes a custom field
+  responses:
+    204:

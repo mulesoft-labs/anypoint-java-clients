@@ -1,0 +1,15 @@
+#%RAML 1.0 ResourceType
+
+usage: Use this resourceType to represent any single page
+description: A single asset page
+get:
+  description: Gets a particular page
+  responses:
+    200:
+      body:
+        text/html:
+          example: !include ../examples/page.html
+        text/markdown:
+          example: !include ../examples/page.md
+        application/json:
+          example: !include ../examples/page.json

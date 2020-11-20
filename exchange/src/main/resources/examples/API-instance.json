@@ -4,6 +4,7 @@
   "assetId": "salesforce",
   "productApiVersion": "v1",
   "environmentId": "1234",
+  "providerId": "ed687558-f86e-465f-bf88-45c989f0c2ad",
   "name": "Instance name",
   "endpointUri": "https://www.yes.com/dog",
   "createdBy": "e1dd88f8-dG6e-4443-93a1-bd074603e118",

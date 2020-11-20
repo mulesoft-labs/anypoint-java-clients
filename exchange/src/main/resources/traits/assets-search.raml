@@ -1,0 +1,36 @@
+queryParameters:
+  search?:
+    displayName: Search
+    type: string
+    description: Filter results that partially match the input with the asset name
+    example: "My example"
+    maxLength: 256
+  types?:
+    displayName: Types
+    type: string[] | string
+    description: Filter results that matches the input with the asset type
+  domain?:
+    displayName: Domain
+    type: string
+    description: Filter results by organization using its domain
+    example: sunday
+  organizationId?:
+    displayName: Organization Id
+    type: string[] | string
+    description: Filter results by organizations. For more than one organization, & organizationId=1& organizationId=2, etc...
+    example: b8886ae1-ba56-40e9-9d6d-92fe4d12758a
+  masterOrganizationId?:
+    displayName: Master Organization Id
+    type: string
+    description: Filter results by master organization id.
+    example: b8886ae1-ba56-40e9-9d6d-92fe4d12758a
+  minMuleVersion?:
+    displayName: Minimum Mule version
+    example: 3.x
+    description: Filters results by min mule version, allowing partial versions. For example '3.x' will filter in the range [3.0, 4.0)
+    type: string
+  sharedWithMe?:
+    displayName: Shared with me
+    example: true
+    description: Retrieve only the assets that has been shared with you
+    type: boolean

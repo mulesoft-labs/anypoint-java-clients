@@ -1,0 +1,26 @@
+{
+  "id": 384818,
+  "status": "PENDING",
+  "applicationId": 276068,
+  "clientId": "13d5201f05344a4193e1fe4b14e8cb4d",
+  "clientSecret": "285116794aE54Fa5C23BaE03D673EB09",
+  "requestedTier": {
+    "id": 173843,
+    "groupInstanceId": 1901,
+    "name": "Better free",
+    "description": null,
+    "status": "ACTIVE",
+    "autoApprove": false,
+    "limitsByApi": [
+      {
+        "apiId": 307123,
+        "limits": [
+          {
+            "timePeriodInMilliseconds": 1000,
+            "maximumRequests": 2
+          }
+        ]
+      }
+    ]
+  }
+}

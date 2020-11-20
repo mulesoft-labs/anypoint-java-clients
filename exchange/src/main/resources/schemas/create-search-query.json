@@ -21,10 +21,62 @@
       "type": "string",
       "minLength": 0,
       "maxLength": 1024
+    },
+    "includeDeprecated": {
+      "type": "boolean",
+      "title": "Include deprecated"
+    },
+    "updatedAt": {
+      "type": "string",
+      "title": "Updated at",
+      "minLength": 0,
+      "maxLength": 1024
+    },
+    "categories": {
+      "type": "array",
+      "title": "Categories",
+      "items": {
+        "type": "string",
+        "minLength": 0,
+        "maxLength": 256
+      }
+    },
+    "tags": {
+      "type": "array",
+      "title": "Tags",
+      "items": {
+        "type": "string",
+        "minLength": 0,
+        "maxLength": 256
+      }
+    },
+    "sort": {
+      "type": "string",
+      "title": "Sorting",
+      "minLength": 0,
+      "maxLength": 16
+    },
+    "organizationIds": {
+      "type": "array",
+      "title": "Organizations",
+      "items": {
+        "type": "string",
+        "minLength": 0,
+        "maxLength": 64
+      }
     }
   },
   "required": [
-    "name",
-    "search"
+    "name"
+  ],
+  "anyOf": [
+    { "required": ["types"] },
+    { "required": ["search"] },
+    { "required": ["includeSnapshots"] },
+    { "required": ["includeDeprecated"] },
+    { "required": ["updatedAt"] },
+    { "required": ["categories"] },
+    { "required": ["tags"] },
+    { "required": ["organizationIds"] }
   ]
 }

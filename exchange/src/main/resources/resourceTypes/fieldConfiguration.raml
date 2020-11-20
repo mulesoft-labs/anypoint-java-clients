@@ -1,0 +1,26 @@
+#%RAML 1.0 ResourceType
+
+usage: Use this resourceType to represent field configurations
+description: Field configurations
+get:
+  description: Gets field configurations available for the organization
+  responses:
+    200:
+      body:
+        application/json:
+          example: !include ../examples/field-configurations.json
+
+post:
+  displayName: Creates new configuration
+  description: |
+    Adds a field configuration to the organization.
+    - Body should be application/json. This is not specified in the raml as it conflicts with Osprey.
+  body:
+    "*/*":
+      example: !include ../examples/v2/customTagConfigurationBody.json
+  responses:
+    201:
+      body:
+        application/json:
+          type: !include ../schemas/field-configuration.json
+          example: !include ../examples/field-configuration.json

@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "maxLength": 256,
+      "minLength": 1
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 255
+    }
+  },
+  "anyOf": [
+    { "required": ["name"] },
+    { "required": ["description"] }
+  ]
+}

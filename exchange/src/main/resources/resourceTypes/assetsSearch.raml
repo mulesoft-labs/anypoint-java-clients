@@ -1,0 +1,12 @@
+#%RAML 1.0 ResourceType
+usage: Use this resourceType to represent a collection of assets
+description: A collection of assets
+get:
+  is: [pagination, assets-search]
+  description: Gets a paginated set of assets
+  responses:
+    200:
+      body:
+        application/json:
+          type: SingleAsset[]
+          example: !include ../examples/v2/assetsSearch.json

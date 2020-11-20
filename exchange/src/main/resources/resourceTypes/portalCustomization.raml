@@ -1,0 +1,10 @@
+#%RAML 1.0 ResourceType
+usage: Use this resourceType to get the public portal customization
+description: Portal customization associated to a public portal
+
+get:
+  description: Gets the customization portal
+  responses:
+    200:
+      body:
+        example: !include ../examples/portalCustomization.json

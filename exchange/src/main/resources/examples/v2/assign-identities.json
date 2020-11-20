@@ -1,0 +1,18 @@
+{
+  "added": [
+    {
+      "identityId": "4b8c4ccd-c8fd-49ff-aa97-cf434d9d4e97",
+      "organizationId": "5b3c4ccd-c8fd-49ff-aa97-cf434d9d4e90",
+      "identityType": "user",
+      "role": "admin"
+    }
+  ],
+  "deleted": [
+    {
+      "identityId": "4b8c4ccd-c8fd-49ff-aa97-cf434d9d4e97",
+      "organizationId": "5b3c4ccd-c8fd-49ff-aa97-cf434d9d4e90",
+      "identityType": "team",
+      "role": "contributor"
+    }
+  ]
+}

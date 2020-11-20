@@ -1,0 +1,11 @@
+#%RAML 1.0 ResourceType
+
+usage: Use this resourceType to represent a collection of instances associated to an application
+description: Instances associated to the specified application
+get:
+  description: Gets the list of API instances for the application
+  responses:
+    200:
+      body:
+        application/json:
+          example: !include ../examples/v2/get-application-instances.json

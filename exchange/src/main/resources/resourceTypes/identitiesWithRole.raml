@@ -1,0 +1,27 @@
+#%RAML 1.0 ResourceType
+usage: Use this resourceType to represent a collection of assigned asset identities
+is: [pagination]
+get:
+  description: A collection of identities assigned to an asset with their role
+  queryParameters:
+    search:
+      displayName: Search
+      type: string
+      required: false
+      description: Filters results that partially match the input with any identity property
+      example: "my name"
+  responses:
+    200:
+      body:
+        application/json:
+          example: !include ../examples/v2/get-identity-with-role.json
+          type: IdentityTypes.IdentityWithRole[]
+put:
+  displayName: Assigns identities
+  description: Assigns identities to an asset
+  body:
+    example: !include ../examples/v2/assign-identities.json
+    type: !include ../schemas/v2/assign-identities.json
+  responses:
+    204:
+      description: Identities assigned to the asset

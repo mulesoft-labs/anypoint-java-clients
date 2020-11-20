@@ -1,0 +1,11 @@
+#%RAML 1.0 Library
+types:
+  User: !include ../types/user.raml
+  Team: !include ../types/team.raml
+  Identity:
+    description: An Identity represents a user or a team.
+    type: User | Team
+  IdentityWithRole:
+    type: Identity
+    properties:
+      role: string

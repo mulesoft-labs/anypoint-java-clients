@@ -1,0 +1,14 @@
+#%RAML 1.0 ResourceType
+description: Asset status
+usage: Use this resourceType to update the status of an asset
+
+put:
+  displayName: Updates asset status
+  description: Updates asset status
+  body:
+    application/json:
+      type: !include ../schemas/assetStatus.json
+      example: !include ../examples/assetStatus.json
+  responses:
+    204:
+      description: Asset status successfully updated

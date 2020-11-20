@@ -1,0 +1,15 @@
+[
+  {
+      "id": "3db3585a-db33-4fe6-b8e7-b91ac953e482",
+      "identityType": "user",
+      "username": "username",
+      "firstName": "Scott",
+      "lastName": "Lawson",
+      "email": "email@gmail.com",
+      "organization": {
+          "id": "d4e2bceb-baae-484c-92f3-3cc272256c7f",
+          "name": "Mulesoft Inc",
+          "domain": "mulesoft-inc"
+      }
+  }
+]

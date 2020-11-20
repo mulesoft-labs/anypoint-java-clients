@@ -1,0 +1,26 @@
+#%RAML 1.0 ResourceType
+description: Portal resources
+usage: Use this resourceType to get postable portal resources
+
+get:
+  description: Gets portals resources
+  responses:
+    200:
+      description: Retrieved list of resources
+      body:
+        application/json:
+          example: !include ../examples/v2/get-resources.json
+post:
+  displayName: Creates new resource
+  description: |
+    Creates a resource for the portal draft.
+    The required multipart fields in the body are the path of the resource and the content type. Ex:
+    -F "Content-Type=image/png"
+    -F "file=@/Users/llucas/Documents/image.png"
+  body:
+    multipart/form-data:
+  responses:
+    201:
+      description: Successfully created the portal resource
+      body:
+        example: !include ../examples/resource-create-response.json

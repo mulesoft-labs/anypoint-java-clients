@@ -1,0 +1,39 @@
+[
+  {
+      "version": "1.0.0",
+      "audit": {
+          "created": {
+              "date": "2019-10-07T14:16:27.528Z"
+          },
+          "updated": {
+              "date": "2019-12-20T17:57:59.147Z"
+          }
+      },
+      "masterOrganizationId": "f68e6165-99ce-4499-97e2-2d1d45498c73",
+      "organizationId": "f68e6165-99ce-4499-97e2-2d1d45498c73",
+      "id": 300853,
+      "apiId": 242148,
+      "portalId": null,
+      "name": "v1:300853",
+      "instanceLabel": null,
+      "groupId": "f68e6165-99ce-4499-97e2-2d1d45498c73",
+      "assetId": "facebook",
+      "assetVersion": "1.0.0",
+      "productVersion": "v1",
+      "description": null,
+      "tags": [],
+      "order": 1,
+      "rootFileId": null,
+      "deprecated": false,
+      "lastActiveDate": null,
+      "endpointUri": null,
+      "environmentId": "90b78656-99e5-4754-a2ec-09f2eefc7d02",
+      "isPublic": true,
+      "stage": "release",
+      "terms": null,
+      "termsDate": null,
+      "fullname": "Facebook - QAx- v1:300853",
+      "assetName": "Facebook",
+      "environmentName": "QAx"
+  }
+]

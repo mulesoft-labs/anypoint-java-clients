@@ -1,0 +1,12 @@
+#%RAML 1.0 ResourceType
+description: Portal resources
+usage: Use this resourceType to get portal resources
+
+get:
+  description: Gets portals resources
+  responses:
+    200:
+      description: Retrieved list of resources
+      body:
+        application/json:
+          example: !include ../examples/v2/get-resources.json

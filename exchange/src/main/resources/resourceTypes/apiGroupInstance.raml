@@ -1,0 +1,11 @@
+#%RAML 1.0 ResourceType
+usage: Use this resourceType to represent an API Group instance
+description: An API Group instance
+
+get:
+  description: Gets API Group Instance
+  responses:
+    200:
+      body:
+        application/json:
+          example: !include ../examples/v2/get-api-group-instance.json

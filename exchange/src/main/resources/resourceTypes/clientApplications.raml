@@ -1,0 +1,64 @@
+#%RAML 1.0 ResourceType
+
+usage: Use this resourceType to represent a collection of client applications
+description: A collection of client applications
+get:
+    description: Retrieves a list of client applications
+    is: [ pagination ]
+    queryParameters:
+        # these parameters were imported from consumersV1.raml from api-platform-api
+        apiInstanceId:
+            type: integer
+            description: This field is used to filter by API instance.
+            required: false
+        groupInstanceId:
+            type: integer
+            description: This field is used to filter by API Group instance.
+            required: false
+        includeContractsForApiVersion:
+            description: This field is used to filter by API version
+            type: integer
+            required: false
+        sort:
+            description: Property to sort by
+            type: string
+            required: false
+        ascending:
+            description: Order for sorting
+            type: boolean
+            required: false
+        literalMatch:
+            description: Literal match
+            type: boolean
+            required: false
+        query:
+            description: Search criteria
+            type: string
+            required: false
+    responses:
+        200:
+            body:
+                application/json:
+                    type: !include ../schemas/client-applications.json
+                    example: !include ../examples/client-applications.json
+post:
+    description: Adds a client application
+    queryParameters:
+        apiGroupInstanceId:
+            type: integer
+            minimum: 0
+            description: This field is used to filter by API Group instance.
+            required: false
+        apiInstanceId:
+            type: integer
+            minimum: 0
+            description: This field is used to filter by API instance.
+            required: false
+    body:
+        application/json:
+            example: !include ../examples/post-client-application-body.json
+    responses:
+        200:
+            body:
+                application/json:
+                    example: !include ../examples/post-client-application-response.json

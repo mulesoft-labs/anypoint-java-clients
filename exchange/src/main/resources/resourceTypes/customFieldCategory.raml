@@ -1,0 +1,19 @@
+#%RAML 1.0 ResourceType
+
+usage: Use this resourceType to represent a category
+description: Category
+put:
+  displayName: Creates a category
+  description: |
+    Updates or creates a category.
+    - Should receive application/json. This is not specified in the raml as it conflicts with Osprey.
+  responses:
+    200:
+  body:
+    "*/*":
+      type: !include ../schemas/v2/put-category.json
+      example: !include ../examples/v2/put-category.json
+delete:
+  description: Deletes a category
+  responses:
+    204:

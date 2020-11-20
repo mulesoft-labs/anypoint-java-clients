@@ -1,0 +1,22 @@
+{
+  "id": 384818,
+  "status": "APPROVED",
+  "applicationId": 276068,
+  "clientId": "13d5201f05344a4193e1fe4b14e8cb4d",
+  "clientSecret": "285116794aE54Fa5C23BaE03D673EB09",
+  "tier": {
+    "id": 173842,
+    "groupInstanceId": 1901,
+    "name": "Free",
+    "description": null,
+    "defaultLimits": [
+      {
+        "visible": true,
+        "maximumRequests": 1,
+        "timePeriodInMilliseconds": 1000
+      }
+    ],
+    "status": "ACTIVE",
+    "autoApprove": true
+  }
+}

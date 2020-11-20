@@ -1,0 +1,11 @@
+{
+  "instanceType": "api-group",
+  "acceptedTerms": true,
+  "apiGroupInstanceId": 1984,
+  "requestedTierId": 7714,
+  "organizationId": "0f4a90e6-0da2-41e2-864c-0ec52477dfe5",
+  "groupId": "0f4a90e6-0da2-41e2-864c-0ec52477dfe5",
+  "assetId": "ministry-of-truth",
+  "version": "3.0.0",
+  "versionGroup": "v3"
+}

@@ -1,0 +1,18 @@
+[
+  {
+    "organizationId": "26c17b05-c2da-4ad6-b1d1-34bde9e74e6e",
+    "groupId": "group-id",
+    "assetId": "some-asset-id",
+    "versionGroup": "v2",
+    "major": 2,
+    "isPublic": true
+  },
+  {
+    "organizationId": "26c17b05-c2da-4ad6-b1d1-34bde9e74e6e",
+    "groupId": "group-id",
+    "assetId": "some-asset-id",
+    "versionGroup": "v1",
+    "major": 1,
+    "isPublic": true
+  }
+]

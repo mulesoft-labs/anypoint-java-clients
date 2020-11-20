@@ -1,0 +1,75 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "title": "List of identities assignments",
+  "type" : "object",
+  "properties": {
+    "added": {
+      "title": "Added",
+      "type": "array",
+      "items": {
+        "title": "Identity assignment added",
+        "type": "object",
+        "properties": {
+          "identityId": {
+            "title": "Identity Id",
+            "type": "string"
+          },
+          "identityType": {
+            "title": "Type of identity",
+            "type": "string"
+          },
+          "organizationId": {
+            "title": "Organization id of the identity",
+            "type": "string"
+          },
+          "role": {
+            "title": "Role Name",
+            "type": "string"
+          }
+        },
+        "allOf": [{
+          "required": [
+            "identityId",
+            "role",
+            "organizationId",
+            "identityType"
+          ]
+        }]
+      }
+    },
+    "deleted": {
+      "title": "Deleted",
+      "type": "array",
+      "items": {
+        "title": "Identity assignment deleted",
+        "type": "object",
+        "properties": {
+          "identityId": {
+            "title": "Identity Id",
+            "type": "string"
+          },
+          "identityType": {
+            "title": "Type of identity",
+            "type": "string"
+          },
+          "organizationId": {
+            "title": "Organization id of the identity",
+            "type": "string"
+          },
+          "role": {
+            "title": "Role Name",
+            "type": "string"
+          }
+        },
+        "allOf": [{
+          "required": [
+            "identityId",
+            "role",
+            "organizationId",
+            "identityType"
+          ]
+        }]
+      }
+    }
+  }
+}
