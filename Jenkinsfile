@@ -10,7 +10,6 @@ Map pipelineParams = [
         "devBranchesRegex"                      : "master",
         "enableScheduleTrigger"                 : true,
         "scheduleTriggerCommand"                : "@daily",
-        "enableMavenDeployStage"                : false,
         "archiveArtifacts"                      : "data-weave-tita-it/target/Test*.log",
         "projectType"                           : "runtime"
 ]

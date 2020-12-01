@@ -24,6 +24,8 @@ types:
 securitySchemes:
   oauth_2_0: !include securitySchemes/oauth2.raml
 
+securedBy: [ oauth_2_0 ]
+
 resourceTypes:
   assetStatus: !include resourceTypes/assetStatus.raml
 
