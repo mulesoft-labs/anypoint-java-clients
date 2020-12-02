@@ -1,8 +1,8 @@
 
 Map pipelineParams = [
-        "slackChannel" : "data-weave-bot",
-        "enableSlackSuccessNotifications"       : true,
-        "enableSlackFailedTestsNotifications"   : true,
+        "slackChannel"                          : "data-weave-bot",
+        "enableSlackSuccessNotifications"        : true,
+        "enableSlackFailedTestsNotifications"    : true,
         "enableAllureTestReportStage"           : false,
         "enableSonarQubeStage"                  : false,
         "enableNexusIqStage"                    : false,
@@ -10,8 +10,8 @@ Map pipelineParams = [
         "devBranchesRegex"                      : "master",
         "enableScheduleTrigger"                 : true,
         "scheduleTriggerCommand"                : "@daily",
-        "archiveArtifacts"                      : "data-weave-tita-it/target/Test*.log",
         "projectType"                           : "runtime"
 ]
 
 runtimeBuild(pipelineParams)
+
