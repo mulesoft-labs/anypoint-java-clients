@@ -10,7 +10,8 @@ Map pipelineParams = [
         "devBranchesRegex"                      : "master",
         "enableScheduleTrigger"                 : true,
         "scheduleTriggerCommand"                : "@daily",
-        "projectType"                           : "runtime"
+        "projectType"                           : "runtime",
+        "enableMavenTestStage"                  : false
 ]
 
 runtimeBuild(pipelineParams)
