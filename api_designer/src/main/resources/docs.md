@@ -41,6 +41,15 @@ curl 'https://qax.anypoint.mulesoft.com/designcenter/api-designer/projects'
 --compressed
 ```
 
+The following query parameters could be used for filtering, sorting and paging:
+
+- `searchTerm`: Filter by project name containing the given term.
+- `orderBy`: Sort results by project name, type, updated date (Valid values: name, type, updateDate (- = DESC / + = ASC)).
+- `pageSize`: Quantity of items to return per page.
+- `pageIndex`: Page to return (zero based).
+- `validProjectTypes`: Filter by a comma-separated list of project types (Valid values: Mule_Application, raml, raml-fragment, evented-api).
+
+
 Creating a fragment:
 ```
 curl 'https://qax.anypoint.mulesoft.com/designcenter/api-designer/projects' 

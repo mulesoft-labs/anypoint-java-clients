@@ -58,6 +58,29 @@ traits:
   get:
     description: Gets all the projects that the user has access
     is: [commonHeaders]
+    queryParameters:
+      searchTerm:
+        description: Filter by project name
+        type: string
+        required: false
+      orderBy:
+        description: Order the results by the selected attribute. (Valid values = name,type,updateDate (- = DESC / + = ASC)).
+        type: string
+        required: false
+      pageSize:
+        description: Quantity of results per page.
+        type: integer
+        minimum: 1
+        required: false
+      pageIndex:
+        description: Results page to return.
+        type: integer
+        minimum: 0
+        required: false
+      validProjectTypes:
+        description: Filter by a comma-separated list of project types (Valid values = Mule_Application,raml,raml-fragment,evented-api).
+        type: string
+        required: false
     responses:
       200:
         body: Project[]
