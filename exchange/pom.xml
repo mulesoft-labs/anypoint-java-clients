@@ -7,14 +7,13 @@
     <parent>
         <groupId>com.anypoint.java.clients</groupId>
         <artifactId>anypoint-java-client-parent</artifactId>
-        <version>0.1</version>
+        <version>0.2-SNAPSHOT</version>
     </parent>
-    
+
     <artifactId>exchange</artifactId>
 
-
     <build>
-        <plugins>           
+        <plugins>
             <plugin>
                 <groupId>org.mule.raml.codegen</groupId>
                 <artifactId>raml-client-generator-maven-plugin</artifactId>
@@ -33,5 +32,4 @@
         </plugins>
     </build>
 
-   
 </project>
