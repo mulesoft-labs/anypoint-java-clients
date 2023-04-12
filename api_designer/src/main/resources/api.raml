@@ -258,46 +258,66 @@ traits:
             example: !include examples/exchange.json
           responses:
             200:
-      /exchange/dependencies:
-        put:
-          description: Add new dependencies in exchange.json
-          is: [ commonHeaders  ]
-          body:
-            example:
-              [{ "groupId": "gid",
-                "assetId": "aid",
-                "version": "1.0.0"
-              }]
-          responses:
-            200:
-              body:
-                type: Files
-        post:
-          description: Updates exchange.json file, with given dependencies
-          is: [ commonHeaders  ]
-          body:
-            example:
-              {"add":[{ "groupId": "gid",
-                "assetId": "aid",
-                "version": "1.0.1"
-              }],
-              "remove":[{ "groupId": "gid",
-                "assetId": "aid",
-                "version": "1.0.0"
-              }]}
-          responses:
-            200:
-        delete:
-          description: Removes dependencies in exchange.json
-          is: [ commonHeaders  ]
-          body:
-            example:
-              [{ "groupId": "gid",
-                "assetId": "aid",
-                "version": "1.0.1"
-              }]
-          responses:
-            204:
+      /exchange:
+        /dependencies:
+          put:
+            description: Add new dependencies in exchange.json
+            is: [ commonHeaders  ]
+            body:
+              example:
+                [{ "groupId": "gid",
+                  "assetId": "aid",
+                  "version": "1.0.0"
+                }]
+            responses:
+              200:
+                body:
+                  type: Files
+          post:
+            description: Updates exchange.json file, with given dependencies
+            is: [ commonHeaders  ]
+            body:
+              example:
+                {"add":[{ "groupId": "gid",
+                  "assetId": "aid",
+                  "version": "1.0.1"
+                }],
+                "remove":[{ "groupId": "gid",
+                  "assetId": "aid",
+                  "version": "1.0.0"
+                }]}
+            responses:
+              200:
+          delete:
+            description: Removes dependencies in exchange.json
+            is: [ commonHeaders  ]
+            body:
+              example:
+                [{ "groupId": "gid",
+                  "assetId": "aid",
+                  "version": "1.0.1"
+                }]
+            responses:
+              204:
+        /assets:
+          post:
+            description: Publish project to Exchange
+            is: [ commonHeaders ]
+            headers:
+              x-async-publication:
+                description: Determines if publication to exchange is done sync or async
+                type: boolean
+                required: false
+                default: false
+              x-origin:
+                description: Determines the origin of the request
+                type: string
+                required: true
+                default: API Designer
+            body:
+              example: !include examples/exchange.json
+            responses:
+              200:
     /api/{name}:
         get:
           description: Get api data, from Api Platform, for given {name}
