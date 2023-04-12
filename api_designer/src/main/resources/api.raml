@@ -256,8 +256,10 @@ traits:
           is: [ commonHeaders ]
           headers:
             x-async-publication:
-              description: determines if publication to exchange is done sync or async
+              description: Determines if publication to exchange is done sync or async
               type: boolean
+              required: false
+              default: false
           body:
             example: !include examples/exchange.json
           responses:
