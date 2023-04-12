@@ -254,12 +254,6 @@ traits:
         post:
           description: Publish project to Exchange
           is: [ commonHeaders ]
-          headers:
-            x-async-publication:
-              description: Determines if publication to exchange is done sync or async
-              type: boolean
-              required: false
-              default: false
           body:
             example: !include examples/exchange.json
           responses:
